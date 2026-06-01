@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
@@ -37,8 +38,11 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 
-	// Load HTML Template (Monolith)
-	r.LoadHTMLGlob("templates/*")
+	// Load HTML Templates dari subfolder sections/ dan _pages/ secara modular
+	// sections/ dimuat duluan agar {{define}} tersedia saat _pages/ diparsing
+	templ := template.Must(template.ParseGlob("templates/sections/*.html"))
+	templ = template.Must(templ.ParseGlob("templates/_pages/*.html"))
+	r.SetHTMLTemplate(templ)
 	r.Static("/assets", "./assets")
 
 	// 1. Route Halaman Utama (Mulai Tes)
@@ -54,6 +58,17 @@ func main() {
 
 	// 4. Route Hasil Premium (Hanya terbuka jika status PAID)
 	r.GET("/hasil/:id", showResult)
+
+	// 5. Route Halaman Informasi Modular
+	r.GET("/testimoni", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "testimoni_page.html", nil)
+	})
+	r.GET("/faq", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "faq_page.html", nil)
+	})
+	r.GET("/produk", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "produk_page.html", nil)
+	})
 
 	// Jalankan di port 8080 (sesuai Dockerfile)
 	r.Run(":8080")
