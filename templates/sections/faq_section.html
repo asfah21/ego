@@ -1,3 +1,14 @@
+{{define "title"}}Pertanyaan Sering Diajukan (FAQ) - ShadowSelf{{end}}
+{{define "bodyClass"}}bg-gradient-index{{end}}
+
+{{define "pageContent"}}
+<div class="py-12">
+    {{template "faq" .}}
+</div>
+{{end}}
+
+{{define "faq_page.html"}}{{template "layout" .}}{{end}}
+
 {{define "faq"}}
 <section class="py-16 px-4 max-w-4xl mx-auto space-y-12" x-data="{ active: null }">
     <!-- Section Heading -->

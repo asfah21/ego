@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Test - ShadowSelf</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        [x-cloak] { display: none !important; }
+        .option-btn { transition: all 0.15s ease; }
+        .option-btn:hover { transform: translateY(-1px); }
+        .option-btn.selected { 
+            border-color: #ef4444; 
+            background-color: #fef2f2; 
+            box-shadow: 0 0 0 1px #ef4444;
+        }
+        .dark .option-btn.selected { 
+            border-color: #f87171; 
+            background-color: #450a0a; 
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 min-h-screen" x-data="quizApp">
+
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-50 bg-white dark:bg-neutral-900 border-b border-neutral-200 dark:border-neutral-800 px-4 sm:px-6 py-3">
+        <div class="max-w-3xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-red-600 dark:text-red-400 font-black tracking-widest text-sm font-mono">SHADOW<span class="text-neutral-900 dark:text-neutral-100">SELF</span></span>
+                <span class="hidden sm:inline text-[10px] text-neutral-400 font-mono uppercase tracking-wider border-l border-neutral-300 dark:border-neutral-700 pl-3">Asesmen Kepribadian</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="text-xs font-mono text-neutral-500" x-text="`${currentQuestion} / ${totalQuestions}`"></span>
+                <a href="/" class="text-[11px] text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition">✕ Tutup</a>
+            </div>
+        </div>
+        <!-- Progress Bar -->
+        <div class="max-w-3xl mx-auto mt-2">
+            <div class="w-full bg-neutral-100 dark:bg-neutral-800 h-1 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-red-500 to-amber-500 h-full rounded-full transition-all duration-500 ease-out" :style="`width: ${(currentQuestion / totalQuestions) * 100}%`"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Quiz Area -->
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <template x-if="step === 'register'">
+            <div class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm">
+                <div class="text-center space-y-4 mb-8">
+                    <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 rounded-full text-red-600 dark:text-red-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
+                        📋 Sebelum Memulai
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Identitas Pemetaan</h1>
+                    <p class="text-neutral-500 dark:text-neutral-400 text-sm">Masukkan detail dasar untuk membuka kuesioner.</p>
+                </div>
+                <div class="space-y-5 max-w-md mx-auto">
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Nama / Inisial Subjek</label>
+                        <input type="text" x-model="nama" placeholder="Misal: Pasangan saya" class="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition placeholder:text-neutral-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Alamat Email</label>
+                        <input type="email" x-model="email" placeholder="nama@email.com" class="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition placeholder:text-neutral-400">
+                        <p class="text-[10px] text-neutral-400 mt-1.5 font-mono">Hasil premium akan dikirim ke email ini.</p>
+                    </div>
+                    <button @click="startQuiz()" class="w-full bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-bold py-3.5 px-4 rounded-xl transition text-sm cursor-pointer">
+                        Mulai Kuesioner →
+                    </button>
+                    <p class="text-[10px] text-neutral-400 text-center font-mono">🔒 Data Anda aman dan terenkripsi</p>
+                </div>
+            </div>
+        </template>
+
+        <template x-if="step === 'quiz'">
+            <div>
+                <!-- Questions Loop -->
+                <template x-for="(q, idx) in questions" :key="idx">
+                    <div x-show="currentQuestion === idx + 1" x-cloak class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm">
+                        <!-- Question Header -->
+                        <div class="flex items-center gap-2 text-xs font-mono text-neutral-400 mb-6">
+                            <span :class="`inline-flex items-center justify-center w-6 h-6 rounded-full text-white text-[10px] font-bold ${q.color}`" x-text="idx + 1"></span>
+                            <span x-text="q.dimension"></span>
+                        </div>
+
+                        <!-- Question Image -->
+                        <div class="relative w-full aspect-[16/9] sm:aspect-[16/7] bg-neutral-100 dark:bg-neutral-950 rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 mb-6 flex items-center justify-center">
+                            <img :src="q.image" :alt="q.alt" class="w-full h-full object-cover"
+                                 @error.once="$event.target.style.display='none'; $event.target.nextElementSibling.style.display='flex'">
+                            <div class="hidden absolute inset-0 flex items-center justify-center text-neutral-400 dark:text-neutral-600 font-mono text-xs">
+                                🖼️ <span x-text="q.alt"></span>
+                            </div>
+                        </div>
+
+                        <!-- Question Text -->
+                        <div class="mb-8">
+                            <p class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 mb-2">Pernyataan Observasi:</p>
+                            <h2 class="text-base sm:text-lg font-bold leading-relaxed" x-text="q.text"></h2>
+                        </div>
+
+                        <!-- Options (1-5) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5">
+                            <template x-for="(opt, oi) in q.options" :key="oi">
+                                <button @click="selectAnswer(idx, oi + 1)"
+                                        :class="`option-btn relative flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl border text-center cursor-pointer transition-all duration-150
+                                        ${answers[idx] === oi + 1 
+                                            ? 'selected border-red-500 bg-red-50 dark:bg-red-950/30 dark:border-red-500' 
+                                            : 'border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 hover:border-neutral-300 dark:hover:border-neutral-700'}`">
+                                    <span class="text-base sm:text-lg font-bold" :class="answers[idx] === oi + 1 ? 'text-red-600 dark:text-red-400' : 'text-neutral-400 dark:text-neutral-500'" x-text="oi + 1"></span>
+                                    <span class="text-[10px] sm:text-xs mt-1 leading-tight text-neutral-500 dark:text-neutral-400" x-text="opt"></span>
+                                </button>
+                            </template>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="flex justify-between items-center mt-8 pt-6 border-t border-neutral-100 dark:border-neutral-800">
+                            <button @click="prevQuestion" x-show="currentQuestion > 1"
+                                    class="text-xs font-mono text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 transition cursor-pointer flex items-center gap-1.5">
+                                ← Sebelumnya
+                            </button>
+                            <div x-show="currentQuestion === 1" class="text-xs text-neutral-300 dark:text-neutral-700">← Sebelumnya</div>
+                            <button @click="nextQuestion"
+                                    class="bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-bold py-2.5 px-6 rounded-xl text-xs transition cursor-pointer">
+                                <span x-text="currentQuestion === totalQuestions ? 'Lihat Hasil →' : 'Selanjutnya →'"></span>
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template x-if="step === 'review'">
+            <div class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm text-center">
+                <div class="w-16 h-16 bg-red-100 dark:bg-red-950/30 border border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-500 rounded-full flex items-center justify-center mx-auto text-xl animate-pulse mb-6">🔒</div>
+                <h2 class="text-2xl font-bold mb-2">Kuesioner Selesai</h2>
+                <p class="text-neutral-500 dark:text-neutral-400 text-sm mb-6">Semua jawaban untuk <span class="text-red-600 dark:text-red-400 font-bold" x-text="nama"></span> telah terkunci.</p>
+                
+                <div class="bg-neutral-50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 p-4 rounded-xl max-w-sm mx-auto mb-6 text-left text-xs font-mono text-neutral-500 space-y-2">
+                    <div class="flex justify-between"><span>Subjek:</span> <span class="text-neutral-900 dark:text-neutral-200 font-medium" x-text="nama"></span></div>
+                    <div class="flex justify-between"><span>Email:</span> <span class="text-neutral-900 dark:text-neutral-200 font-medium" x-text="email"></span></div>
+                    <div class="flex justify-between"><span>Jawaban:</span> <span class="text-green-600 font-bold">3/3 Terisi</span></div>
+                </div>
+
+                <form hx-post="/submit-tes" hx-swap="none" @submit="isSubmitting = true">
+                    <input type="hidden" name="nama" :value="nama">
+                    <input type="hidden" name="email" :value="email">
+                    <input type="hidden" name="q1" :value="answers[0] || ''">
+                    <input type="hidden" name="q2" :value="answers[1] || ''">
+                    <input type="hidden" name="q3" :value="answers[2] || ''">
+                    <button type="submit" :disabled="isSubmitting"
+                            class="w-full max-w-xs mx-auto bg-gradient-to-r from-red-600 to-amber-600 text-white font-bold py-3.5 px-6 rounded-xl transition cursor-pointer text-sm shadow-lg shadow-red-900/20 flex items-center justify-center gap-2">
+                        <span x-text="isSubmitting ? 'Memproses...' : 'Kirim & Lihat Hasil'"></span>
+                        <svg class="animate-spin h-4 w-4" x-show="isSubmitting" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <button @click="currentQuestion = totalQuestions; step = 'quiz'" class="mt-4 text-xs text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 transition font-mono cursor-pointer">← Tinjau Jawaban</button>
+            </div>
+        </template>
+    </main>
+
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('quizApp', () => ({
+                step: 'register',
+                nama: '',
+                email: '',
+                currentQuestion: 1,
+                totalQuestions: 3,
+                answers: [null, null, null],
+                isSubmitting: false,
+                questions: [
+                    {
+                        dimension: 'DIMENSI A: NARSISME & EGO SUPERIORITAS',
+                        color: 'bg-red-500',
+                        image: '/assets/images/q1-narsisme.svg',
+                        alt: 'Ilustrasi Narsisme',
+                        text: '"Ketika terjadi konflik atau perbedaan pendapat, dia cenderung menolak sudut pandang saya, sulit menerima kritik, dan memosisikan dirinya sebagai pihak yang selalu benar."',
+                        options: ['Sangat Tidak Sesuai', 'Tidak Sesuai', 'Netral', 'Sesuai', 'Sangat Sesuai']
+                    },
+                    {
+                        dimension: 'DIMENSI B: KECENDERUNGAN MANIPULASI INTERPERSONAL',
+                        color: 'bg-amber-500',
+                        image: '/assets/images/q2-machiavellian.svg',
+                        alt: 'Ilustrasi Machiavellianisme',
+                        text: '"Dia sering kali memutarbalikkan fakta saat berdiskusi, menggunakan trik psikologis seperti gaslighting, atau membuat saya merasa bersalah atas kesalahan yang sebenarnya dia lakukan sendiri."',
+                        options: ['Sangat Tidak Sesuai', 'Tidak Sesuai', 'Netral', 'Sesuai', 'Sangat Sesuai']
+                    },
+                    {
+                        dimension: 'DIMENSI C: INDEKS RESPON EMPATI & AFEKSI',
+                        color: 'bg-purple-500',
+                        image: '/assets/images/q3-psikopati.svg',
+                        alt: 'Ilustrasi Psikopati',
+                        text: '"Dia jarang menunjukkan rasa penyesalan yang tulus atau empati yang nyata ketika mengetahui tindakannya telah menyakiti perasaan saya atau memojokkan posisi saya."',
+                        options: ['Sangat Tidak Sesuai', 'Tidak Sesuai', 'Netral', 'Sesuai', 'Sangat Sesuai']
+                    }
+                ],
+                startQuiz() {
+                    if (this.nama.trim().length < 2 || !this.email.includes('@')) {
+                        alert('Mohon isi nama minimal 2 karakter dan email yang valid.');
+                        return;
+                    }
+                    this.step = 'quiz';
+                    this.currentQuestion = 1;
+                },
+                selectAnswer(qIdx, value) {
+                    this.answers[qIdx] = value;
+                },
+                nextQuestion() {
+                    if (!this.answers[this.currentQuestion - 1]) {
+                        alert('Silakan pilih jawaban terlebih dahulu.');
+                        return;
+                    }
+                    if (this.currentQuestion < this.totalQuestions) {
+                        this.currentQuestion++;
+                    } else {
+                        this.step = 'review';
+                    }
+                },
+                prevQuestion() {
+                    if (this.currentQuestion > 1) this.currentQuestion--;
+                }
+            }));
+        });
+    </script>
+</body>
+</html>

@@ -1,11 +1,22 @@
+{{define "title"}}Analisis Produk & Metrik - ShadowSelf{{end}}
+{{define "bodyClass"}}bg-gradient-index{{end}}
+
+{{define "pageContent"}}
+<div class="py-12">
+    {{template "produk" .}}
+</div>
+{{end}}
+
+{{define "produk_page.html"}}{{template "layout" .}}{{end}}
+
 {{define "produk"}}
-<section class="py-16 px-4 max-w-6xl mx-auto space-y-12">
+<section class="py-12 sm:py-16 px-4 sm:px-6 max-w-6xl mx-auto space-y-10 sm:space-y-12">
     <!-- Section Heading -->
     <div class="text-center space-y-3 max-w-2xl mx-auto">
-        <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-red-100 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-full text-red-600 dark:text-red-400 font-mono text-xs uppercase tracking-widest">
+        <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-red-100 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-full text-red-600 dark:text-red-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
             📊 Cakupan Metrik Asesmen
         </div>
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-tight">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-tight">
             Bagaimana Kami Menganalisis <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-amber-500">Sisi Bayangan</span> Hubungan Anda
         </h2>
         <p class="text-neutral-600 dark:text-neutral-455 text-sm md:text-base leading-relaxed">
@@ -14,12 +25,12 @@
     </div>
 
     <!-- The 3 Domains Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
         <!-- Narcissism -->
-        <div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group">
+        <div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group">
             <div class="absolute top-0 left-0 w-full h-1 bg-red-500"></div>
-            <div class="w-12 h-12 rounded-2xl bg-red-55/10 border border-red-500/20 text-red-500 flex items-center justify-center font-black font-mono text-lg mb-6 group-hover:scale-110 transition duration-300">N</div>
-            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Narsisme (Narcissism)</h3>
+            <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-red-55/10 border border-red-500/20 text-red-500 flex items-center justify-center font-black font-mono text-base sm:text-lg mb-4 sm:mb-6 group-hover:scale-110 transition duration-300">N</div>
+            <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-2">Narsisme (Narcissism)</h3>
             <p class="text-neutral-650 dark:text-neutral-400 text-sm leading-relaxed mb-4">
                 Kebutuhan ego yang berlebihan, superioritas fantasi, kurangnya toleransi terhadap kritik, serta tuntutan perlakuan istimewa dalam relasi.
             </p>
@@ -30,10 +41,10 @@
         </div>
 
         <!-- Machiavellianism -->
-        <div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group">
+        <div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group">
             <div class="absolute top-0 left-0 w-full h-1 bg-amber-500"></div>
-            <div class="w-12 h-12 rounded-2xl bg-amber-55/10 border border-amber-500/20 text-amber-500 flex items-center justify-center font-black font-mono text-lg mb-6 group-hover:scale-110 transition duration-300">M</div>
-            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Machiavellianisme</h3>
+            <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-amber-55/10 border border-amber-500/20 text-amber-500 flex items-center justify-center font-black font-mono text-base sm:text-lg mb-4 sm:mb-6 group-hover:scale-110 transition duration-300">M</div>
+            <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-2">Machiavellianisme</h3>
             <p class="text-neutral-650 dark:text-neutral-400 text-sm leading-relaxed mb-4">
                 Kecenderungan manipulasi emosional, kelicikan strategis, perilaku munafik, serta pandangan pragmatis-sinis yang mengeksploitasi pasangan demi kepentingan pribadi.
             </p>
@@ -44,10 +55,10 @@
         </div>
 
         <!-- Psychopathy -->
-        <div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-6 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group">
+        <div class="bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-5 sm:p-6 shadow-sm hover:shadow-md transition duration-300 relative overflow-hidden group">
             <div class="absolute top-0 left-0 w-full h-1 bg-purple-500"></div>
-            <div class="w-12 h-12 rounded-2xl bg-purple-55/10 border border-purple-500/20 text-purple-500 flex items-center justify-center font-black font-mono text-lg mb-6 group-hover:scale-110 transition duration-300">P</div>
-            <h3 class="text-xl font-bold text-neutral-900 dark:text-white mb-2">Psikopati (Psychopathy)</h3>
+            <div class="w-10 sm:w-12 h-10 sm:h-12 rounded-2xl bg-purple-55/10 border border-purple-500/20 text-purple-500 flex items-center justify-center font-black font-mono text-base sm:text-lg mb-4 sm:mb-6 group-hover:scale-110 transition duration-300">P</div>
+            <h3 class="text-lg sm:text-xl font-bold text-neutral-900 dark:text-white mb-2">Psikopati (Psychopathy)</h3>
             <p class="text-neutral-650 dark:text-neutral-400 text-sm leading-relaxed mb-4">
                 Ketiadaan empati mendasar, ketidakmampuan merasa bersalah atas tindakan destruktif, impulsivitas tinggi, serta kecenderungan berperilaku kejam secara sadar.
             </p>
@@ -59,34 +70,34 @@
     </div>
 
     <!-- What You Get in Premium Report -->
-    <div class="mt-16 bg-gradient-to-br from-neutral-100 to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="mt-10 sm:mt-16 bg-gradient-to-br from-neutral-100 to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-5 sm:p-8 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center">
         <div class="space-y-4">
-            <h3 class="text-2xl font-bold text-neutral-900 dark:text-white">Yang Anda Dapatkan di Laporan Premium PDF</h3>
+            <h3 class="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white">Yang Anda Dapatkan di Laporan Premium PDF</h3>
             <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed">
                 Asesmen gratis memberikan gambaran dasar kasar. Dengan membuka laporan premium senilai Rp14.900, Anda akan mendapatkan dokumen lengkap berisi:
             </p>
             <ul class="space-y-2.5 text-sm text-neutral-700 dark:text-neutral-350">
                 <li class="flex items-center gap-2">
-                    <span class="text-red-500">✔</span>
+                    <span class="text-red-500 shrink-0">✔</span>
                     <span>Analisis skor numerik spesifik dari 3 domain bahaya</span>
                 </li>
                 <li class="flex items-center gap-2">
-                    <span class="text-red-500">✔</span>
+                    <span class="text-red-500 shrink-0">✔</span>
                     <span>Visualisasi komparatif terhadap norma populasi</span>
                 </li>
                 <li class="flex items-center gap-2">
-                    <span class="text-red-500">✔</span>
+                    <span class="text-red-500 shrink-0">✔</span>
                     <span>Penilaian Red Flags beserta interpretasi klinis terperinci</span>
                 </li>
                 <li class="flex items-center gap-2">
-                    <span class="text-red-500">✔</span>
+                    <span class="text-red-500 shrink-0">✔</span>
                     <span>Panduan praktis beraksi (langkah taktis menghadapi subjek)</span>
                 </li>
             </ul>
         </div>
         
         <!-- Abstract Document Showcase Graphic -->
-        <div class="border border-neutral-200 dark:border-neutral-850 bg-white dark:bg-neutral-950 p-6 rounded-2xl space-y-4 shadow-xl relative overflow-hidden">
+        <div class="border border-neutral-200 dark:border-neutral-850 bg-white dark:bg-neutral-950 p-5 sm:p-6 rounded-2xl space-y-4 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 py-1 px-3 bg-red-500 text-white font-mono text-[9px] font-bold uppercase rounded-bl-xl tracking-widest">
                 PREMIUM
             </div>

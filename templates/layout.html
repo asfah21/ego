@@ -1,0 +1,42 @@
+{{define "title"}}ShadowSelf{{end}}
+{{define "bodyClass"}}bg-gradient-index{{end}}
+{{define "headExtra"}}{{end}}
+{{define "bodyAttrs"}}{{end}}
+{{define "bodyExtra"}}{{end}}
+
+{{define "layout"}}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{template "title" .}}</title>
+    
+    <!-- CDNs -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    
+    <!-- Custom Modular CSS & JS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/app.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    {{template "headExtra" .}}
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-red-500 selection:text-white bg-grid {{template "bodyClass" .}} transition-colors duration-300" {{template "bodyAttrs" .}}>
+
+    <!-- Navbar Component -->
+    {{template "navbar" .}}
+
+    <!-- Main Content (gunakan template pageContent) -->
+    <main class="flex-grow">
+        {{template "pageContent" .}}
+    </main>
+
+    <!-- Footer Component -->
+    {{template "footer" .}}
+
+    {{template "bodyExtra" .}}
+</body>
+</html>
+{{end}}

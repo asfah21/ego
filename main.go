@@ -38,16 +38,39 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 
-	// Load HTML Templates dari subfolder sections/ dan _pages/ secara modular
-	// sections/ dimuat duluan agar {{define}} tersedia saat _pages/ diparsing
+	// Load HTML Templates modular (urutan penting):
+	// 1. sections/ → define komponen (navbar, footer, produk, testimoni, faq, error pages)
+	// 2. quiz/ → define pertanyaan (q1, q2, q3)
+	// 3. layout.html → base template dengan head, navbar, footer
+	// 4. _pages/* → halaman yang memanggil {{template "layout"}}
+	// 5. index.html → halaman utama (tidak pakai layout, langsung sections)
 	templ := template.Must(template.ParseGlob("templates/sections/*.html"))
+	templ = template.Must(templ.ParseGlob("templates/quiz/*.html"))
+	templ = template.Must(templ.ParseGlob("templates/layout.html"))
 	templ = template.Must(templ.ParseGlob("templates/_pages/*.html"))
+	templ = template.Must(templ.ParseGlob("templates/index.html"))
 	r.SetHTMLTemplate(templ)
 	r.Static("/assets", "./assets")
 
-	// 1. Route Halaman Utama (Mulai Tes)
+	// Custom Recovery Middleware untuk 5xx — tampilkan halaman error yang cantik
+	r.Use(func(c *gin.Context) {
+		defer func() {
+			if err := recover(); err != nil {
+				c.HTML(http.StatusInternalServerError, "error_5xx.html", nil)
+				c.Abort()
+			}
+		}()
+		c.Next()
+	})
+
+	// 1. Route Halaman Utama
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", nil)
+	})
+
+	// Route Halaman Kuesioner Terpisah
+	r.GET("/quiz", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "quiz.html", nil)
 	})
 
 	// 2. Route Proses Jawaban (Ditembak menggunakan HTMX)
@@ -70,6 +93,11 @@ func main() {
 		c.HTML(http.StatusOK, "produk_page.html", nil)
 	})
 
+	// 6. Handle 404 - Route tidak ditemukan
+	r.NoRoute(func(c *gin.Context) {
+		c.HTML(http.StatusNotFound, "error_404.html", nil)
+	})
+
 	// Jalankan di port 8080 (sesuai Dockerfile)
 	r.Run(":8080")
 }
@@ -86,7 +114,7 @@ func processTest(c *gin.Context) {
 	q3, _ := strconv.Atoi(c.PostForm("q3")) // Psikopati
 
 	// Hitung total skor (Logika di backend aman dari manipulasi browser)
-	skorNarsisme := q1 * 20     // Jadikan persentase maks 100
+	skorNarsisme := q1 * 20 // Jadikan persentase maks 100
 	skorMachiavellian := q2 * 20
 	skorPsikopati := q3 * 20
 
@@ -94,7 +122,7 @@ func processTest(c *gin.Context) {
 	var userID string
 	query := `INSERT INTO users_test (nama, email, skor_narsisme, skor_machiavellian, skor_psikopati) 
               VALUES ($1, $2, $3, $4, $5) RETURNING id`
-	
+
 	err := db.QueryRow(query, nama, email, skorNarsisme, skorMachiavellian, skorPsikopati).Scan(&userID)
 	if err != nil {
 		c.String(http.StatusInternalServerError, "Gagal menyimpan data tes: "+err.Error())
