@@ -31,6 +31,11 @@ func ShowProduk(c *gin.Context) {
 	c.HTML(http.StatusOK, "produk_page.html", nil)
 }
 
+// ShowTentang menampilkan halaman tentang kami
+func ShowTentang(c *gin.Context) {
+	c.HTML(http.StatusOK, "tentang.html", nil)
+}
+
 // Show404 menampilkan halaman 404
 func Show404(c *gin.Context) {
 	c.HTML(http.StatusNotFound, "error_404.html", nil)

@@ -23,12 +23,16 @@
             </p>
         </div>
 
-        <div class="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-4 sm:p-6 rounded-2xl space-y-3 shadow-xl">
-            <h3 class="text-sm font-bold text-amber-600 dark:text-amber-400 font-mono flex items-center gap-2">
-                <span>⚠️</span> CATATAN ANALIS:
+        <!-- ⚠️ DISCLAIMER KLINIS -->
+        <div class="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-300 dark:border-amber-800 p-4 sm:p-5 rounded-2xl space-y-2 shadow-lg">
+            <h3 class="text-xs font-black text-amber-800 dark:text-amber-300 font-mono flex items-center gap-2 uppercase tracking-widest">
+                <span>⚠️</span> DISCLAIMER PENTING — BUKAN DIAGNOSIS KLINIS
             </h3>
-            <p class="text-neutral-700 dark:text-neutral-300 text-sm leading-relaxed">
-                Skor di bawah ini menunjukkan tingkat penyerapan sifat-sifat *Dark Triad* (Tiga Sifat Gelap). Manusia rata-rata memiliki skor di kisaran 20% - 40%. Skor yang mendekati atau melewati 60% menunjukkan tendensi aktif yang memengaruhi keputusan strategis harian Anda.
+            <p class="text-[11px] text-amber-700 dark:text-amber-200 leading-relaxed">
+                Skor di bawah ini merupakan <strong>indikasi awal</strong> berdasarkan persepsi subjektif Anda terhadap pasangan. Hasil ini <strong>bukan diagnosis klinis</strong> dari psikolog atau psikiater berlisensi. Instrumen Dark Triad yang digunakan (Dirty Dozen / SD3) dalam format observasi pihak ketiga belum melalui validasi klinis formal untuk konteks ini. Gunakan hasil ini sebagai bahan refleksi, bukan satu-satunya dasar pengambilan keputusan hubungan.
+            </p>
+            <p class="text-[11px] text-amber-700 dark:text-amber-200 leading-relaxed">
+                Skor rata-rata populasi umum berada di kisaran 20%–40%. Skor di atas 60% menunjukkan tendensi yang perlu diwaspadai dan disarankan untuk dikonsultasikan dengan profesional.
             </p>
         </div>
 
@@ -81,6 +85,48 @@
                 class="text-xs font-mono text-neutral-600 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-300 border border-neutral-300 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 px-4 py-2.5 rounded-xl transition cursor-pointer bg-white dark:bg-neutral-900 shadow-sm hover:shadow">
                 🖨️ Cetak / Simpan PDF Laporan Ini
             </button>
+        </div>
+
+        <!-- ========== POST-PURCHASE UPSELL / NEXT STEP ========== -->
+        <div class="print:hidden space-y-4 sm:space-y-5 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+            <div class="text-center space-y-2">
+                <h3 class="text-sm font-bold text-neutral-900 dark:text-white">🔍 Langkah Selanjutnya</h3>
+                <p class="text-xs text-neutral-600 dark:text-neutral-400">Dapatkan pemahaman yang lebih mendalam tentang dinamika hubungan Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Upsell 1: Konsultasi -->
+                <div class="bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 space-y-2">
+                    <div class="w-8 h-8 rounded-lg bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-900/50 flex items-center justify-center text-red-600 dark:text-red-400 font-bold text-sm">💬</div>
+                    <h4 class="text-xs font-bold text-neutral-900 dark:text-white">Konsultasi dengan Psikolog</h4>
+                    <p class="text-[10px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        Diskusikan hasil asesmen ini dengan psikolog profesional untuk mendapatkan interpretasi yang lebih akurat dan panduan tindak lanjut.
+                    </p>
+                    <a href="#" class="inline-block text-[10px] font-bold text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 underline underline-offset-2 transition">
+                        Cari Psikolog Terdekat →
+                    </a>
+                </div>
+
+                <!-- Upsell 2: Buku Panduan -->
+                <div class="bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 space-y-2">
+                    <div class="w-8 h-8 rounded-lg bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-900/50 flex items-center justify-center text-amber-600 dark:text-amber-400 font-bold text-sm">📘</div>
+                    <h4 class="text-xs font-bold text-neutral-900 dark:text-white">Panduan Menghadapi Pasangan Dark Triad</h4>
+                    <p class="text-[10px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        E-book komprehensif berisi strategi komunikasi, batasan sehat, dan langkah perlindungan diri dalam hubungan dengan pasangan berindikasi Dark Triad.
+                    </p>
+                    <a href="#" class="inline-block text-[10px] font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 underline underline-offset-2 transition">
+                        Pelajari Lebih Lanjut →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Rujukan Profesional -->
+            <div class="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-xl p-3 sm:p-4 text-center space-y-1.5">
+                <p class="text-[10px] font-bold text-red-700 dark:text-red-300">🆘 Butuh Bantuan Segera?</p>
+                <p class="text-[10px] text-red-600 dark:text-red-400 leading-relaxed">
+                    Jika Anda mengalami kekerasan dalam hubungan, hubungi <strong>Hotline Sahabat Perempuan & Anak: 021-129</strong> atau <strong>Yayasan Pulih: 021-78842580</strong>
+                </p>
+            </div>
         </div>
 
     </div>

@@ -45,6 +45,8 @@ func SetupRoutes(r *gin.Engine) {
 	r.HEAD("/faq", ShowFAQ)
 	r.GET("/produk", ShowProduk)
 	r.HEAD("/produk", ShowProduk)
+	r.GET("/tentang", ShowTentang)
+	r.HEAD("/tentang", ShowTentang)
 
 	// 7. Handle 404 — harus di PALING AKHIR
 	r.NoRoute(Show404)

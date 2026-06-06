@@ -1,6 +1,6 @@
 {{define "navbar"}}
 <header x-data="{ mobileOpen: false }" class="border-b border-neutral-300 dark:border-neutral-900 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md sticky top-0 z-50 transition-colors duration-300">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 shrink-0">
             <span class="text-red-600 dark:text-red-500 text-lg font-black tracking-widest font-mono">SHADOW<span class="text-neutral-900 dark:text-neutral-100">SELF</span></span>
@@ -8,16 +8,17 @@
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-700 dark:text-neutral-400">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-neutral-700 dark:text-neutral-400">
             <a href="/" class="hover:text-neutral-900 dark:hover:text-white transition">Beranda</a>
             <a href="/quiz" class="text-red-600 dark:text-red-400 font-bold hover:text-red-700 dark:hover:text-red-300 transition">Mulai Tes</a>
+            <a href="/tentang" class="hover:text-neutral-900 dark:hover:text-white transition">Tentang</a>
             <a href="/produk" class="hover:text-neutral-900 dark:hover:text-white transition">Analisis Produk</a>
             <a href="/testimoni" class="hover:text-neutral-900 dark:hover:text-white transition">Testimoni</a>
             <a href="/faq" class="hover:text-neutral-900 dark:hover:text-white transition">FAQ</a>
         </nav>
 
         <!-- Action Area (Toggle & CTA) -->
-        <div class="flex items-center gap-2 sm:gap-4">
+        <div class="flex items-center gap-2 sm:gap-3">
             <!-- Mobile Hamburger Button -->
             <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition cursor-pointer" title="Menu">
                 <svg x-show="!mobileOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
@@ -51,12 +52,13 @@
 
     <!-- Mobile Navigation Dropdown -->
     <div x-show="mobileOpen" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden border-t border-neutral-300 dark:border-neutral-900 bg-white dark:bg-neutral-950/95 backdrop-blur-md">
-        <nav class="flex flex-col px-6 py-4 gap-1 text-sm font-medium">
-            <a href="/" @click="mobileOpen = false" class="px-4 py-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Beranda</a>
-            <a href="/quiz" @click="mobileOpen = false" class="px-4 py-3 rounded-xl bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-bold hover:bg-red-100 dark:hover:bg-red-950/50 transition">Mulai Tes</a>
-            <a href="/produk" @click="mobileOpen = false" class="px-4 py-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Analisis Produk</a>
-            <a href="/testimoni" @click="mobileOpen = false" class="px-4 py-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Testimoni</a>
-            <a href="/faq" @click="mobileOpen = false" class="px-4 py-3 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">FAQ</a>
+        <nav class="flex flex-col px-4 sm:px-6 py-3 gap-0.5 text-sm font-medium">
+            <a href="/" @click="mobileOpen = false" class="px-4 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Beranda</a>
+            <a href="/quiz" @click="mobileOpen = false" class="px-4 py-2.5 rounded-xl bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400 font-bold hover:bg-red-100 dark:hover:bg-red-950/50 transition">Mulai Tes</a>
+            <a href="/tentang" @click="mobileOpen = false" class="px-4 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Tentang</a>
+            <a href="/produk" @click="mobileOpen = false" class="px-4 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Analisis Produk</a>
+            <a href="/testimoni" @click="mobileOpen = false" class="px-4 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">Testimoni</a>
+            <a href="/faq" @click="mobileOpen = false" class="px-4 py-2.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-800 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition">FAQ</a>
         </nav>
     </div>
 </header>

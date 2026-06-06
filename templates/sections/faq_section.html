@@ -10,7 +10,7 @@
 {{define "faq_page.html"}}{{template "layout" .}}{{end}}
 
 {{define "faq"}}
-<section class="py-16 px-4 max-w-4xl mx-auto space-y-12" x-data="{ active: null }">
+<section class="py-10 sm:py-16 px-4 max-w-4xl mx-auto space-y-8 sm:space-y-12" x-data="{ active: null }">
     <!-- Section Heading -->
     <div class="text-center space-y-3 max-w-2xl mx-auto">
         <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-red-100 dark:bg-red-950/30 border border-red-200 dark:border-red-900/50 rounded-full text-red-600 dark:text-red-400 font-mono text-xs uppercase tracking-widest">
@@ -26,11 +26,11 @@
         <!-- Q1 -->
         <div class="bg-white dark:bg-neutral-900/50 border border-neutral-300 dark:border-neutral-800 rounded-2xl overflow-hidden transition-all duration-300">
             <button @click="active = (active === 1 ? null : 1)" 
-                    class="w-full text-left p-6 font-bold text-neutral-900 dark:text-white flex justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer">
-                <span>Apakah identitas subjek/pasangan saya akan ketahuan?</span>
-                <span class="text-neutral-500 font-bold" x-text="active === 1 ? '−' : '+'"></span>
+                    class="w-full text-left p-4 sm:p-6 font-bold text-neutral-900 dark:text-white flex justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer">
+                <span class="text-sm sm:text-base">Apakah identitas subjek/pasangan saya akan ketahuan?</span>
+                <span class="text-neutral-500 font-bold shrink-0 ml-2" x-text="active === 1 ? '−' : '+'"></span>
             </button>
-            <div x-show="active === 1" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800/80 p-6 text-neutral-700 dark:text-neutral-400 text-sm leading-relaxed">
+            <div x-show="active === 1" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800/80 p-4 sm:p-6 text-neutral-700 dark:text-neutral-400 text-sm leading-relaxed">
                 Tidak. Seluruh data asesmen disimpan dalam enkripsi satu arah dan tidak dipublikasikan kepada siapa pun. Anda juga diperbolehkan menggunakan nama inisial atau samaran untuk subjek demi privasi Anda.
             </div>
         </div>
@@ -38,11 +38,11 @@
         <!-- Q2 -->
         <div class="bg-white dark:bg-neutral-900/50 border border-neutral-300 dark:border-neutral-800 rounded-2xl overflow-hidden transition-all duration-300">
             <button @click="active = (active === 2 ? null : 2)" 
-                    class="w-full text-left p-6 font-bold text-neutral-900 dark:text-white flex justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer">
-                <span>Bagaimana akurasi dari laporan analisis ini?</span>
-                <span class="text-neutral-500 font-bold" x-text="active === 2 ? '−' : '+'"></span>
+                    class="w-full text-left p-4 sm:p-6 font-bold text-neutral-900 dark:text-white flex justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer">
+                <span class="text-sm sm:text-base">Bagaimana akurasi dari laporan analisis ini?</span>
+                <span class="text-neutral-500 font-bold shrink-0 ml-2" x-text="active === 2 ? '−' : '+'"></span>
             </button>
-            <div x-show="active === 2" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800/80 p-6 text-neutral-700 dark:text-neutral-400 text-sm leading-relaxed">
+            <div x-show="active === 2" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800/80 p-4 sm:p-6 text-neutral-700 dark:text-neutral-400 text-sm leading-relaxed">
                 Metodologi instrumen asesmen kami didesain merujuk pada skala klinis *Dark Triad* psikologi. Hasilnya mencerminkan representasi perilaku subjek berdasarkan observasi jujur Anda dalam kuesioner. Hasil ini berfungsi sebagai panduan referensi relasi mandiri, bukan diagnosa medis psikiatri formal.
             </div>
         </div>
@@ -50,11 +50,11 @@
         <!-- Q3 -->
         <div class="bg-white dark:bg-neutral-900/50 border border-neutral-300 dark:border-neutral-800 rounded-2xl overflow-hidden transition-all duration-300">
             <button @click="active = (active === 3 ? null : 3)" 
-                    class="w-full text-left p-6 font-bold text-neutral-900 dark:text-white flex justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer">
-                <span>Berapa lama laporan dikirimkan?</span>
-                <span class="text-neutral-500 font-bold" x-text="active === 3 ? '−' : '+'"></span>
+                    class="w-full text-left p-4 sm:p-6 font-bold text-neutral-900 dark:text-white flex justify-between items-center hover:bg-neutral-50 dark:hover:bg-neutral-800 transition cursor-pointer">
+                <span class="text-sm sm:text-base">Berapa lama laporan dikirimkan?</span>
+                <span class="text-neutral-500 font-bold shrink-0 ml-2" x-text="active === 3 ? '−' : '+'"></span>
             </button>
-            <div x-show="active === 3" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800/80 p-6 text-neutral-700 dark:text-neutral-400 text-sm leading-relaxed">
+            <div x-show="active === 3" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800/80 p-4 sm:p-6 text-neutral-700 dark:text-neutral-400 text-sm leading-relaxed">
                 Setelah pembayaran QRIS divalidasi oleh sistem otomatis kami (kurang dari 1 menit), tautan laporan premium akan langsung terbuka di peramban Anda dan salinan dokumen analisis lengkap akan dikirimkan langsung ke alamat email yang Anda daftarkan.
             </div>
         </div>

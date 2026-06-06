@@ -29,8 +29,62 @@
             </div>
         </div>
 
-        <!-- PAYWALL CARD -->
-        <div x-show="!loading" x-cloak x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95 translate-y-4" x-transition:enter-end="opacity-100 scale-100 translate-y-0" class="space-y-5 sm:space-y-6 text-left">
+            <!-- ⚠️ DISCLAIMER SEBELUM PEMBAYARAN -->
+            <div x-show="!loading" x-cloak x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95 translate-y-4" x-transition:enter-end="opacity-100 scale-100 translate-y-0" class="space-y-5 sm:space-y-6 text-left">
+                <div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 rounded-xl p-3 sm:p-4 space-y-1.5">
+                    <p class="text-[10px] font-bold text-amber-800 dark:text-amber-400 flex items-center gap-1.5">
+                        <span>⚠️</span> Peringatan Penting
+                    </p>
+                    <p class="text-[10px] text-amber-700 dark:text-amber-300 leading-relaxed">
+                        Laporan ini bersifat <strong>indikatif</strong> berdasarkan persepsi subjektif Anda. <strong>BUKAN diagnosis klinis</strong> dari profesional kesehatan mental. Hasil tidak dapat dijadikan satu-satunya dasar keputusan hubungan.
+                    </p>
+                </div>
+
+                <!-- 📋 SAMPLE REPORT PREVIEW — Collapsible with Alpine.js -->
+                <div x-data="{ showPreview: false }" class="bg-white dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden">
+                    <button @click="showPreview = !showPreview" 
+                            class="w-full flex items-center justify-between p-4 text-left hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition cursor-pointer">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm">📋</span>
+                            <div>
+                                <span class="text-xs font-bold text-neutral-800 dark:text-neutral-200">Lihat Contoh Laporan Sebelum Membayar</span>
+                                <p class="text-[10px] text-neutral-500">Klik untuk melihat sampel laporan premium</p>
+                            </div>
+                        </div>
+                        <span class="text-neutral-500 text-sm font-bold" x-text="showPreview ? '−' : '+'"></span>
+                    </button>
+                    <div x-show="showPreview" x-collapse x-cloak class="border-t border-neutral-200 dark:border-neutral-800 p-4 space-y-3">
+                        <p class="text-[9px] text-neutral-500 italic">Berikut adalah contoh ilustrasi laporan yang akan Anda terima setelah pembayaran:</p>
+                        <!-- Sample chart -->
+                        <div class="space-y-2.5">
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[10px] font-mono"><span class="text-neutral-700 dark:text-neutral-300">Narsisme</span> <span class="text-red-500 font-bold">78%</span></div>
+                                <div class="w-full bg-neutral-100 dark:bg-neutral-900 h-2 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-800">
+                                    <div class="bg-gradient-to-r from-neutral-300 to-red-500 h-full w-[78%] rounded-full opacity-70"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[10px] font-mono"><span class="text-neutral-700 dark:text-neutral-300">Machiavellianisme</span> <span class="text-amber-500 font-bold">65%</span></div>
+                                <div class="w-full bg-neutral-100 dark:bg-neutral-900 h-2 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-800">
+                                    <div class="bg-gradient-to-r from-neutral-300 to-amber-500 h-full w-[65%] rounded-full opacity-70"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-[10px] font-mono"><span class="text-neutral-700 dark:text-neutral-300">Psikopati</span> <span class="text-purple-500 font-bold">42%</span></div>
+                                <div class="w-full bg-neutral-100 dark:bg-neutral-900 h-2 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-800">
+                                    <div class="bg-gradient-to-r from-neutral-300 to-purple-500 h-full w-[42%] rounded-full opacity-70"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-neutral-50 dark:bg-neutral-950/50 rounded-xl p-3 space-y-1.5 border border-neutral-200 dark:border-neutral-800">
+                            <p class="text-[9px] font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-widest">✏️ Contoh Interpretasi:</p>
+                            <p class="text-[9px] text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                                "Skor Narsisme 78% berada di atas rata-rata populasi (20-40%). Ini menunjukkan kecenderungan kuat pada kebutuhan validasi eksternal dan superioritas ego. Disarankan untuk observasi lebih lanjut dan konsultasi profesional."
+                            </p>
+                        </div>
+                        <p class="text-[9px] text-neutral-400 italic">* Angka di atas hanyalah ilustrasi. Hasil aktual Anda akan berbeda berdasarkan jawaban kuesioner.</p>
+                    </div>
+                </div>
             <div class="space-y-2 sm:space-y-3">
                 <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-green-100 dark:bg-green-950/30 border border-green-200 dark:border-green-900/50 text-green-600 dark:text-green-400 rounded-full text-[10px] sm:text-xs font-mono uppercase tracking-widest">
                     <span>●</span> Dokumen Siap Diunduh
