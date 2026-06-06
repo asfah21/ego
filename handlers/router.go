@@ -8,6 +8,17 @@ import (
 
 // SetupRoutes mendaftarkan semua route ke Gin engine
 func SetupRoutes(r *gin.Engine) {
+	// 0. Recovery Middleware untuk 5xx — harus PALING ATAS
+	r.Use(func(c *gin.Context) {
+		defer func() {
+			if err := recover(); err != nil {
+				c.HTML(http.StatusInternalServerError, "error_5xx.html", nil)
+				c.Abort()
+			}
+		}()
+		c.Next()
+	})
+
 	// 1. Halaman Utama
 	r.GET("/", ShowHome)
 
@@ -28,17 +39,6 @@ func SetupRoutes(r *gin.Engine) {
 	r.GET("/faq", ShowFAQ)
 	r.GET("/produk", ShowProduk)
 
-	// 7. Handle 404
+	// 7. Handle 404 — harus di PALING AKHIR
 	r.NoRoute(Show404)
-
-	// 8. Recovery Middleware untuk 5xx
-	r.Use(func(c *gin.Context) {
-		defer func() {
-			if err := recover(); err != nil {
-				c.HTML(http.StatusInternalServerError, "error_5xx.html", nil)
-				c.Abort()
-			}
-		}()
-		c.Next()
-	})
 }
