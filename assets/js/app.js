@@ -1,34 +1,8 @@
 /**
- * ShadowSelf - Modular Alpine.js Components & Theme Switcher
+ * ShadowSelf - Modular Alpine.js Components
  */
 
-// Immediately load stored theme to avoid flashing
-(function() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-    }
-})();
-
 document.addEventListener('alpine:init', () => {
-    // Theme global store
-    Alpine.store('theme', {
-        isDark: document.documentElement.classList.contains('dark'),
-        
-        toggle() {
-            this.isDark = !this.isDark;
-            if (this.isDark) {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-        }
-    });
-
     // Component for index.html questionnaire & landing page modal
     Alpine.data('assessmentForm', () => ({
         step: 0,

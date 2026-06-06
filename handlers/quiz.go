@@ -11,14 +11,16 @@ import (
 
 // SubmitTest memproses jawaban kuis dan mengembalikan ID user sebagai JSON
 func SubmitTest(c *gin.Context) {
-	nama := c.PostForm("nama")
 	email := c.PostForm("email")
+	nama := c.PostForm("nama")
 
 	q1, _ := strconv.Atoi(c.PostForm("q1"))
 	q2, _ := strconv.Atoi(c.PostForm("q2"))
 	q3, _ := strconv.Atoi(c.PostForm("q3"))
+	q4, _ := strconv.Atoi(c.PostForm("q4"))
+	q5, _ := strconv.Atoi(c.PostForm("q5"))
 
-	userID, err := services.ProcessQuizAnswers(nama, email, q1, q2, q3)
+	userID, err := services.ProcessQuizAnswers(email, nama, q1, q2, q3, q4, q5)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Gagal menyimpan data tes: " + err.Error(),

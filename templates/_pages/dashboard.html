@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - ShadowSelf</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    </style>
+</head>
+<body class="bg-neutral-100 min-h-screen">
+
+    <!-- Top Bar -->
+    <header class="bg-white border-b border-neutral-200 px-4 sm:px-6 py-3">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="text-red-600 font-black tracking-widest text-sm font-mono">SHADOW<span class="text-neutral-800">SELF</span></span>
+                <span class="text-xs text-neutral-400 font-mono uppercase tracking-wider border-l border-neutral-300 pl-3">Dashboard Admin</span>
+            </div>
+            <a href="/admin/logout" class="text-sm text-neutral-500 hover:text-red-600 transition font-mono">Keluar</a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+        <!-- Stats -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div class="bg-white border border-neutral-200 rounded-xl p-5">
+                <p class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-1">Total Peserta</p>
+                <p class="text-2xl font-bold text-neutral-900">{{len .Users}}</p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-5">
+                <p class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-1">Sudah Bayar</p>
+                <p class="text-2xl font-bold text-green-600">
+                    {{$paid := 0}}
+                    {{range .Users}}
+                        {{if eq .StatusPembayaran "PAID"}}{{$paid = add $paid 1}}{{end}}
+                    {{end}}
+                    {{$paid}}
+                </p>
+            </div>
+            <div class="bg-white border border-neutral-200 rounded-xl p-5">
+                <p class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-1">Belum Bayar</p>
+                <p class="text-2xl font-bold text-amber-600">
+                    {{$unpaid := 0}}
+                    {{range .Users}}
+                        {{if ne .StatusPembayaran "PAID"}}{{$unpaid = add $unpaid 1}}{{end}}
+                    {{end}}
+                    {{$unpaid}}
+                </p>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="bg-white border border-neutral-200 rounded-xl overflow-hidden">
+            <div class="px-5 py-4 border-b border-neutral-200">
+                <h2 class="text-sm font-semibold text-neutral-900">Data Peserta</h2>
+                <p class="text-xs text-neutral-500">Semua user yang telah mengisi kuesioner</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-neutral-50 text-left text-xs font-mono uppercase tracking-widest text-neutral-500">
+                            <th class="px-5 py-3 font-medium">ID</th>
+                            <th class="px-5 py-3 font-medium">Nama</th>
+                            <th class="px-5 py-3 font-medium">Email</th>
+                            <th class="px-5 py-3 font-medium text-center">Narsisme</th>
+                            <th class="px-5 py-3 font-medium text-center">Machiavellian</th>
+                            <th class="px-5 py-3 font-medium text-center">Psikopati</th>
+                            <th class="px-5 py-3 font-medium text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-100">
+                        {{range .Users}}
+                        <tr class="hover:bg-neutral-50 transition">
+                            <td class="px-5 py-3 font-mono text-xs text-neutral-400">{{.ID}}</td>
+                            <td class="px-5 py-3 font-medium text-neutral-900">{{.Nama}}</td>
+                            <td class="px-5 py-3 text-neutral-600">{{.Email}}</td>
+                            <td class="px-5 py-3 text-center">
+                                <span class="font-mono font-bold {{if ge .SkorNarsisme 60}}text-red-600{{else if ge .SkorNarsisme 40}}text-amber-600{{else}}text-green-600{{end}}">
+                                    {{.SkorNarsisme}}%
+                                </span>
+                            </td>
+                            <td class="px-5 py-3 text-center">
+                                <span class="font-mono font-bold {{if ge .SkorMachiavellian 60}}text-red-600{{else if ge .SkorMachiavellian 40}}text-amber-600{{else}}text-green-600{{end}}">
+                                    {{.SkorMachiavellian}}%
+                                </span>
+                            </td>
+                            <td class="px-5 py-3 text-center">
+                                <span class="font-mono font-bold {{if ge .SkorPsikopati 60}}text-red-600{{else if ge .SkorPsikopati 40}}text-amber-600{{else}}text-green-600{{end}}">
+                                    {{.SkorPsikopati}}%
+                                </span>
+                            </td>
+                            <td class="px-5 py-3 text-center">
+                                {{if eq .StatusPembayaran "PAID"}}
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                                    ✅ PAID
+                                </span>
+                                {{else}}
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200">
+                                    ⏳ {{.StatusPembayaran}}
+                                </span>
+                                {{end}}
+                            </td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+            {{if eq (len .Users) 0}}
+            <div class="text-center py-12">
+                <p class="text-sm text-neutral-400 font-mono">Belum ada data peserta</p>
+            </div>
+            {{end}}
+        </div>
+
+    </main>
+
+</body>
+</html>

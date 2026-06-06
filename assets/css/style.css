@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
-@variant dark (&:where(.dark, .dark *));
-
 /* Global & Modular Styles for ShadowSelf */
 
 [x-cloak] { 
@@ -10,14 +8,8 @@
 
 body {
     font-family: 'Outfit', sans-serif;
-    background-color: #f9fafb; /* neutral-50 */
+    background-color: #f9fafb;
     color: #171717; /* neutral-800 */
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dark body {
-    background-color: #050505;
-    color: #e5e5e5; /* neutral-200 */
 }
 
 .font-mono {
@@ -32,23 +24,11 @@ body {
         linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
 }
 
-.dark .bg-grid {
-    background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-}
-
 /* Page specific background gradients */
 .bg-gradient-index {
     background-image: 
         radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.03) 0%, transparent 60%),
         radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.02) 0%, transparent 40%);
-}
-
-.dark .bg-gradient-index {
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 0% 100%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
 }
 
 .bg-gradient-paywall {
@@ -57,35 +37,17 @@ body {
         radial-gradient(circle at 100% 100%, rgba(239, 68, 68, 0.02) 0%, transparent 40%);
 }
 
-.dark .bg-gradient-paywall {
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(239, 68, 68, 0.05) 0%, transparent 40%);
-}
-
 .bg-gradient-hasil {
     background-image: 
         radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.02) 0%, transparent 60%),
         radial-gradient(circle at 0% 100%, rgba(168, 85, 247, 0.01) 0%, transparent 40%);
 }
 
-.dark .bg-gradient-hasil {
-    background-image: 
-        radial-gradient(circle at 50% 0%, rgba(239, 68, 68, 0.06) 0%, transparent 60%),
-        radial-gradient(circle at 0% 100%, rgba(168, 85, 247, 0.03) 0%, transparent 40%);
-}
-
 /* Ambient glowing effects */
 .glow-red {
     box-shadow: 0 0 40px -10px rgba(239, 68, 68, 0.06);
 }
-.dark .glow-red {
-    box-shadow: 0 0 40px -10px rgba(239, 68, 68, 0.2);
-}
 
 .glow-purple {
     box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.06);
-}
-.dark .glow-purple {
-    box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.2);
 }

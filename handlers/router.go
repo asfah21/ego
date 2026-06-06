@@ -48,6 +48,14 @@ func SetupRoutes(r *gin.Engine) {
 	r.GET("/tentang", ShowTentang)
 	r.HEAD("/tentang", ShowTentang)
 
-	// 7. Handle 404 — harus di PALING AKHIR
+	// 7. Admin Routes
+	r.GET("/admin/login", ShowLogin)
+	r.HEAD("/admin/login", ShowLogin)
+	r.POST("/admin/login", LoginProcess)
+	r.GET("/admin/dashboard", ShowDashboard)
+	r.HEAD("/admin/dashboard", ShowDashboard)
+	r.GET("/admin/logout", LogoutProcess)
+
+	// 8. Handle 404 — harus di PALING AKHIR
 	r.NoRoute(Show404)
 }

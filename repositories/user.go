@@ -6,7 +6,7 @@ import (
 )
 
 // InsertUser menyimpan data user baru dan mengembalikan ID
-func InsertUser(nama, email string, skorNarsisme, skorMachiavellian, skorPsikopati int) (string, error) {
+func InsertUser(email, nama string, skorNarsisme, skorMachiavellian, skorPsikopati int) (string, error) {
 	var userID string
 	query := `INSERT INTO users_test (nama, email, skor_narsisme, skor_machiavellian, skor_psikopati) 
               VALUES ($1, $2, $3, $4, $5) RETURNING id`
