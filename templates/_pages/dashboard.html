@@ -9,13 +9,13 @@
         body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
     </style>
 </head>
-<body class="bg-neutral-100 min-h-screen">
+<body class="bg-neutral-50 min-h-screen">
 
     <!-- Top Bar -->
     <header class="bg-white border-b border-neutral-200 px-4 sm:px-6 py-3">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <span class="text-red-600 font-black tracking-widest text-sm font-mono">SHADOW<span class="text-neutral-800">SELF</span></span>
+                <span class="text-red-600 font-black tracking-widest text-sm font-mono">SHADOWSELF</span>
                 <span class="text-xs text-neutral-400 font-mono uppercase tracking-wider border-l border-neutral-300 pl-3">Dashboard Admin</span>
             </div>
             <a href="/admin/logout" class="text-sm text-neutral-500 hover:text-red-600 transition font-mono">Keluar</a>
@@ -27,11 +27,11 @@
 
         <!-- Stats -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            <div class="bg-white border border-neutral-200 rounded-xl p-5">
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm">
                 <p class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-1">Total Peserta</p>
                 <p class="text-2xl font-bold text-neutral-900">{{len .Users}}</p>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-xl p-5">
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm">
                 <p class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-1">Sudah Bayar</p>
                 <p class="text-2xl font-bold text-green-600">
                     {{$paid := 0}}
@@ -41,7 +41,7 @@
                     {{$paid}}
                 </p>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-xl p-5">
+            <div class="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm">
                 <p class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-1">Belum Bayar</p>
                 <p class="text-2xl font-bold text-amber-600">
                     {{$unpaid := 0}}
@@ -54,7 +54,7 @@
         </div>
 
         <!-- Table -->
-        <div class="bg-white border border-neutral-200 rounded-xl overflow-hidden">
+        <div class="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm">
             <div class="px-5 py-4 border-b border-neutral-200">
                 <h2 class="text-sm font-semibold text-neutral-900">Data Peserta</h2>
                 <p class="text-xs text-neutral-500">Semua user yang telah mengisi kuesioner</p>

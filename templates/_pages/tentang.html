@@ -1,117 +1,133 @@
-{{define "title"}}Tentang ShadowSelf — Metode & Keterbatasan{{end}}
-{{define "bodyClass"}}bg-neutral-50{{end}}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang ShadowSelf — Metode & Keterbatasan</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/app.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-neutral-900 transition-colors duration-300">
 
-{{define "pageContent"}}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-12 sm:space-y-16">
+    {{template "navbar" .}}
 
-    <!-- Header -->
-    <div class="text-center max-w-2xl mx-auto">
-        <p class="text-sm font-semibold text-red-600 uppercase tracking-widest mb-3">Tentang</p>
-        <h1 class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
-            Apa Itu ShadowSelf dan Bagaimana Cara Kerjanya
-        </h1>
-        <p class="text-sm text-neutral-500 mt-3 leading-relaxed">
-            ShadowSelf adalah alat screening mandiri yang membantu Anda mengenali pola kepribadian Dark Triad pada pasangan — berdasarkan pengamatan Anda sehari-hari.
-        </p>
-    </div>
+    <main class="flex-grow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-12 sm:space-y-16">
 
-    <!-- Disclaimer -->
-    <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
-        <h2 class="text-sm font-semibold text-amber-800 mb-3">Yang Perlu Anda Pahami</h2>
-        <div class="space-y-3 text-sm text-amber-700 leading-relaxed">
-            <p><strong>ShadowSelf bukan alat diagnosis.</strong> Hasilnya berdasarkan persepsi Anda, bukan penilaian objektif psikolog. Instrumen ini tidak bisa menggantikan evaluasi profesional.</p>
-            <p>Jika Anda atau orang terdekat mengalami KDRT, hubungi:</p>
-            <ul class="list-disc list-inside space-y-1">
-                <li><strong>Hotline Sahabat Perempuan & Anak (KemenPPPA):</strong> 021-129</li>
-                <li><strong>Yayasan Pulih:</strong> 021-78842580</li>
-                <li><strong>Psikolog atau konselor profesional terdekat</strong></li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Metode Ilmiah -->
-    <div>
-        <h2 class="text-xl font-bold text-neutral-900 mb-6">Landasan Ilmiah</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white border border-neutral-200 rounded-xl p-6">
-                <div class="w-10 h-10 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-red-500 font-bold text-sm mb-4">DD</div>
-                <h3 class="font-semibold text-neutral-900 mb-2">Dirty Dozen (DD)</h3>
-                <p class="text-sm text-neutral-600 leading-relaxed mb-3">
-                    Dikembangkan oleh Jonason & Webster (2010). Skala 12-item yang mengukur tiga domain Dark Triad secara efisien. Masing-masing domain diukur dengan 4 item dalam skala Likert 1-5.
+            <!-- Header -->
+            <div class="text-center max-w-2xl mx-auto">
+                <p class="text-sm font-semibold text-red-600 uppercase tracking-widest mb-3">Tentang</p>
+                <h1 class="text-2xl sm:text-4xl font-bold tracking-tight leading-tight">
+                    Apa Itu ShadowSelf dan Bagaimana Cara Kerjanya
+                </h1>
+                <p class="text-sm text-neutral-500 mt-3 leading-relaxed">
+                    ShadowSelf adalah alat screening mandiri yang membantu Anda mengenali pola kepribadian Dark Triad pada pasangan — berdasarkan pengamatan Anda sehari-hari.
                 </p>
-                <a href="https://doi.org/10.1037/a0019265" target="_blank" rel="noopener noreferrer" class="text-sm text-red-600 hover:underline">
-                    Jonason & Webster (2010) — DOI: 10.1037/a0019265
-                </a>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-xl p-6">
-                <div class="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 font-bold text-sm mb-4">SD3</div>
-                <h3 class="font-semibold text-neutral-900 mb-2">Short Dark Triad (SD3)</h3>
-                <p class="text-sm text-neutral-600 leading-relaxed mb-3">
-                    Dikembangkan oleh Jones & Paulhus (2014). Instrumen 27-item yang menjadi standar dalam pengukuran Dark Triad. ShadowSelf mengadaptasi pendekatan dimensional SD3 untuk konteks observasi pasangan.
-                </p>
-                <a href="https://doi.org/10.1037/a0035282" target="_blank" rel="noopener noreferrer" class="text-sm text-red-600 hover:underline">
-                    Jones & Paulhus (2014) — DOI: 10.1037/a0035282
-                </a>
-            </div>
-        </div>
-        <p class="text-sm text-neutral-500 mt-4 bg-neutral-100 rounded-lg p-4 border border-neutral-200">
-            <strong>Catatan:</strong> Instrumen asli DD dan SD3 dirancang untuk laporan mandiri (<em>self-report</em>). ShadowSelf mengadaptasi item-item tersebut ke dalam format observasi pihak ketiga (<em>other-report</em>). Adaptasi ini belum divalidasi secara klinis dan hasilnya bersifat eksploratoris.
-        </p>
-    </div>
 
-    <!-- Pengembang -->
-    <div>
-        <h2 class="text-xl font-bold text-neutral-900 mb-6">Pengembang</h2>
-        <div class="bg-white border border-neutral-200 rounded-xl p-6">
-            <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold text-lg shrink-0">S</div>
-                <div>
-                    <h3 class="font-semibold text-neutral-900">ShadowSelf</h3>
-                    <p class="text-sm text-neutral-600 mt-1 leading-relaxed">
-                        Dikembangkan oleh individu yang peduli pada psikologi pop dan hubungan interpersonal. Bukan lembaga psikologi klinis. Konten bersifat informatif dan edukatif.
-                    </p>
+            <!-- Disclaimer -->
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
+                <h2 class="text-sm font-semibold text-amber-800 mb-3">Yang Perlu Anda Pahami</h2>
+                <div class="space-y-3 text-sm text-amber-700 leading-relaxed">
+                    <p><strong>ShadowSelf bukan alat diagnosis.</strong> Hasilnya berdasarkan persepsi Anda, bukan penilaian objektif psikolog. Instrumen ini tidak bisa menggantikan evaluasi profesional.</p>
+                    <p>Jika Anda atau orang terdekat mengalami KDRT, hubungi:</p>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Hotline Sahabat Perempuan & Anak (KemenPPPA):</strong> 021-129</li>
+                        <li><strong>Yayasan Pulih:</strong> 021-78842580</li>
+                        <li><strong>Psikolog atau konselor profesional terdekat</strong></li>
+                    </ul>
                 </div>
             </div>
-            <div class="border-t border-neutral-100 mt-4 pt-4">
-                <ul class="space-y-2 text-sm text-neutral-600">
-                    <li class="flex items-start gap-2">
-                        <span class="text-green-500 mt-0.5">✓</span>
-                        <span>Transparan tentang keterbatasan alat ini</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-green-500 mt-0.5">✓</span>
-                        <span>Data Anda dienkripsi dan tidak dibagikan</span>
-                    </li>
-                    <li class="flex items-start gap-2">
-                        <span class="text-green-500 mt-0.5">✓</span>
-                        <span>Menyediakan rujukan ke layanan profesional</span>
-                    </li>
-                </ul>
+
+            <!-- Metode Ilmiah -->
+            <div>
+                <h2 class="text-xl font-bold text-neutral-900 mb-6">Landasan Ilmiah</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                        <div class="w-10 h-10 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-red-500 font-bold text-sm mb-4">DD</div>
+                        <h3 class="font-semibold text-neutral-900 mb-2">Dirty Dozen (DD)</h3>
+                        <p class="text-sm text-neutral-600 leading-relaxed mb-3">
+                            Dikembangkan oleh Jonason & Webster (2010). Skala 12-item yang mengukur tiga domain Dark Triad secara efisien. Masing-masing domain diukur dengan 4 item dalam skala Likert 1-5.
+                        </p>
+                        <a href="https://doi.org/10.1037/a0019265" target="_blank" rel="noopener noreferrer" class="text-sm text-red-600 hover:underline">
+                            Jonason & Webster (2010) — DOI: 10.1037/a0019265
+                        </a>
+                    </div>
+                    <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                        <div class="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 font-bold text-sm mb-4">SD3</div>
+                        <h3 class="font-semibold text-neutral-900 mb-2">Short Dark Triad (SD3)</h3>
+                        <p class="text-sm text-neutral-600 leading-relaxed mb-3">
+                            Dikembangkan oleh Jones & Paulhus (2014). Instrumen 27-item yang menjadi standar dalam pengukuran Dark Triad. ShadowSelf mengadaptasi pendekatan dimensional SD3 untuk konteks observasi pasangan.
+                        </p>
+                        <a href="https://doi.org/10.1037/a0035282" target="_blank" rel="noopener noreferrer" class="text-sm text-red-600 hover:underline">
+                            Jones & Paulhus (2014) — DOI: 10.1037/a0035282
+                        </a>
+                    </div>
+                </div>
+                <p class="text-sm text-neutral-500 mt-4 bg-neutral-100 rounded-lg p-4 border border-neutral-200">
+                    <strong>Catatan:</strong> Instrumen asli DD dan SD3 dirancang untuk laporan mandiri (<em>self-report</em>). ShadowSelf mengadaptasi item-item tersebut ke dalam format observasi pihak ketiga (<em>other-report</em>). Adaptasi ini belum divalidasi secara klinis dan hasilnya bersifat eksploratoris.
+                </p>
             </div>
+
+            <!-- Pengembang -->
+            <div>
+                <h2 class="text-xl font-bold text-neutral-900 mb-6">Pengembang</h2>
+                <div class="bg-white border border-neutral-200 rounded-xl p-6">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold text-lg shrink-0">S</div>
+                        <div>
+                            <h3 class="font-semibold text-neutral-900">ShadowSelf</h3>
+                            <p class="text-sm text-neutral-600 mt-1 leading-relaxed">
+                                Dikembangkan oleh individu yang peduli pada psikologi pop dan hubungan interpersonal. Bukan lembaga psikologi klinis. Konten bersifat informatif dan edukatif.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="border-t border-neutral-100 mt-4 pt-4">
+                        <ul class="space-y-2 text-sm text-neutral-600">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-0.5">✓</span>
+                                <span>Transparan tentang keterbatasan alat ini</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-0.5">✓</span>
+                                <span>Data Anda dienkripsi dan tidak dibagikan</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-500 mt-0.5">✓</span>
+                                <span>Menyediakan rujukan ke layanan profesional</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kapan Harus ke Profesional -->
+            <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+                <h2 class="text-sm font-semibold text-red-800 mb-3">Kapan Harus ke Profesional?</h2>
+                <p class="text-sm text-red-700 leading-relaxed mb-3">
+                    Hasil ShadowSelf <strong>tidak boleh</strong> dijadikan satu-satunya dasar untuk:
+                </p>
+                <ul class="text-sm text-red-700 space-y-1 list-disc list-inside mb-3">
+                    <li>Mendiagnosis gangguan kepribadian pada pasangan</li>
+                    <li>Mengakhiri hubungan tanpa konseling lebih lanjut</li>
+                    <li>Keputusan hukum (hak asuh, perceraian, dll)</li>
+                </ul>
+                <p class="text-sm text-red-700">Jika hubungan Anda dalam situasi tidak aman, segera cari bantuan profesional.</p>
+            </div>
+
+            <!-- Kontak -->
+            <div class="text-center">
+                <p class="text-sm text-neutral-500 mb-2">Punya pertanyaan atau masukan?</p>
+                <a href="mailto:support@shadowself.id" class="text-sm font-medium text-red-600 hover:underline">support@shadowself.id</a>
+            </div>
+
         </div>
-    </div>
+    </main>
 
-    <!-- Kapan Harus ke Profesional -->
-    <div class="bg-red-50 border border-red-200 rounded-xl p-6">
-        <h2 class="text-sm font-semibold text-red-800 mb-3">Kapan Harus ke Profesional?</h2>
-        <p class="text-sm text-red-700 leading-relaxed mb-3">
-            Hasil ShadowSelf <strong>tidak boleh</strong> dijadikan satu-satunya dasar untuk:
-        </p>
-        <ul class="text-sm text-red-700 space-y-1 list-disc list-inside mb-3">
-            <li>Mendiagnosis gangguan kepribadian pada pasangan</li>
-            <li>Mengakhiri hubungan tanpa konseling lebih lanjut</li>
-            <li>Keputusan hukum (hak asuh, perceraian, dll)</li>
-        </ul>
-        <p class="text-sm text-red-700">Jika hubungan Anda dalam situasi tidak aman, segera cari bantuan profesional.</p>
-    </div>
+    {{template "footer" .}}
 
-    <!-- Kontak -->
-    <div class="text-center">
-        <p class="text-sm text-neutral-500 mb-2">Punya pertanyaan atau masukan?</p>
-        <a href="mailto:support@shadowself.id" class="text-sm font-medium text-red-600 hover:underline">support@shadowself.id</a>
-    </div>
-
-</div>
-{{end}}
-
-{{template "layout" .}}
+</body>
+</html>

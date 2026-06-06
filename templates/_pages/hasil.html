@@ -1,108 +1,121 @@
-{{define "title"}}Hasil Asesmen - ShadowSelf{{end}}
-{{define "bodyClass"}}bg-neutral-50{{end}}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Asesmen - ShadowSelf</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/app.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-neutral-50 text-neutral-900 transition-colors duration-300">
 
-{{define "headExtra"}}
-<style>
-    [x-cloak] { display: none !important; }
-</style>
-{{end}}
+    {{template "navbar" .}}
 
-{{define "pageContent"}}
-<div class="max-w-xl mx-auto px-4 py-12 sm:py-16" x-data="{ tampil: false }" x-init="setTimeout(() => tampil = true, 300)">
-    
-    <div class="text-center mb-8">
-        <p class="text-sm font-semibold text-red-600 uppercase tracking-widest mb-2">Laporan Asesmen</p>
-        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Hasil untuk: <span class="text-red-600">{{.Nama}}</span></h1>
-        <p class="text-sm text-neutral-500 mt-1">Berdasarkan jawaban Anda terhadap kuesioner Dark Triad</p>
-    </div>
+    <main class="flex-grow">
+        <div class="max-w-xl mx-auto px-4 py-12 sm:py-16" x-data="{ tampil: false }" x-init="setTimeout(() => tampil = true, 300)">
+            
+            <div class="text-center mb-8">
+                <p class="text-sm font-semibold text-red-600 uppercase tracking-widest mb-2">Laporan Asesmen</p>
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Hasil untuk: <span class="text-red-600">{{.Nama}}</span></h1>
+                <p class="text-sm text-neutral-500 mt-1">Berdasarkan jawaban Anda terhadap kuesioner Dark Triad</p>
+            </div>
 
-    <!-- Disclaimer -->
-    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8">
-        <p class="text-sm text-amber-700 leading-relaxed">
-            <strong>Bukan diagnosis klinis.</strong> Skor di bawah adalah indikasi awal berdasarkan persepsi subjektif Anda. Skor rata-rata populasi: 20%–40%. Skor di atas 60% perlu diwaspadai.
-        </p>
-    </div>
+            <!-- Disclaimer -->
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8">
+                <p class="text-sm text-amber-700 leading-relaxed">
+                    <strong>Bukan diagnosis klinis.</strong> Skor di bawah adalah indikasi awal berdasarkan persepsi subjektif Anda. Skor rata-rata populasi: 20%–40%. Skor di atas 60% perlu diwaspadai.
+                </p>
+            </div>
 
-    <!-- Scores -->
-    <div class="space-y-5">
-        <div class="bg-white border border-neutral-200 rounded-xl p-5">
-            <div class="flex justify-between items-end mb-2">
-                <div>
-                    <h3 class="font-semibold text-neutral-900">Narsisme</h3>
-                    <p class="text-sm text-neutral-500">Kecenderungan merasa superior, butuh dikagumi</p>
+            <!-- Scores -->
+            <div class="space-y-5">
+                <div class="bg-white border border-neutral-200 rounded-xl p-5">
+                    <div class="flex justify-between items-end mb-2">
+                        <div>
+                            <h3 class="font-semibold text-neutral-900">Narsisme</h3>
+                            <p class="text-sm text-neutral-500">Kecenderungan merasa superior, butuh dikagumi</p>
+                        </div>
+                        <span class="text-xl font-mono font-bold text-red-500">{{.Narsisme}}%</span>
+                    </div>
+                    <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+                        <div class="bg-red-500 h-full rounded-full transition-all duration-1000 ease-out"
+                            :style="tampil ? 'width: {{.Narsisme}}%' : 'width: 0%'"></div>
+                    </div>
                 </div>
-                <span class="text-xl font-mono font-bold text-red-500">{{.Narsisme}}%</span>
-            </div>
-            <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
-                <div class="bg-red-500 h-full rounded-full transition-all duration-1000 ease-out"
-                    :style="tampil ? 'width: {{.Narsisme}}%' : 'width: 0%'"></div>
-            </div>
-        </div>
 
-        <div class="bg-white border border-neutral-200 rounded-xl p-5">
-            <div class="flex justify-between items-end mb-2">
-                <div>
-                    <h3 class="font-semibold text-neutral-900">Machiavellianisme</h3>
-                    <p class="text-sm text-neutral-500">Kecenderungan manipulatif dan pragmatis</p>
+                <div class="bg-white border border-neutral-200 rounded-xl p-5">
+                    <div class="flex justify-between items-end mb-2">
+                        <div>
+                            <h3 class="font-semibold text-neutral-900">Machiavellianisme</h3>
+                            <p class="text-sm text-neutral-500">Kecenderungan manipulatif dan pragmatis</p>
+                        </div>
+                        <span class="text-xl font-mono font-bold text-amber-500">{{.Machiavellian}}%</span>
+                    </div>
+                    <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+                        <div class="bg-amber-500 h-full rounded-full transition-all duration-1000 ease-out"
+                            :style="tampil ? 'width: {{.Machiavellian}}%' : 'width: 0%'"></div>
+                    </div>
                 </div>
-                <span class="text-xl font-mono font-bold text-amber-500">{{.Machiavellian}}%</span>
-            </div>
-            <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
-                <div class="bg-amber-500 h-full rounded-full transition-all duration-1000 ease-out"
-                    :style="tampil ? 'width: {{.Machiavellian}}%' : 'width: 0%'"></div>
-            </div>
-        </div>
 
-        <div class="bg-white border border-neutral-200 rounded-xl p-5">
-            <div class="flex justify-between items-end mb-2">
-                <div>
-                    <h3 class="font-semibold text-neutral-900">Psikopati</h3>
-                    <p class="text-sm text-neutral-500">Kurang empati, impulsif, sulit merasa bersalah</p>
+                <div class="bg-white border border-neutral-200 rounded-xl p-5">
+                    <div class="flex justify-between items-end mb-2">
+                        <div>
+                            <h3 class="font-semibold text-neutral-900">Psikopati</h3>
+                            <p class="text-sm text-neutral-500">Kurang empati, impulsif, sulit merasa bersalah</p>
+                        </div>
+                        <span class="text-xl font-mono font-bold text-purple-500">{{.Psikopati}}%</span>
+                    </div>
+                    <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+                        <div class="bg-purple-500 h-full rounded-full transition-all duration-1000 ease-out"
+                            :style="tampil ? 'width: {{.Psikopati}}%' : 'width: 0%'"></div>
+                    </div>
                 </div>
-                <span class="text-xl font-mono font-bold text-purple-500">{{.Psikopati}}%</span>
             </div>
-            <div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
-                <div class="bg-purple-500 h-full rounded-full transition-all duration-1000 ease-out"
-                    :style="tampil ? 'width: {{.Psikopati}}%' : 'width: 0%'"></div>
+
+            <div class="text-center mt-6 print:hidden">
+                <button onclick="window.print()"
+                    class="text-sm text-neutral-500 hover:text-neutral-700 border border-neutral-200 hover:border-neutral-300 px-4 py-2 rounded-lg transition cursor-pointer bg-white">
+                    🖨️ Cetak / Simpan PDF
+                </button>
             </div>
-        </div>
-    </div>
 
-    <div class="text-center mt-6 print:hidden">
-        <button onclick="window.print()"
-            class="text-sm text-neutral-500 hover:text-neutral-700 border border-neutral-200 hover:border-neutral-300 px-4 py-2 rounded-lg transition cursor-pointer bg-white">
-            🖨️ Cetak / Simpan PDF
-        </button>
-    </div>
+            <!-- Upsell -->
+            <div class="print:hidden mt-8 pt-6 border-t border-neutral-200">
+                <div class="text-center mb-4">
+                    <h3 class="text-sm font-semibold text-neutral-900">Langkah Selanjutnya</h3>
+                    <p class="text-sm text-neutral-500">Pahami lebih dalam arti skor ini untuk hubungan Anda.</p>
+                </div>
 
-    <!-- Upsell -->
-    <div class="print:hidden mt-8 pt-6 border-t border-neutral-200">
-        <div class="text-center mb-4">
-            <h3 class="text-sm font-semibold text-neutral-900">Langkah Selanjutnya</h3>
-            <p class="text-sm text-neutral-500">Pahami lebih dalam arti skor ini untuk hubungan Anda.</p>
-        </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="bg-white border border-neutral-200 rounded-lg p-4">
+                        <div class="w-8 h-8 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-red-500 font-bold text-sm mb-2">💬</div>
+                        <h4 class="text-sm font-semibold text-neutral-900 mb-1">Konsultasi dengan Psikolog</h4>
+                        <p class="text-xs text-neutral-500 mb-2">Diskusikan hasil ini untuk interpretasi yang lebih akurat.</p>
+                        <a href="#" class="text-xs font-medium text-red-600 hover:underline">Cari Psikolog Terdekat →</a>
+                    </div>
+                    <div class="bg-white border border-neutral-200 rounded-lg p-4">
+                        <div class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 font-bold text-sm mb-2">📘</div>
+                        <h4 class="text-sm font-semibold text-neutral-900 mb-1">Panduan Hubungan</h4>
+                        <p class="text-xs text-neutral-500 mb-2">Strategi komunikasi dan batasan sehat.</p>
+                        <a href="#" class="text-xs font-medium text-amber-600 hover:underline">Pelajari →</a>
+                    </div>
+                </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-white border border-neutral-200 rounded-lg p-4">
-                <div class="w-8 h-8 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center text-red-500 font-bold text-sm mb-2">💬</div>
-                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Konsultasi dengan Psikolog</h4>
-                <p class="text-xs text-neutral-500 mb-2">Diskusikan hasil ini untuk interpretasi yang lebih akurat.</p>
-                <a href="#" class="text-xs font-medium text-red-600 hover:underline">Cari Psikolog Terdekat →</a>
+                <div class="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-3">
+                    <p class="text-sm text-red-700">🆘 Butuh bantuan? Hubungi <strong>Hotline Sahabat Perempuan & Anak: 021-129</strong></p>
+                </div>
             </div>
-            <div class="bg-white border border-neutral-200 rounded-lg p-4">
-                <div class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-500 font-bold text-sm mb-2">📘</div>
-                <h4 class="text-sm font-semibold text-neutral-900 mb-1">Panduan Hubungan</h4>
-                <p class="text-xs text-neutral-500 mb-2">Strategi komunikasi dan batasan sehat.</p>
-                <a href="#" class="text-xs font-medium text-amber-600 hover:underline">Pelajari →</a>
-            </div>
+
         </div>
+    </main>
 
-        <div class="bg-red-50 border border-red-200 rounded-lg p-3 text-center mt-3">
-            <p class="text-sm text-red-700">🆘 Butuh bantuan? Hubungi <strong>Hotline Sahabat Perempuan & Anak: 021-129</strong></p>
-        </div>
-    </div>
+    {{template "footer" .}}
 
-</div>
-{{end}}
-
-{{template "layout" .}}
+</body>
+</html>
