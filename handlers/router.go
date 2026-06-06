@@ -19,25 +19,32 @@ func SetupRoutes(r *gin.Engine) {
 		c.Next()
 	})
 
-	// 1. Halaman Utama
+	// 1. Halaman Utama (HEAD juga penting untuk curl -I dan health check OpenResty)
 	r.GET("/", ShowHome)
+	r.HEAD("/", ShowHome)
 
 	// 2. Halaman Kuesioner
 	r.GET("/quiz", ShowQuiz)
+	r.HEAD("/quiz", ShowQuiz)
 
 	// 3. Proses Jawaban (HTMX)
 	r.POST("/submit-tes", SubmitTest)
 
 	// 4. Paywall
 	r.GET("/paywall/:id", ShowPaywall)
+	r.HEAD("/paywall/:id", ShowPaywall)
 
 	// 5. Hasil Premium (hanya jika PAID)
 	r.GET("/hasil/:id", ShowResult)
+	r.HEAD("/hasil/:id", ShowResult)
 
 	// 6. Halaman Informasi
 	r.GET("/testimoni", ShowTestimoni)
+	r.HEAD("/testimoni", ShowTestimoni)
 	r.GET("/faq", ShowFAQ)
+	r.HEAD("/faq", ShowFAQ)
 	r.GET("/produk", ShowProduk)
+	r.HEAD("/produk", ShowProduk)
 
 	// 7. Handle 404 — harus di PALING AKHIR
 	r.NoRoute(Show404)
