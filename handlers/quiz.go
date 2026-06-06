@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// SubmitTest memproses jawaban kuis dari form HTMX
+// SubmitTest memproses jawaban kuis dan mengembalikan ID user sebagai JSON
 func SubmitTest(c *gin.Context) {
 	nama := c.PostForm("nama")
 	email := c.PostForm("email")
@@ -20,13 +20,15 @@ func SubmitTest(c *gin.Context) {
 
 	userID, err := services.ProcessQuizAnswers(nama, email, q1, q2, q3)
 	if err != nil {
-		c.String(http.StatusInternalServerError, "Gagal menyimpan data tes: "+err.Error())
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Gagal menyimpan data tes: " + err.Error(),
+		})
 		return
 	}
 
-	// HTMX redirect ke halaman paywall
-	c.Header("HX-Redirect", "/paywall/"+userID)
-	c.Status(http.StatusOK)
+	c.JSON(http.StatusOK, gin.H{
+		"id": userID,
+	})
 }
 
 // ShowPaywall menampilkan halaman pembayaran

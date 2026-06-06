@@ -22,6 +22,10 @@
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in { animation: fadeIn 0.3s ease-out; }
+        @keyframes pulse-dot { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        .pulse-dot { animation: pulse-dot 1.4s infinite ease-in-out; }
+        .pulse-dot:nth-child(2) { animation-delay: 0.2s; }
+        .pulse-dot:nth-child(3) { animation-delay: 0.4s; }
     </style>
 </head>
 <body class="bg-neutral-50 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 min-h-screen" x-data="quizApp">
@@ -34,12 +38,12 @@
                 <span class="hidden sm:inline text-[10px] text-neutral-400 font-mono uppercase tracking-wider border-l border-neutral-300 dark:border-neutral-700 pl-3">Asesmen Kepribadian</span>
             </div>
             <div class="flex items-center gap-3">
-                <span class="text-xs font-mono text-neutral-500" x-text="`${currentQuestion} / ${totalQuestions}`"></span>
+                <span class="text-xs font-mono text-neutral-500" x-text="`${currentQuestion} / ${totalQuestions}`" x-show="step === 'quiz'"></span>
                 <a href="/" class="text-[11px] text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition">✕ Tutup</a>
             </div>
         </div>
         <!-- Progress Bar -->
-        <div class="max-w-3xl mx-auto mt-2">
+        <div class="max-w-3xl mx-auto mt-2" x-show="step === 'quiz'">
             <div class="w-full bg-neutral-100 dark:bg-neutral-800 h-1 rounded-full overflow-hidden">
                 <div class="bg-gradient-to-r from-red-500 to-amber-500 h-full rounded-full transition-all duration-500 ease-out" :style="`width: ${(currentQuestion / totalQuestions) * 100}%`"></div>
             </div>
@@ -48,33 +52,7 @@
 
     <!-- Main Quiz Area -->
     <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        <template x-if="step === 'register'">
-            <div class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm">
-                <div class="text-center space-y-4 mb-8">
-                    <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 rounded-full text-red-600 dark:text-red-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
-                        📋 Sebelum Memulai
-                    </div>
-                    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Identitas Pemetaan</h1>
-                    <p class="text-neutral-500 dark:text-neutral-400 text-sm">Masukkan detail dasar untuk membuka kuesioner.</p>
-                </div>
-                <div class="space-y-5 max-w-md mx-auto">
-                    <div>
-                        <label class="block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Nama / Inisial Subjek</label>
-                        <input type="text" x-model="nama" placeholder="Misal: Pasangan saya" class="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition placeholder:text-neutral-400">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">Alamat Email</label>
-                        <input type="email" x-model="email" placeholder="nama@email.com" class="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition placeholder:text-neutral-400">
-                        <p class="text-[10px] text-neutral-400 mt-1.5 font-mono">Hasil premium akan dikirim ke email ini.</p>
-                    </div>
-                    <button @click="startQuiz()" class="w-full bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-bold py-3.5 px-4 rounded-xl transition text-sm cursor-pointer">
-                        Mulai Kuesioner →
-                    </button>
-                    <p class="text-[10px] text-neutral-400 text-center font-mono">🔒 Data Anda aman dan terenkripsi</p>
-                </div>
-            </div>
-        </template>
-
+        <!-- STEP: QUIZ -->
         <template x-if="step === 'quiz'">
             <div>
                 <!-- Questions Loop -->
@@ -124,7 +102,7 @@
                             <div x-show="currentQuestion === 1" class="text-xs text-neutral-300 dark:text-neutral-700">← Sebelumnya</div>
                             <button @click="nextQuestion"
                                     class="bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-bold py-2.5 px-6 rounded-xl text-xs transition cursor-pointer">
-                                <span x-text="currentQuestion === totalQuestions ? 'Lihat Hasil →' : 'Selanjutnya →'"></span>
+                                <span x-text="currentQuestion === totalQuestions ? 'Selesai →' : 'Selanjutnya →'"></span>
                             </button>
                         </div>
                     </div>
@@ -132,35 +110,79 @@
             </div>
         </template>
 
-        <template x-if="step === 'review'">
-            <div class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm text-center">
-                <div class="w-16 h-16 bg-red-100 dark:bg-red-950/30 border border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-500 rounded-full flex items-center justify-center mx-auto text-xl animate-pulse mb-6">🔒</div>
-                <h2 class="text-2xl font-bold mb-2">Kuesioner Selesai</h2>
-                <p class="text-neutral-500 dark:text-neutral-400 text-sm mb-6">Semua jawaban untuk <span class="text-red-600 dark:text-red-400 font-bold" x-text="nama"></span> telah terkunci.</p>
-                
-                <div class="bg-neutral-50 dark:bg-neutral-950/50 border border-neutral-200 dark:border-neutral-800 p-4 rounded-xl max-w-sm mx-auto mb-6 text-left text-xs font-mono text-neutral-500 space-y-2">
-                    <div class="flex justify-between"><span>Subjek:</span> <span class="text-neutral-900 dark:text-neutral-200 font-medium" x-text="nama"></span></div>
-                    <div class="flex justify-between"><span>Email:</span> <span class="text-neutral-900 dark:text-neutral-200 font-medium" x-text="email"></span></div>
-                    <div class="flex justify-between"><span>Jawaban:</span> <span class="text-green-600 font-bold">3/3 Terisi</span></div>
+        <!-- STEP: IDENTITY (Email & Nama setelah quiz selesai) -->
+        <template x-if="step === 'identity'">
+            <div class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm">
+                <div class="text-center space-y-4 mb-8">
+                    <div class="inline-flex items-center gap-1.5 py-1 px-3 bg-green-50 dark:bg-green-950/30 border border-green-100 dark:border-green-900/50 rounded-full text-green-600 dark:text-green-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest">
+                        ✅ Kuesioner Selesai
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-bold tracking-tight">Masukkan Identitas Anda</h1>
+                    <p class="text-neutral-500 dark:text-neutral-400 text-sm">Isi data diri untuk menyimpan dan melihat hasil asesmen.</p>
                 </div>
+                <div class="space-y-5 max-w-md mx-auto">
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">
+                            Alamat Email <span class="text-red-500">*</span>
+                        </label>
+                        <input type="email" x-model="email" placeholder="nama@email.com" 
+                               class="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition placeholder:text-neutral-400"
+                               :class="{'border-red-400 dark:border-red-700': emailError}">
+                        <p class="text-[10px] text-neutral-400 mt-1.5 font-mono">Hasil akan dikirim ke email ini. Wajib diisi.</p>
+                        <p x-show="emailError" class="text-[10px] text-red-500 mt-1 font-mono">Email wajib diisi dengan format yang valid.</p>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2">
+                            Nama / Inisial <span class="text-neutral-400">(opsional)</span>
+                        </label>
+                        <input type="text" x-model="nama" placeholder="Misal: Pasangan saya" 
+                               class="w-full bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition placeholder:text-neutral-400">
+                    </div>
+                    
+                    <!-- Tombol Kirim & Lihat Hasil -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <button @click="submitQuiz()" :disabled="isSubmitting"
+                                class="flex-1 bg-neutral-900 hover:bg-neutral-800 dark:bg-neutral-100 dark:hover:bg-neutral-200 text-white dark:text-neutral-900 font-bold py-3.5 px-4 rounded-xl transition text-sm cursor-pointer flex items-center justify-center gap-2">
+                            <span x-text="isSubmitting ? 'Memproses...' : 'Kirim & Lihat Hasil'"></span>
+                            <svg class="animate-spin h-4 w-4" x-show="isSubmitting" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="text-[10px] text-neutral-400 text-center font-mono">🔒 Data Anda aman dan terenkripsi</p>
+                </div>
+            </div>
+        </template>
 
-                <form hx-post="/submit-tes" hx-swap="none" @submit="isSubmitting = true">
-                    <input type="hidden" name="nama" :value="nama">
-                    <input type="hidden" name="email" :value="email">
-                    <input type="hidden" name="q1" :value="answers[0] || ''">
-                    <input type="hidden" name="q2" :value="answers[1] || ''">
-                    <input type="hidden" name="q3" :value="answers[2] || ''">
-                    <button type="submit" :disabled="isSubmitting"
-                            class="w-full max-w-xs mx-auto bg-gradient-to-r from-red-600 to-amber-600 text-white font-bold py-3.5 px-6 rounded-xl transition cursor-pointer text-sm shadow-lg shadow-red-900/20 flex items-center justify-center gap-2">
-                        <span x-text="isSubmitting ? 'Memproses...' : 'Kirim & Lihat Hasil'"></span>
-                        <svg class="animate-spin h-4 w-4" x-show="isSubmitting" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                    </button>
-                </form>
-
-                <button @click="currentQuestion = totalQuestions; step = 'quiz'" class="mt-4 text-xs text-neutral-500 hover:text-neutral-700 dark:hover:text-neutral-300 transition font-mono cursor-pointer">← Tinjau Jawaban</button>
+        <!-- STEP: LOADING (proses sebelum redirect ke paywall) -->
+        <template x-if="step === 'loading'">
+            <div class="fade-in bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 sm:p-10 shadow-sm text-center">
+                <div class="space-y-6 sm:space-y-8 py-6 sm:py-8">
+                    <!-- Animated Circle -->
+                    <div class="relative w-20 sm:w-24 h-20 sm:h-24 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 border-2 border-dashed border-red-500/30 rounded-full animate-spin"></div>
+                        <div class="absolute inset-2 border border-neutral-200 dark:border-neutral-800 rounded-full"></div>
+                        <div class="w-12 sm:w-14 h-12 sm:h-14 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-500/60 rounded-full flex items-center justify-center text-lg font-mono font-bold text-red-600 dark:text-red-400" x-text="loadProgress + '%'"></div>
+                    </div>
+                    
+                    <div class="space-y-3 max-w-sm mx-auto">
+                        <h3 class="text-sm font-mono tracking-wider text-red-600 dark:text-red-400 uppercase h-6 flex items-center justify-center gap-1">
+                            <span x-text="loadingText"></span>
+                            <span class="flex gap-0.5">
+                                <span class="pulse-dot w-1 h-1 bg-red-500 rounded-full inline-block"></span>
+                                <span class="pulse-dot w-1 h-1 bg-red-500 rounded-full inline-block"></span>
+                                <span class="pulse-dot w-1 h-1 bg-red-500 rounded-full inline-block"></span>
+                            </span>
+                        </h3>
+                        <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">Sistem kecerdasan psikometri sedang menyusun arsitektur kognitif subjek berdasarkan parameter masukan.</p>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="w-48 sm:w-56 bg-neutral-100 dark:bg-neutral-950 rounded-full h-1.5 mx-auto overflow-hidden border border-neutral-200 dark:border-neutral-800">
+                        <div class="bg-gradient-to-r from-red-600 to-amber-500 h-full transition-all duration-100 rounded-full" :style="`width: ${loadProgress}%`"></div>
+                    </div>
+                </div>
             </div>
         </template>
     </main>
@@ -168,13 +190,21 @@
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('quizApp', () => ({
-                step: 'register',
+                step: 'quiz',
                 nama: '',
                 email: '',
                 currentQuestion: 1,
                 totalQuestions: 3,
                 answers: [null, null, null],
                 isSubmitting: false,
+                loadProgress: 0,
+                loadingText: 'Menganalisis respons kuesioner',
+                loadingTexts: [
+                    'Menganalisis respons kuesioner',
+                    'Menghitung deviasi skor terhadap indeks rata-rata populasi',
+                    'Menyusun pemetaan klaster perilaku defensif subjek',
+                    'Mengonstruksi berkas pelaporan klinis final'
+                ],
                 questions: [
                     {
                         dimension: 'DIMENSI A: NARSISME & EGO SUPERIORITAS',
@@ -201,14 +231,6 @@
                         options: ['Sangat Tidak Sesuai', 'Tidak Sesuai', 'Netral', 'Sesuai', 'Sangat Sesuai']
                     }
                 ],
-                startQuiz() {
-                    if (this.nama.trim().length < 2 || !this.email.includes('@')) {
-                        alert('Mohon isi nama minimal 2 karakter dan email yang valid.');
-                        return;
-                    }
-                    this.step = 'quiz';
-                    this.currentQuestion = 1;
-                },
                 selectAnswer(qIdx, value) {
                     this.answers[qIdx] = value;
                 },
@@ -220,11 +242,80 @@
                     if (this.currentQuestion < this.totalQuestions) {
                         this.currentQuestion++;
                     } else {
-                        this.step = 'review';
+                        this.step = 'identity';
                     }
                 },
                 prevQuestion() {
                     if (this.currentQuestion > 1) this.currentQuestion--;
+                },
+                submitQuiz() {
+                    // Validasi email wajib
+                    if (!this.email || !this.email.includes('@') || !this.email.includes('.')) {
+                        this.emailError = true;
+                        return;
+                    }
+                    this.emailError = false;
+                    this.isSubmitting = true;
+                    this.step = 'loading';
+                    this.startLoading();
+
+                    // Kirim data ke server via HTMX
+                    const formData = new FormData();
+                    formData.append('email', this.email);
+                    formData.append('nama', this.nama);
+                    formData.append('q1', this.answers[0] || '');
+                    formData.append('q2', this.answers[1] || '');
+                    formData.append('q3', this.answers[2] || '');
+
+                    fetch('/submit-tes', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert('Gagal memproses: ' + data.error);
+                            this.step = 'identity';
+                            this.isSubmitting = false;
+                            return;
+                        }
+                        // Loading selesai, redirect ke paywall
+                        this.finishLoading(data.id);
+                    })
+                    .catch(err => {
+                        alert('Terjadi kesalahan: ' + err.message);
+                        this.step = 'identity';
+                        this.isSubmitting = false;
+                    });
+                },
+                startLoading() {
+                    this.loadProgress = 0;
+                    this.loadingText = this.loadingTexts[0];
+                    let textIndex = 0;
+                    let interval = setInterval(() => {
+                        if (this.loadProgress < 100) {
+                            this.loadProgress += 1;
+                            if (this.loadProgress % 25 === 0 && textIndex < 3) {
+                                textIndex++;
+                                this.loadingText = this.loadingTexts[textIndex];
+                            }
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, 40);
+                    this._loadInterval = interval;
+                },
+                finishLoading(userId) {
+                    // Selesaikan loading ke 100%
+                    if (this._loadInterval) {
+                        clearInterval(this._loadInterval);
+                    }
+                    this.loadProgress = 100;
+                    this.loadingText = 'Selesai';
+                    // Redirect ke paywall setelah loading selesai
+                    setTimeout(() => {
+                        window.location.href = '/paywall/' + userId;
+                    }, 800);
                 }
             }));
         });
