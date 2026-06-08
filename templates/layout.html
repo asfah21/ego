@@ -1,51 +1,33 @@
-{{define "title"}}ShadowSelf{{end}}
-{{define "bodyClass"}}bg-gradient-index{{end}}
-{{define "headExtra"}}{{end}}
-{{define "bodyAttrs"}}{{end}}
-{{define "bodyExtra"}}{{end}}
-
-{{define "layout"}}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{template "title" .}}</title>
-    <meta name="theme-color" content="#ef4444">
-
-    <!-- CDNs -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-
-    <!-- Google Fonts: Inter + JetBrains Mono -->
+    <title>ShadowSelf — Asesmen Kepribadian Dark Triad</title>
+    <meta name="description" content="Kenali sisi gelap dirimu melalui asesmen psikologi berbasis Dark Triad — Narsisme, Machiavellian, dan Psikopati.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Material Symbols (9Router style icons) -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-
-    <!-- Custom CSS & JS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,0" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/assets/js/app.js" defer></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    {{template "headExtra" .}}
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-inherit { font-family: inherit; }
+        [x-cloak] { display: none !important; }
+        @keyframes progressIndeterminate {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col bg-grid {{template "bodyClass" .}} transition-colors duration-300" {{template "bodyAttrs" .}}>
-
-    <!-- Navbar Component -->
+<body>
     {{template "navbar" .}}
-
-    <!-- Main Content -->
-    <main class="flex-grow">
-        {{template "pageContent" .}}
+    <main>
+        {{template "content" .}}
     </main>
-
-    <!-- Footer Component -->
     {{template "footer" .}}
-
-    {{template "bodyExtra" .}}
 </body>
 </html>
-{{end}}

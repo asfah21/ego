@@ -1,10 +1,8 @@
-/**
- * ShadowSelf - App JavaScript
- * 9Router-inspired premium UI interactions
- */
+// ShadowSelf — App JavaScript
+(function() {
+    'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
-    // --- Smooth scroll for anchor links ---
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -17,65 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Animated progress bars on scroll ---
-    const progressBars = document.querySelectorAll('.progress-fill');
-    if (progressBars.length > 0) {
+    // IntersectionObserver for fade-in animations
+    if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const bar = entry.target;
-                    const width = bar.getAttribute('data-width') || bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => {
-                        bar.style.width = width;
-                    }, 100);
-                    observer.unobserve(bar);
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.1 });
 
-        progressBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0%';
-            bar.setAttribute('data-width', width);
-            observer.observe(bar);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
     }
 
-    // --- Card hover tilt effect (subtle) ---
-    const tiltCards = document.querySelectorAll('.card-hover');
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
-        });
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = '';
-        });
-    });
-
-    // --- Copy to clipboard for code blocks ---
-    document.querySelectorAll('code[data-copy]').forEach(code => {
-        code.addEventListener('click', function() {
-            const text = this.textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                const original = this.innerHTML;
-                this.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Copied!';
-                setTimeout(() => {
-                    this.innerHTML = original;
-                }, 2000);
-            });
-        });
-    });
-
-    // --- Auto-dismiss alerts ---
-    document.querySelectorAll('.alert-auto-dismiss').forEach(alert => {
+    // Auto-dismiss alerts
+    document.querySelectorAll('.alert').forEach(alert => {
         setTimeout(() => {
             alert.style.transition = 'opacity 0.3s ease';
             alert.style.opacity = '0';
@@ -83,17 +40,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     });
 
-    // --- Print button enhancement ---
-    const printBtn = document.querySelector('[onclick="window.print()"]');
-    if (printBtn) {
-        printBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.print();
-        });
-    }
-
-    console.log('%c ShadowSelf %c Premium UI Active ',
-        'background:#ef4444;color:white;padding:4px 8px;border-radius:4px 0 0 4px;font-weight:bold;',
-        'background:#f3f4f6;color:#111827;padding:4px 8px;border-radius:0 4px 4px 0;font-size:11px;'
-    );
-});
+})();

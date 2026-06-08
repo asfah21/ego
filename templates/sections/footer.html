@@ -1,39 +1,29 @@
 {{define "footer"}}
-<footer class="border-t border-[var(--bord)] bg-white">
-    <div class="mx-auto max-w-[1280px] px-6 py-10">
-        <div class="flex flex-col items-center gap-6 md:flex-row md:justify-between">
-            <div class="flex flex-col items-center md:items-start gap-2">
-                <div class="flex items-center gap-2">
-                    <div class="flex h-7 w-7 items-center justify-center rounded-md" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
-                        <span class="material-symbols-outlined text-white text-sm">psychology</span>
-                    </div>
-                    <span class="font-bold text-sm text-[var(--textMain)]">ShadowSelf</span>
+<footer class="border-t border-[var(--bordLight)] bg-white">
+    <div class="mx-auto max-w-[1280px] px-6 py-12">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2.5">
+                <div class="flex h-7 w-7 items-center justify-center rounded-lg" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                    <span class="material-symbols-outlined text-white text-sm">psychology</span>
                 </div>
-                <p class="text-xs text-[var(--textMuted)]">© 2026. Bukan diagnosis klinis.</p>
+                <span class="text-sm font-bold text-[var(--textMain)]">ShadowSelf</span>
             </div>
-            <div class="flex items-center gap-6">
-                <span class="text-xs text-[var(--textMuted)] hover:text-[var(--brand-500)] transition-colors cursor-pointer flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">lock</span>
-                    Kebijakan Privasi
+            <p class="text-xs text-[var(--textSubtle)] m-0">
+                &copy; 2026 ShadowSelf. All rights reserved.
+            </p>
+            <div class="flex items-center gap-4">
+                <span class="text-xs text-[var(--textSubtle)] flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">verified</span>
+                    Berbasis Ilmiah
                 </span>
-                <span class="text-xs text-[var(--textMuted)] hover:text-[var(--brand-500)] transition-colors cursor-pointer flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">description</span>
-                    Ketentuan Layanan
+                <span class="text-xs text-[var(--textSubtle)] flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">lock</span>
+                    Data Terenkripsi
                 </span>
-            </div>
-        </div>
-        <div class="mt-6 pt-6 border-t border-[var(--bord)] flex flex-wrap justify-center gap-6">
-            <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm text-[var(--textMuted)]">speed</span>
-                <span class="text-xs text-[var(--textMuted)]">Berbasis Ilmiah</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm text-[var(--textMuted)]">lock</span>
-                <span class="text-xs text-[var(--textMuted)]">Data Terenkripsi</span>
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm text-[var(--textMuted)]">shield</span>
-                <span class="text-xs text-[var(--textMuted)]">Hasil Instan</span>
+                <span class="text-xs text-[var(--textSubtle)] flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">bolt</span>
+                    Hasil Instan
+                </span>
             </div>
         </div>
     </div>

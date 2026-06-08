@@ -7,13 +7,14 @@ import (
 
 // ProcessQuizAnswers memproses jawaban kuesioner dan menyimpan ke database
 func ProcessQuizAnswers(email, nama string, q1, q2, q3, q4, q5 int) (string, error) {
-	// Konversi skor 1-4 ke persentase 25-100
+	// Konversi skor 1-3 ke persentase 0-100
+	// 1 -> 0%, 2 -> 50%, 3 -> 100%
 	// Q1, Q4 -> Narsisme
 	// Q2, Q5 -> Machiavellian
 	// Q3 -> Psikopati
-	skorNarsisme := (q1 + q4) * 25 / 2
-	skorMachiavellian := (q2 + q5) * 25 / 2
-	skorPsikopati := q3 * 25
+	skorNarsisme := (q1 + q4 - 2) * 25
+	skorMachiavellian := (q2 + q5 - 2) * 25
+	skorPsikopati := (q3 - 1) * 50
 
 	userID, err := repositories.InsertUser(email, nama, skorNarsisme, skorMachiavellian, skorPsikopati)
 	if err != nil {

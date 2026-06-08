@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error - ShadowSelf</title>
-    <meta name="theme-color" content="#ef4444">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body class="min-h-screen flex items-center justify-center bg-grid bg-gradient-index text-[var(--textMain)]" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
-
-    <div class="text-center max-w-sm mx-auto px-4">
-        <div class="flex justify-center mb-4">
-            <div class="flex h-16 w-16 items-center justify-center rounded-2xl" style="background: rgba(239, 68, 68, 0.1);">
-                <span class="material-symbols-outlined text-3xl text-[var(--brand-500)]">error_outline</span>
-            </div>
+{{define "content"}}
+<section class="min-h-screen flex items-center justify-center bg-[var(--bgAlt)]">
+    <div class="text-center px-6 fade-in">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[var(--brand-50)] mb-6">
+            <span class="material-symbols-outlined text-5xl text-[var(--brand-500)]">error_outline</span>
         </div>
-        <h1 class="text-2xl font-bold text-[var(--textMain)] mb-2">Terjadi Kesalahan</h1>
-        <p class="text-sm text-[var(--textMuted)] mb-6">{{.Message}}</p>
-        <a href="/" class="inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 cursor-pointer no-underline bg-[var(--brand-500)] text-white hover:bg-[var(--brand-600)] shadow-sm h-10 px-5 text-sm">
-            <span class="material-symbols-outlined text-base">home</span>
-            Kembali ke Beranda
-        </a>
+        <h1 class="text-3xl font-bold tracking-tight text-[var(--textMain)] m-0">Oops!</h1>
+        <p class="mt-3 text-[var(--textMuted)] m-0 max-w-sm mx-auto">
+            {{.Message}}
+        </p>
+        <div class="mt-8">
+            <a href="/" class="btn-primary">
+                <span class="material-symbols-outlined text-lg">home</span>
+                Kembali ke Beranda
+            </a>
+        </div>
     </div>
-
-</body>
-</html>
+</section>
+{{end}}
