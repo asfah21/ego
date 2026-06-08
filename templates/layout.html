@@ -11,24 +11,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{template "title" .}}</title>
-    
+    <meta name="theme-color" content="#ef4444">
+
     <!-- CDNs -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    
-    <!-- Custom Modular CSS & JS -->
+
+    <!-- Google Fonts: Inter + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols (9Router style icons) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+
+    <!-- Custom CSS & JS -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/assets/js/app.js" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     {{template "headExtra" .}}
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-red-500 selection:text-white bg-grid {{template "bodyClass" .}} transition-colors duration-300" {{template "bodyAttrs" .}}>
+<body class="min-h-screen flex flex-col bg-grid {{template "bodyClass" .}} transition-colors duration-300" {{template "bodyAttrs" .}}>
 
     <!-- Navbar Component -->
     {{template "navbar" .}}
 
-    <!-- Main Content (gunakan template pageContent) -->
+    <!-- Main Content -->
     <main class="flex-grow">
         {{template "pageContent" .}}
     </main>

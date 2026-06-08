@@ -34,3 +34,10 @@ func GetUserResult(id string) (*models.User, error) {
 	user.ID = id
 	return user, nil
 }
+
+// UpdatePaymentStatus memperbarui status pembayaran user menjadi PAID
+func UpdatePaymentStatus(id string) error {
+	query := "UPDATE users_test SET status_pembayaran = 'PAID' WHERE id = $1"
+	_, err := database.DB.Exec(query, id)
+	return err
+}

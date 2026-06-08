@@ -12,7 +12,9 @@ func SetupRoutes(r *gin.Engine) {
 	r.Use(func(c *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
-				c.HTML(http.StatusInternalServerError, "error_5xx.html", nil)
+				c.HTML(http.StatusInternalServerError, "error.html", gin.H{
+					"Message": "Terjadi kesalahan pada server. Silakan coba lagi.",
+				})
 				c.Abort()
 			}
 		}()
@@ -27,28 +29,25 @@ func SetupRoutes(r *gin.Engine) {
 	r.GET("/quiz", ShowQuiz)
 	r.HEAD("/quiz", ShowQuiz)
 
-	// 3. Proses Jawaban (HTMX)
+	// 3. Proses Jawaban
 	r.POST("/submit-tes", SubmitTest)
 
 	// 4. Paywall
 	r.GET("/paywall/:id", ShowPaywall)
 	r.HEAD("/paywall/:id", ShowPaywall)
 
-	// 5. Hasil Premium (hanya jika PAID)
+	// 5. Konfirmasi Pembayaran
+	r.POST("/konfirmasi-bayar/:id", KonfirmasiBayar)
+
+	// 6. Hasil Premium (hanya jika PAID)
 	r.GET("/hasil/:id", ShowResult)
 	r.HEAD("/hasil/:id", ShowResult)
 
-	// 6. Halaman Informasi
-	r.GET("/testimoni", ShowTestimoni)
-	r.HEAD("/testimoni", ShowTestimoni)
-	r.GET("/faq", ShowFAQ)
-	r.HEAD("/faq", ShowFAQ)
-	r.GET("/produk", ShowProduk)
-	r.HEAD("/produk", ShowProduk)
+	// 7. Halaman Informasi
 	r.GET("/tentang", ShowTentang)
 	r.HEAD("/tentang", ShowTentang)
 
-	// 7. Admin Routes
+	// 8. Admin Routes
 	r.GET("/admin/login", ShowLogin)
 	r.HEAD("/admin/login", ShowLogin)
 	r.POST("/admin/login", LoginProcess)
@@ -56,6 +55,6 @@ func SetupRoutes(r *gin.Engine) {
 	r.HEAD("/admin/dashboard", ShowDashboard)
 	r.GET("/admin/logout", LogoutProcess)
 
-	// 8. Handle 404 — harus di PALING AKHIR
+	// 9. Handle 404 — harus di PALING AKHIR
 	r.NoRoute(Show404)
 }

@@ -1,65 +1,99 @@
 /**
- * ShadowSelf - Modular Alpine.js Components
+ * ShadowSelf - App JavaScript
+ * 9Router-inspired premium UI interactions
  */
 
-document.addEventListener('alpine:init', () => {
-    // Component for index.html questionnaire & landing page modal
-    Alpine.data('assessmentForm', () => ({
-        step: 0,
-        nama: '',
-        email: '',
-        q1: '',
-        q2: '',
-        q3: '',
-        isSubmitting: false,
-        isOpen: false, // Modal state for questionnaire overlay
-        
-        init() {
-            if (new URLSearchParams(window.location.search).get('start') === 'true') {
-                setTimeout(() => this.openModal(), 150);
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Smooth scroll for anchor links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        },
-        openModal() {
-            this.isOpen = true;
-            this.step = 0;
-            // Prevent scroll on body
-            document.body.classList.add('overflow-hidden');
-        },
-        closeModal() {
-            this.isOpen = false;
-            document.body.classList.remove('overflow-hidden');
-        },
-        validateStep0() {
-            return this.nama.trim().length >= 2 && 
-                   this.email.includes('@') && 
-                   this.email.includes('.');
-        }
-    }));
+        });
+    });
 
-    // Component for paywall.html diagnostic simulator & countdown
-    Alpine.data('paywallLoader', () => ({
-        loading: true,
-        progress: 0,
-        textIndex: 0,
-        loadingTexts: [
-            'Sinkronisasi metrik kuesioner...',
-            'Menghitung deviasi skor terhadap indeks rata-rata populasi...',
-            'Menyusun pemetaan klaster perilaku defensif subjek...',
-            'Mengonstruksi berkas pelaporan klinis final...'
-        ],
-        
-        init() {
-            let interval = setInterval(() => {
-                if (this.progress < 100) {
-                    this.progress += 2;
-                    if (this.progress % 25 === 0 && this.textIndex < 3) {
-                        this.textIndex++;
-                    }
-                } else {
-                    clearInterval(interval);
-                    this.loading = false;
+    // --- Animated progress bars on scroll ---
+    const progressBars = document.querySelectorAll('.progress-fill');
+    if (progressBars.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const width = bar.getAttribute('data-width') || bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                    observer.unobserve(bar);
                 }
-            }, 50);
-        }
-    }));
+            });
+        }, { threshold: 0.3 });
+
+        progressBars.forEach(bar => {
+            const width = bar.style.width;
+            bar.style.width = '0%';
+            bar.setAttribute('data-width', width);
+            observer.observe(bar);
+        });
+    }
+
+    // --- Card hover tilt effect (subtle) ---
+    const tiltCards = document.querySelectorAll('.card-hover');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+        });
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+
+    // --- Copy to clipboard for code blocks ---
+    document.querySelectorAll('code[data-copy]').forEach(code => {
+        code.addEventListener('click', function() {
+            const text = this.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const original = this.innerHTML;
+                this.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = original;
+                }, 2000);
+            });
+        });
+    });
+
+    // --- Auto-dismiss alerts ---
+    document.querySelectorAll('.alert-auto-dismiss').forEach(alert => {
+        setTimeout(() => {
+            alert.style.transition = 'opacity 0.3s ease';
+            alert.style.opacity = '0';
+            setTimeout(() => alert.remove(), 300);
+        }, 5000);
+    });
+
+    // --- Print button enhancement ---
+    const printBtn = document.querySelector('[onclick="window.print()"]');
+    if (printBtn) {
+        printBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.print();
+        });
+    }
+
+    console.log('%c ShadowSelf %c Premium UI Active ',
+        'background:#ef4444;color:white;padding:4px 8px;border-radius:4px 0 0 4px;font-weight:bold;',
+        'background:#f3f4f6;color:#111827;padding:4px 8px;border-radius:0 4px 4px 0;font-size:11px;'
+    );
 });

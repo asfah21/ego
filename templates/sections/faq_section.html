@@ -1,79 +1,87 @@
 {{define "faq"}}
-<section class="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-    <div class="text-center mb-12">
-        <p class="text-sm font-semibold text-red-600 uppercase tracking-widest mb-2">FAQ</p>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Pertanyaan Umum</h2>
-    </div>
-
-    <div class="space-y-3" x-data="{ open: null }">
-        <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden">
-            <button @click="open = open === 1 ? null : 1" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 transition cursor-pointer">
-                <span class="text-sm font-medium text-neutral-900">Apakah ini diagnosis psikologis?</span>
-                <span class="text-neutral-400 shrink-0 text-lg" x-text="open === 1 ? '−' : '+'"></span>
-            </button>
-            <div x-show="open === 1" x-collapse x-cloak>
-                <div class="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
-                    <p><strong>Tidak.</strong> ShadowSelf bukan alat diagnosis klinis. Hasilnya hanya gambaran berdasarkan persepsi Anda. Untuk diagnosis yang akurat, konsultasi dengan psikolog atau psikiater.</p>
-                </div>
-            </div>
+<section class="relative py-24 px-6">
+    <div class="mx-auto max-w-3xl">
+        <div class="mb-16 text-center">
+            <span class="inline-flex items-center gap-2 rounded-full border border-[var(--brand-300)] bg-[var(--brand-50)] px-3 py-1 text-xs font-semibold text-[var(--brand-500)] mb-4">
+                <span class="material-symbols-outlined text-sm">help</span>
+                FAQ
+            </span>
+            <h2 class="mb-4 text-3xl sm:text-4xl font-bold leading-tight">
+                <span class="text-[var(--textMain)]">Pertanyaan </span>
+                <span class="text-brand-gradient">Umum</span>
+            </h2>
         </div>
 
-        <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden">
-            <button @click="open = open === 2 ? null : 2" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 transition cursor-pointer">
-                <span class="text-sm font-medium text-neutral-900">Berapa lama tesnya?</span>
-                <span class="text-neutral-400 shrink-0 text-lg" x-text="open === 2 ? '−' : '+'"></span>
-            </button>
-            <div x-show="open === 2" x-collapse x-cloak>
-                <div class="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
-                    <p>Sekitar 3-5 menit. Ada 12 pertanyaan tentang perilaku pasangan. Jawab sesuai apa yang Anda lihat, bukan yang Anda harapkan.</p>
+        <div class="space-y-3" x-data="{ open: null }">
+            <div class="card overflow-hidden">
+                <button @click="open = open === 1 ? null : 1" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--bgAlt)] transition cursor-pointer">
+                    <span class="text-sm font-medium text-[var(--textMain)]">Apakah ini diagnosis psikologis?</span>
+                    <span class="material-symbols-outlined text-[var(--textMuted)] transition-transform duration-200" :class="open === 1 ? 'rotate-45' : ''">add</span>
+                </button>
+                <div x-show="open === 1" x-collapse x-cloak>
+                    <div class="px-5 pb-4 text-sm text-[var(--textMuted)] leading-relaxed">
+                        <p><strong>Tidak.</strong> ShadowSelf bukan alat diagnosis klinis. Hasilnya hanya gambaran berdasarkan persepsi Anda. Untuk diagnosis yang akurat, konsultasi dengan psikolog atau psikiater.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden">
-            <button @click="open = open === 3 ? null : 3" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 transition cursor-pointer">
-                <span class="text-sm font-medium text-neutral-900">Apakah data saya aman?</span>
-                <span class="text-neutral-400 shrink-0 text-lg" x-text="open === 3 ? '−' : '+'"></span>
-            </button>
-            <div x-show="open === 3" x-collapse x-cloak>
-                <div class="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
-                    <p>Ya. Data Anda dienkripsi dan tidak dibagikan ke pihak ketiga. Kami hanya menyimpan nama yang Anda berikan saat tes.</p>
+            <div class="card overflow-hidden">
+                <button @click="open = open === 2 ? null : 2" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--bgAlt)] transition cursor-pointer">
+                    <span class="text-sm font-medium text-[var(--textMain)]">Berapa lama tesnya?</span>
+                    <span class="material-symbols-outlined text-[var(--textMuted)] transition-transform duration-200" :class="open === 2 ? 'rotate-45' : ''">add</span>
+                </button>
+                <div x-show="open === 2" x-collapse x-cloak>
+                    <div class="px-5 pb-4 text-sm text-[var(--textMuted)] leading-relaxed">
+                        <p>Sekitar 3-5 menit. Ada 12 pertanyaan tentang perilaku pasangan. Jawab sesuai apa yang Anda lihat, bukan yang Anda harapkan.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden">
-            <button @click="open = open === 4 ? null : 4" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 transition cursor-pointer">
-                <span class="text-sm font-medium text-neutral-900">Kenapa harus bayar?</span>
-                <span class="text-neutral-400 shrink-0 text-lg" x-text="open === 4 ? '−' : '+'"></span>
-            </button>
-            <div x-show="open === 4" x-collapse x-cloak>
-                <div class="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
-                    <p>ShadowSelf menggunakan instrumen yang diakui dalam psikologi (Dirty Dozen & SD3), bukan kuis asal-asalan. Rp14.900 sekali bayar untuk laporan lengkap — tanpa langganan.</p>
+            <div class="card overflow-hidden">
+                <button @click="open = open === 3 ? null : 3" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--bgAlt)] transition cursor-pointer">
+                    <span class="text-sm font-medium text-[var(--textMain)]">Apakah data saya aman?</span>
+                    <span class="material-symbols-outlined text-[var(--textMuted)] transition-transform duration-200" :class="open === 3 ? 'rotate-45' : ''">add</span>
+                </button>
+                <div x-show="open === 3" x-collapse x-cloak>
+                    <div class="px-5 pb-4 text-sm text-[var(--textMuted)] leading-relaxed">
+                        <p>Ya. Data Anda dienkripsi dan tidak dibagikan ke pihak ketiga. Kami hanya menyimpan nama yang Anda berikan saat tes.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden">
-            <button @click="open = open === 5 ? null : 5" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 transition cursor-pointer">
-                <span class="text-sm font-medium text-neutral-900">Cara pembayarannya?</span>
-                <span class="text-neutral-400 shrink-0 text-lg" x-text="open === 5 ? '−' : '+'"></span>
-            </button>
-            <div x-show="open === 5" x-collapse x-cloak>
-                <div class="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
-                    <p>QRIS. Bisa pakai GoPay, OVO, Dana, LinkAja, atau Mobile Banking. Setelah bayar, laporan langsung bisa diakses.</p>
+            <div class="card overflow-hidden">
+                <button @click="open = open === 4 ? null : 4" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--bgAlt)] transition cursor-pointer">
+                    <span class="text-sm font-medium text-[var(--textMain)]">Kenapa harus bayar?</span>
+                    <span class="material-symbols-outlined text-[var(--textMuted)] transition-transform duration-200" :class="open === 4 ? 'rotate-45' : ''">add</span>
+                </button>
+                <div x-show="open === 4" x-collapse x-cloak>
+                    <div class="px-5 pb-4 text-sm text-[var(--textMuted)] leading-relaxed">
+                        <p>ShadowSelf menggunakan instrumen yang diakui dalam psikologi (Dirty Dozen & SD3), bukan kuis asal-asalan. Rp14.900 sekali bayar untuk laporan lengkap — tanpa langganan.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="bg-white border border-neutral-200 rounded-lg overflow-hidden">
-            <button @click="open = open === 6 ? null : 6" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-neutral-50 transition cursor-pointer">
-                <span class="text-sm font-medium text-neutral-900">Saya khawatir hasilnya akan menakut-nakuti saya</span>
-                <span class="text-neutral-400 shrink-0 text-lg" x-text="open === 6 ? '−' : '+'"></span>
-            </button>
-            <div x-show="open === 6" x-collapse x-cloak>
-                <div class="px-5 pb-4 text-sm text-neutral-600 leading-relaxed">
-                    <p>Wajar. Tapi ingat: alat ini hanya alat bantu. Hasilnya bukan vonis. Kalau hasilnya mengkhawatirkan, itu tanda Anda mungkin perlu bicara dengan profesional.</p>
+            <div class="card overflow-hidden">
+                <button @click="open = open === 5 ? null : 5" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--bgAlt)] transition cursor-pointer">
+                    <span class="text-sm font-medium text-[var(--textMain)]">Cara pembayarannya?</span>
+                    <span class="material-symbols-outlined text-[var(--textMuted)] transition-transform duration-200" :class="open === 5 ? 'rotate-45' : ''">add</span>
+                </button>
+                <div x-show="open === 5" x-collapse x-cloak>
+                    <div class="px-5 pb-4 text-sm text-[var(--textMuted)] leading-relaxed">
+                        <p>QRIS. Bisa pakai GoPay, OVO, Dana, LinkAja, atau Mobile Banking. Setelah bayar, laporan langsung bisa diakses.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card overflow-hidden">
+                <button @click="open = open === 6 ? null : 6" class="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[var(--bgAlt)] transition cursor-pointer">
+                    <span class="text-sm font-medium text-[var(--textMain)]">Saya khawatir hasilnya akan menakut-nakuti saya</span>
+                    <span class="material-symbols-outlined text-[var(--textMuted)] transition-transform duration-200" :class="open === 6 ? 'rotate-45' : ''">add</span>
+                </button>
+                <div x-show="open === 6" x-collapse x-cloak>
+                    <div class="px-5 pb-4 text-sm text-[var(--textMuted)] leading-relaxed">
+                        <p>Wajar. Tapi ingat: alat ini hanya alat bantu. Hasilnya bukan vonis. Kalau hasilnya mengkhawatirkan, itu tanda Anda mungkin perlu bicara dengan profesional.</p>
+                    </div>
                 </div>
             </div>
         </div>

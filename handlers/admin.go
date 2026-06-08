@@ -47,12 +47,56 @@ func ShowDashboard(c *gin.Context) {
 
 	users, err := services.GetAllUsers()
 	if err != nil {
-		c.HTML(http.StatusInternalServerError, "error_5xx.html", nil)
+		c.HTML(http.StatusInternalServerError, "error.html", gin.H{
+			"Message": "Gagal mengambil data pengguna.",
+		})
 		return
 	}
 
+	// Hitung statistik
+	totalUser := len(users)
+	sudahBayar := 0
+	belumBayar := 0
+	totalPendapatan := 0
+
+	type UserRow struct {
+		ID            string
+		Nama          string
+		Email         string
+		SudahBayar    bool
+		Narsisme      int
+		Machiavellian int
+		Psikopati     int
+		Dibuat        string
+	}
+
+	var rows []UserRow
+	for _, u := range users {
+		isPaid := u.StatusPembayaran == "paid"
+		if isPaid {
+			sudahBayar++
+			totalPendapatan += 14900
+		} else {
+			belumBayar++
+		}
+		rows = append(rows, UserRow{
+			ID:            u.ID,
+			Nama:          u.Nama,
+			Email:         u.Email,
+			SudahBayar:    isPaid,
+			Narsisme:      u.SkorNarsisme,
+			Machiavellian: u.SkorMachiavellian,
+			Psikopati:     u.SkorPsikopati,
+			Dibuat:        "-",
+		})
+	}
+
 	c.HTML(http.StatusOK, "dashboard.html", gin.H{
-		"Users": users,
+		"Users":           rows,
+		"TotalUser":       totalUser,
+		"SudahBayar":      sudahBayar,
+		"BelumBayar":      belumBayar,
+		"TotalPendapatan": totalPendapatan,
 	})
 }
 

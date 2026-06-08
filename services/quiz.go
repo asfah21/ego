@@ -50,3 +50,8 @@ func GetQuizResult(id string) (*models.QuizResult, error) {
 		Psikopati:     user.SkorPsikopati,
 	}, nil
 }
+
+// ConfirmPayment mengonfirmasi pembayaran user
+func ConfirmPayment(id string) error {
+	return repositories.UpdatePaymentStatus(id)
+}

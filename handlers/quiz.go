@@ -69,3 +69,31 @@ func ShowResult(c *gin.Context) {
 		"Psikopati":     result.Psikopati,
 	})
 }
+
+// KonfirmasiBayar memproses konfirmasi pembayaran dari user
+func KonfirmasiBayar(c *gin.Context) {
+	id := c.Param("id")
+
+	var req struct {
+		NamaPengirim string `json:"nama_pengirim"`
+	}
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Data tidak valid",
+		})
+		return
+	}
+
+	err := services.ConfirmPayment(id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Gagal memproses pembayaran: " + err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"id":      id,
+	})
+}
