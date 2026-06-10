@@ -53,6 +53,8 @@ func SetupRoutes(r *gin.Engine) {
 	r.POST("/admin/login", LoginProcess)
 	r.GET("/admin/dashboard", ShowDashboard)
 	r.HEAD("/admin/dashboard", ShowDashboard)
+	r.GET("/admin/user/:id", ShowUserDetail)
+	r.HEAD("/admin/user/:id", ShowUserDetail)
 	r.GET("/admin/logout", LogoutProcess)
 
 	// 9. Handle 404 — harus di PALING AKHIR

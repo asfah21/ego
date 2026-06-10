@@ -21,12 +21,12 @@ func GetUserName(id string) (string, error) {
 	return nama, err
 }
 
-// GetUserResult mengambil data hasil lengkap user
+// GetUserResult mengambil data hasil lengkap user (tanpa email)
 func GetUserResult(id string) (*models.User, error) {
 	user := &models.User{}
-	query := "SELECT nama, skor_narsisme, skor_machiavellian, skor_psikopati, status_pembayaran FROM users_test WHERE id = $1"
+	query := "SELECT nama, email, skor_narsisme, skor_machiavellian, skor_psikopati, status_pembayaran FROM users_test WHERE id = $1"
 	err := database.DB.QueryRow(query, id).Scan(
-		&user.Nama, &user.SkorNarsisme, &user.SkorMachiavellian, &user.SkorPsikopati, &user.StatusPembayaran,
+		&user.Nama, &user.Email, &user.SkorNarsisme, &user.SkorMachiavellian, &user.SkorPsikopati, &user.StatusPembayaran,
 	)
 	if err != nil {
 		return nil, err

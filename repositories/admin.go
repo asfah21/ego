@@ -28,3 +28,17 @@ func GetAllUsers() ([]models.User, error) {
 
 	return users, nil
 }
+
+// GetUserByID mengambil data user berdasarkan ID
+func GetUserByID(id string) (*models.User, error) {
+	user := &models.User{}
+	query := `SELECT id, nama, email, skor_narsisme, skor_machiavellian, skor_psikopati, status_pembayaran 
+              FROM users_test WHERE id = $1`
+	err := database.DB.QueryRow(query, id).Scan(
+		&user.ID, &user.Nama, &user.Email, &user.SkorNarsisme, &user.SkorMachiavellian, &user.SkorPsikopati, &user.StatusPembayaran,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
+}

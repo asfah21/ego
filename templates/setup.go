@@ -20,7 +20,6 @@ func Setup(r *gin.Engine) {
 
 	templ := template.New("").Funcs(funcMap)
 	templ = template.Must(templ.ParseGlob("templates/sections/*.html"))
-	templ = template.Must(templ.ParseGlob("templates/quiz/*.html"))
 	templ = template.Must(templ.ParseGlob("templates/layout.html"))
 	templ = template.Must(templ.ParseGlob("templates/_pages/*.html"))
 	templ = template.Must(templ.ParseGlob("templates/index.html"))

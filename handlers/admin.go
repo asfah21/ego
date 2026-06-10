@@ -100,6 +100,29 @@ func ShowDashboard(c *gin.Context) {
 	})
 }
 
+// ShowUserDetail menampilkan detail user untuk admin
+func ShowUserDetail(c *gin.Context) {
+	// Cek autentikasi
+	token, err := c.Cookie("admin_token")
+	if err != nil || token != "authenticated" {
+		c.Redirect(http.StatusSeeOther, "/admin/login")
+		return
+	}
+
+	id := c.Param("id")
+	user, err := services.GetUserByID(id)
+	if err != nil {
+		c.HTML(http.StatusNotFound, "error.html", gin.H{
+			"Message": "User tidak ditemukan.",
+		})
+		return
+	}
+
+	c.HTML(http.StatusOK, "user_detail.html", gin.H{
+		"User": user,
+	})
+}
+
 // LogoutProcess menghapus session admin
 func LogoutProcess(c *gin.Context) {
 	c.SetCookie("admin_token", "", -1, "/", "", false, true)
