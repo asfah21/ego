@@ -1,8 +1,8 @@
 {{define "content"}}
-<section class="min-h-screen pt-24 pb-16 bg-[var(--bgAlt)]">
-    <div class="mx-auto max-w-[1280px] px-6">
+<section class="min-h-screen pt-24 pb-16 bg-gradient-admin">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-8">
         <!-- Header -->
-        <div class="flex items-center justify-between mb-8 fade-in">
+        <div class="flex items-center justify-between mb-8 fade-in-up">
             <div>
                 <h1 class="text-2xl font-bold tracking-tight text-[var(--textMain)] m-0">Dashboard</h1>
                 <p class="text-sm text-[var(--textMuted)] mt-1 m-0">Overview data pengguna</p>
@@ -14,50 +14,50 @@
         </div>
 
         <!-- Stat Cards -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 fade-in" style="animation-delay:0.1s;">
-            <div class="card p-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 fade-in-up" style="animation-delay:0.1s;">
+            <div class="card card-hover p-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-[var(--brand-50)] flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[var(--brand-500)]">people</span>
+                    <div class="w-10 h-10 rounded-2xl bg-[var(--accent-50)] flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[var(--accent-500)]">people</span>
                     </div>
                     <p class="text-xs font-medium text-[var(--textSubtle)] m-0">Total User</p>
                 </div>
-                <p class="text-3xl font-bold text-[var(--textMain)] m-0 font-mono">{{.TotalUsers}}</p>
+                <p class="text-3xl font-bold text-[var(--textMain)] m-0 font-mono">{{.TotalUser}}</p>
             </div>
 
-            <div class="card p-5">
+            <div class="card card-hover p-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-emerald-500">check_circle</span>
+                    <div class="w-10 h-10 rounded-2xl bg-[var(--psychopath-light)] flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[var(--psychopath)]">check_circle</span>
                     </div>
                     <p class="text-xs font-medium text-[var(--textSubtle)] m-0">Sudah Bayar</p>
                 </div>
-                <p class="text-3xl font-bold text-emerald-600 m-0 font-mono">{{.PaidUsers}}</p>
+                <p class="text-3xl font-bold text-[var(--psychopath)] m-0 font-mono">{{.SudahBayar}}</p>
             </div>
 
-            <div class="card p-5">
+            <div class="card card-hover p-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-amber-500">hourglass_empty</span>
+                    <div class="w-10 h-10 rounded-2xl bg-[var(--machiavellian-light)] flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[var(--machiavellian)]">hourglass_empty</span>
                     </div>
                     <p class="text-xs font-medium text-[var(--textSubtle)] m-0">Belum Bayar</p>
                 </div>
-                <p class="text-3xl font-bold text-amber-600 m-0 font-mono">{{.UnpaidUsers}}</p>
+                <p class="text-3xl font-bold text-[var(--machiavellian)] m-0 font-mono">{{.BelumBayar}}</p>
             </div>
 
-            <div class="card p-5">
+            <div class="card card-hover p-5">
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-blue-500">payments</span>
+                    <div class="w-10 h-10 rounded-2xl bg-[var(--brand-100)] flex items-center justify-center">
+                        <span class="material-symbols-outlined text-[var(--brand-500)]">payments</span>
                     </div>
                     <p class="text-xs font-medium text-[var(--textSubtle)] m-0">Pendapatan</p>
                 </div>
-                <p class="text-3xl font-bold text-blue-600 m-0 font-mono">Rp{{.Revenue}}</p>
+                <p class="text-3xl font-bold text-[var(--brand-600)] m-0 font-mono">Rp{{.TotalPendapatan}}</p>
             </div>
         </div>
 
         <!-- Data Table -->
-        <div class="card overflow-hidden fade-in" style="animation-delay:0.2s;">
+        <div class="card overflow-hidden fade-in-up" style="animation-delay:0.2s;">
             <div class="p-5 border-b border-[var(--bordLight)]">
                 <h3 class="text-sm font-semibold text-[var(--textMain)] m-0">Data Pengguna</h3>
             </div>
@@ -75,14 +75,14 @@
                     </thead>
                     <tbody>
                         {{range .Users}}
-                        <tr class="border-b border-[var(--bordLight)] hover:bg-[var(--bgAlt)] transition-colors">
+                        <tr class="border-b border-[var(--bordLight)] hover:bg-[var(--bgAlt)] transition-colors duration-150">
                             <td class="p-4 font-medium text-[var(--textMain)]">{{.Nama}}</td>
                             <td class="p-4 text-[var(--textMuted)]">{{.Email}}</td>
-                            <td class="p-4 font-mono text-[var(--textMain)]">{{.SkorNarsisme}}%</td>
-                            <td class="p-4 font-mono text-[var(--textMain)]">{{.SkorMachiavellian}}%</td>
-                            <td class="p-4 font-mono text-[var(--textMain)]">{{.SkorPsikopati}}%</td>
+                            <td class="p-4 font-mono text-[var(--narcissus)] font-semibold">{{.Narsisme}}%</td>
+                            <td class="p-4 font-mono text-[var(--machiavellian)] font-semibold">{{.Machiavellian}}%</td>
+                            <td class="p-4 font-mono text-[var(--psychopath)] font-semibold">{{.Psikopati}}%</td>
                             <td class="p-4">
-                                {{if eq .StatusPembayaran "PAID"}}
+                                {{if .SudahBayar}}
                                 <span class="badge badge-success">Lunas</span>
                                 {{else}}
                                 <span class="badge badge-warning">Pending</span>

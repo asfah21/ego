@@ -28,10 +28,19 @@ func Setup(r *gin.Engine) {
 	}
 
 	templ := template.New("").Funcs(funcMap)
+
+	// Load sections (navbar, footer, etc.)
 	templ = template.Must(templ.ParseGlob("templates/sections/*.html"))
+
+	// Load layout
 	templ = template.Must(templ.ParseGlob("templates/layout.html"))
+
+	// Load pages
 	templ = template.Must(templ.ParseGlob("templates/_pages/*.html"))
+
+	// Load index (home page with embedded sections)
 	templ = template.Must(templ.ParseGlob("templates/index.html"))
+
 	r.SetHTMLTemplate(templ)
 	r.Static("/assets", "./assets")
 }

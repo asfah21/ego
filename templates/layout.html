@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShadowSelf — Asesmen Kepribadian Dark Triad</title>
+    <title>{{if .Title}}{{.Title}} — {{end}}ShadowSelf</title>
     <meta name="description" content="Kenali sisi gelap dirimu melalui asesmen psikologi berbasis Dark Triad — Narsisme, Machiavellian, dan Psikopati.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,17 +13,10 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/assets/js/app.js" defer></script>
     <style>
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .font-inherit { font-family: inherit; }
         [x-cloak] { display: none !important; }
-        @keyframes progressIndeterminate {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(200%); }
-        }
     </style>
 </head>
-<body>
+<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">
     {{template "navbar" .}}
     <main>
         {{template "content" .}}

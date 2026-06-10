@@ -1,27 +1,27 @@
 {{define "content"}}
-<section class="min-h-screen pt-24 pb-16 bg-gradient-index">
-    <div class="mx-auto max-w-[640px] px-6">
+<section class="min-h-screen pt-24 pb-16 bg-gradient-quiz">
+    <div class="mx-auto max-w-[640px] px-6 lg:px-8">
         <!-- Quiz Container -->
         <div x-data="quizApp()" x-init="init()" class="space-y-8">
             <!-- Progress -->
-            <div class="text-center fade-in">
+            <div class="text-center fade-in-up">
                 <div class="flex items-center justify-center gap-2 mb-3">
                     <span class="text-xs font-semibold text-[var(--textMuted)]">Langkah</span>
-                    <span class="text-xs font-mono font-bold text-[var(--brand-500)]" x-text="currentStep + 1"></span>
+                    <span class="text-xs font-mono font-bold text-[var(--accent-500)]" x-text="currentStep + 1"></span>
                     <span class="text-xs text-[var(--textSubtle)]">/ 6</span>
                 </div>
                 <div class="progress-bar max-w-xs mx-auto">
-                    <div class="progress-fill" :style="'width:' + ((currentStep + 1) / 6 * 100) + '%'" style="background:linear-gradient(90deg,#ef4444,#dc2626);"></div>
+                    <div class="progress-fill" :style="'width:' + ((currentStep + 1) / 6 * 100) + '%'" style="background:linear-gradient(90deg,#10b981,#059669);"></div>
                 </div>
             </div>
 
             <!-- Questions Step 1-5 -->
             <template x-for="(q, idx) in questions" :key="idx">
                 <div x-show="currentStep === idx && !loading && !showIdentity" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" class="space-y-6">
-                    <div class="card p-8">
+                    <div class="card card-elevated p-8">
                         <div class="flex items-start gap-4 mb-6">
-                            <div class="w-10 h-10 rounded-xl bg-[var(--brand-50)] flex items-center justify-center flex-shrink-0">
-                                <span class="text-sm font-bold text-[var(--brand-500)]" x-text="'0' + (idx + 1)"></span>
+                            <div class="w-10 h-10 rounded-2xl bg-[var(--accent-50)] flex items-center justify-center flex-shrink-0">
+                                <span class="text-sm font-bold text-[var(--accent-500)]" x-text="'0' + (idx + 1)"></span>
                             </div>
                             <div>
                                 <p class="text-sm font-medium text-[var(--textSubtle)] mb-1" x-text="'Pertanyaan ' + (idx + 1)"></p>
@@ -31,8 +31,8 @@
 
                         <div class="space-y-2">
                             <template x-for="(opt, oidx) in q.options" :key="oidx">
-                                <label class="flex items-center gap-3 p-4 rounded-xl border border-[var(--bordLight)] cursor-pointer transition-all duration-200 hover:border-[var(--brand-300)] hover:bg-[var(--brand-50)]" :class="{ 'border-[var(--brand-500)] bg-[var(--brand-50)] ring-1 ring-[var(--brand-200)]': answers[idx] === opt.value }">
-                                    <input type="radio" :name="'q' + (idx + 1)" :value="opt.value" x-model="answers[idx]" class="w-4 h-4 accent-[var(--brand-500)] cursor-pointer">
+                                <label class="flex items-center gap-3 p-4 rounded-2xl border border-[var(--bordLight)] cursor-pointer transition-all duration-200 hover:border-[var(--accent-300)] hover:bg-[var(--accent-50)] hover-scale" :class="{ 'border-[var(--accent-400)] bg-[var(--accent-50)] ring-1 ring-[var(--accent-200)]': answers[idx] === opt.value }">
+                                    <input type="radio" :name="'q' + (idx + 1)" :value="opt.value" x-model="answers[idx]" class="w-4 h-4 accent-[var(--accent-500)] cursor-pointer">
                                     <span class="text-sm text-[var(--textMain)] font-medium" x-text="opt.label"></span>
                                 </label>
                             </template>
@@ -59,10 +59,10 @@
 
             <!-- Identity Step -->
             <div x-show="showIdentity && !loading" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" class="space-y-6">
-                <div class="card p-8">
+                <div class="card card-elevated p-8">
                     <div class="flex items-start gap-4 mb-6">
-                        <div class="w-10 h-10 rounded-xl bg-[var(--brand-50)] flex items-center justify-center flex-shrink-0">
-                            <span class="text-sm font-bold text-[var(--brand-500)]">06</span>
+                        <div class="w-10 h-10 rounded-2xl bg-[var(--accent-50)] flex items-center justify-center flex-shrink-0">
+                            <span class="text-sm font-bold text-[var(--accent-500)]">06</span>
                         </div>
                         <div>
                             <p class="text-sm font-medium text-[var(--textSubtle)] mb-1">Langkah Terakhir</p>
@@ -98,15 +98,15 @@
 
             <!-- Loading State -->
             <div x-show="loading" x-transition:enter="transition ease-out duration-300" class="text-center py-20">
-                <div class="card p-10 max-w-sm mx-auto">
+                <div class="card card-elevated p-10 max-w-sm mx-auto">
                     <div class="flex justify-center gap-2 mb-6">
-                        <span class="w-3 h-3 rounded-full bg-[var(--brand-500)] pulse-dot"></span>
-                        <span class="w-3 h-3 rounded-full bg-[var(--brand-500)] pulse-dot"></span>
-                        <span class="w-3 h-3 rounded-full bg-[var(--brand-500)] pulse-dot"></span>
+                        <span class="w-3 h-3 rounded-full bg-[var(--accent-500)] pulse-dot"></span>
+                        <span class="w-3 h-3 rounded-full bg-[var(--accent-500)] pulse-dot"></span>
+                        <span class="w-3 h-3 rounded-full bg-[var(--accent-500)] pulse-dot"></span>
                     </div>
                     <p class="text-sm font-medium text-[var(--textMuted)] m-0">Memproses jawaban...</p>
                     <div class="progress-bar mt-4">
-                        <div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#ef4444,#dc2626);animation:progressIndeterminate 1.5s ease-in-out infinite;"></div>
+                        <div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#10b981,#059669);animation:progressIndeterminate 1.5s ease-in-out infinite;"></div>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,6 @@ function quizApp() {
             }
         ],
         init() {
-            // Load saved state
             const saved = localStorage.getItem('quizState');
             if (saved) {
                 try {

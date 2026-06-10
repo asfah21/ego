@@ -1,7 +1,11 @@
 {{define "produk_section"}}
 <section id="tentang" class="py-24 md:py-32 bg-[var(--bgAlt)]">
-    <div class="mx-auto max-w-[1280px] px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--accent-200)] bg-[var(--accent-50)] text-xs font-medium text-[var(--accent-600)] mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-500)]"></span>
+                Dimensi Kepribadian
+            </div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--textMain)] m-0">
                 Tiga Dimensi Kepribadian
             </h2>
@@ -11,11 +15,11 @@
             </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
             <!-- Narsisme -->
-            <div class="card card-hover p-8">
-                <div class="w-12 h-12 rounded-xl bg-[var(--brand-50)] flex items-center justify-center mb-5">
-                    <span class="material-symbols-outlined text-2xl text-[var(--brand-500)]">star</span>
+            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.1s;">
+                <div class="w-12 h-12 rounded-2xl bg-[var(--narcissus-light)] flex items-center justify-center mb-5">
+                    <span class="material-symbols-outlined text-2xl text-[var(--narcissus)]">star</span>
                 </div>
                 <h3 class="text-lg font-bold text-[var(--textMain)] m-0">Narsisme</h3>
                 <p class="mt-2 text-sm text-[var(--textMuted)] leading-relaxed m-0">
@@ -28,9 +32,9 @@
             </div>
 
             <!-- Machiavellian -->
-            <div class="card card-hover p-8">
-                <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-5">
-                    <span class="material-symbols-outlined text-2xl text-amber-500">psychology</span>
+            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.2s;">
+                <div class="w-12 h-12 rounded-2xl bg-[var(--machiavellian-light)] flex items-center justify-center mb-5">
+                    <span class="material-symbols-outlined text-2xl text-[var(--machiavellian)]">psychology</span>
                 </div>
                 <h3 class="text-lg font-bold text-[var(--textMain)] m-0">Machiavellian</h3>
                 <p class="mt-2 text-sm text-[var(--textMuted)] leading-relaxed m-0">
@@ -43,9 +47,9 @@
             </div>
 
             <!-- Psikopati -->
-            <div class="card card-hover p-8">
-                <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5">
-                    <span class="material-symbols-outlined text-2xl text-emerald-500">bolt</span>
+            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.3s;">
+                <div class="w-12 h-12 rounded-2xl bg-[var(--psychopath-light)] flex items-center justify-center mb-5">
+                    <span class="material-symbols-outlined text-2xl text-[var(--psychopath)]">bolt</span>
                 </div>
                 <h3 class="text-lg font-bold text-[var(--textMain)] m-0">Psikopati</h3>
                 <p class="mt-2 text-sm text-[var(--textMuted)] leading-relaxed m-0">
@@ -59,7 +63,7 @@
         </div>
 
         <!-- What You Get -->
-        <div class="mt-16 card p-8 md:p-10">
+        <div class="mt-16 lg:mt-20 card card-elevated p-8 md:p-10 fade-in-up" style="animation-delay:0.3s;">
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <div>
                     <h3 class="text-2xl font-bold tracking-tight text-[var(--textMain)] m-0">
@@ -67,26 +71,26 @@
                     </h3>
                     <ul class="mt-6 space-y-4 m-0 p-0 list-none">
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--success)] text-lg mt-0.5">check_circle</span>
+                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
                             <span class="text-sm text-[var(--textMuted)]">Analisis skor untuk setiap dimensi Dark Triad</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--success)] text-lg mt-0.5">check_circle</span>
+                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
                             <span class="text-sm text-[var(--textMuted)]">Interpretasi personal berdasarkan hasil tes</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--success)] text-lg mt-0.5">check_circle</span>
+                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
                             <span class="text-sm text-[var(--textMuted)]">Rekomendasi pengembangan diri yang spesifik</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--success)] text-lg mt-0.5">check_circle</span>
+                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
                             <span class="text-sm text-[var(--textMuted)]">Laporan PDF yang bisa diunduh dan dicetak</span>
                         </li>
                     </ul>
                 </div>
                 <div class="text-center">
-                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[var(--brand-50)] mb-4">
-                        <span class="material-symbols-outlined text-4xl text-[var(--brand-500)]">assignment</span>
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[var(--accent-50)] mb-4">
+                        <span class="material-symbols-outlined text-4xl text-[var(--accent-500)]">assignment</span>
                     </div>
                     <p class="text-sm text-[var(--textMuted)] max-w-xs mx-auto m-0 leading-relaxed">
                         Hasil asesmen dirancang oleh psikolog profesional dan 

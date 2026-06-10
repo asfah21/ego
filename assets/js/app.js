@@ -1,4 +1,4 @@
-// ShadowSelf — App JavaScript
+// ShadowSelf — Premium App JavaScript
 (function() {
     'use strict';
 
@@ -20,24 +20,30 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    entry.target.classList.add('fade-in-up');
                     observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        document.querySelectorAll('.fade-in-up').forEach(el => {
             observer.observe(el);
         });
     }
 
-    // Auto-dismiss alerts
+    // Auto-dismiss alerts with smooth animation
     document.querySelectorAll('.alert').forEach(alert => {
         setTimeout(() => {
-            alert.style.transition = 'opacity 0.3s ease';
+            alert.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
             alert.style.opacity = '0';
-            setTimeout(() => alert.remove(), 300);
+            alert.style.transform = 'translateY(-8px)';
+            setTimeout(() => alert.remove(), 400);
         }, 5000);
+    });
+
+    // Add hover-scale class to all interactive cards automatically
+    document.querySelectorAll('.card-hover').forEach(card => {
+        card.classList.add('hover-scale');
     });
 
 })();
