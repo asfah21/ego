@@ -3,6 +3,8 @@ package templates
 import (
 	"html/template"
 	"math"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/gin-gonic/gin"
 )
@@ -15,6 +17,13 @@ func Setup(r *gin.Engine) {
 		},
 		"round": func(f float64) float64 {
 			return math.Round(f)
+		},
+		"firstChar": func(s string) string {
+			if s == "" {
+				return "?"
+			}
+			firstRune, _ := utf8.DecodeRuneInString(s)
+			return string(unicode.ToUpper(firstRune))
 		},
 	}
 
