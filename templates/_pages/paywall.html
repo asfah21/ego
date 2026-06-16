@@ -2,7 +2,7 @@
 <section class="min-h-screen pt-24 pb-16 bg-gradient-paywall">
     <div class="mx-auto max-w-[640px] px-6 lg:px-8">
         <div class="text-center mb-10 fade-in-up">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--warm-200)] bg-[var(--warm-50)] text-xs font-medium text-[var(--warm-600)] mb-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--warm-200)] bg-[var(--warm-50)] text-xs font-medium text-[var(--warm-600)] mb-4 transition-all duration-300 hover:shadow-sm">
                 <span class="w-1.5 h-1.5 rounded-full bg-[var(--warning)]"></span>
                 Akses Premium
             </div>
@@ -15,7 +15,7 @@
         </div>
 
         <!-- Preview Card -->
-        <div class="card card-elevated p-6 mb-6 fade-in-up" style="animation-delay:0.1s;">
+        <div class="card card-elevated p-6 mb-6 fade-in-up transition-all duration-300 hover:shadow-xl" style="animation-delay:0.1s;">
             <div class="flex items-center justify-between mb-4">
                 <h3 class="text-sm font-semibold text-[var(--textMain)] m-0">Preview Hasil</h3>
                 <span class="badge badge-warning">Terkunci</span>
@@ -46,7 +46,7 @@
         </div>
 
         <!-- Pricing Card -->
-        <div class="card card-elevated p-8 text-center fade-in-up" style="animation-delay:0.2s;">
+        <div class="card card-elevated p-8 text-center fade-in-up transition-all duration-300 hover:shadow-xl" style="animation-delay:0.2s;">
             <p class="text-sm font-medium text-[var(--textSubtle)] mb-2 m-0">Harga Spesial</p>
             <div class="flex items-baseline justify-center gap-1 mb-6">
                 <span class="text-4xl font-bold text-[var(--textMain)]">Rp35.000</span>
@@ -54,7 +54,7 @@
             </div>
 
             <!-- QRIS Placeholder -->
-            <div class="mb-6 p-6 rounded-2xl bg-[var(--bgAlt)] border border-[var(--bordLight)]">
+            <div class="mb-6 p-6 rounded-2xl bg-[var(--bgAlt)] border border-[var(--bordLight)] transition-all duration-300 hover:shadow-sm">
                 <div class="w-48 h-48 mx-auto rounded-2xl bg-white flex items-center justify-center border border-[var(--bordLight)]">
                     <div class="text-center">
                         <span class="material-symbols-outlined text-5xl text-[var(--textSubtle)]">qr_code_scanner</span>
@@ -68,8 +68,8 @@
 
             <!-- Konfirmasi Form -->
             <div class="space-y-3">
-                <input type="text" id="namaPengirim" placeholder="Nama pengirim transfer" class="input-field">
-                <button onclick="konfirmasiBayar()" class="btn-primary w-full shadow-glow">
+                <input type="text" id="namaPengirim" placeholder="Nama pengirim transfer" class="input-field transition-all duration-200">
+                <button onclick="konfirmasiBayar()" class="btn-primary w-full shadow-glow transition-all duration-300">
                     <span class="material-symbols-outlined text-lg">check_circle</span>
                     Saya Sudah Bayar
                 </button>
@@ -81,7 +81,7 @@
 
         <!-- Back -->
         <div class="text-center mt-6">
-            <a href="/" class="btn-ghost text-sm">
+            <a href="/" class="btn-ghost text-sm transition-all duration-200">
                 <span class="material-symbols-outlined text-base align-middle">arrow_back</span>
                 Kembali ke Beranda
             </a>

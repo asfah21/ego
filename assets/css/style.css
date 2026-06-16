@@ -1,6 +1,6 @@
 /* ============================================================
    ShadowSelf — Impeccable & Premium Design System
-   Inspired by: 9Router, Linear, Stripe
+   Inspired by: Linear, Stripe, Vercel
    ============================================================ */
 
 /* --- CSS Variables (Premium Palette: Slate + Zinc + Emerald/Amber) --- */
@@ -380,6 +380,12 @@ h1, h2, h3, h4, h5, h6 {
     40% { opacity: 1; transform: scale(1.1); }
 }
 
+/* Indeterminate progress bar animation for loading state */
+@keyframes progressIndeterminate {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(400%); }
+}
+
 /* Scale on hover for interactive elements */
 .hover-scale {
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
@@ -443,4 +449,27 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
     border-color: var(--accent-400);
+}
+
+/* --- Smooth scroll for the whole page --- */
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Button disabled state --- */
+.btn-primary:disabled,
+.btn-primary.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* --- Spinner animation --- */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.animate-spin {
+    animation: spin 1s linear infinite;
 }

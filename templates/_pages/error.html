@@ -1,7 +1,7 @@
 {{define "content"}}
 <section class="min-h-screen flex items-center justify-center bg-gradient-admin">
     <div class="text-center px-6 fade-in-up">
-        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[var(--warm-50)] mb-6">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[var(--warm-50)] mb-6 transition-all duration-300 hover:shadow-md">
             <span class="material-symbols-outlined text-5xl text-[var(--warm-500)]">error_outline</span>
         </div>
         <h1 class="text-3xl font-bold tracking-tight text-[var(--textMain)] m-0">Oops!</h1>
@@ -9,7 +9,7 @@
             {{.Message}}
         </p>
         <div class="mt-8">
-            <a href="/" class="btn-primary">
+            <a href="/" class="btn-primary transition-all duration-300">
                 <span class="material-symbols-outlined text-lg">home</span>
                 Kembali ke Beranda
             </a>
