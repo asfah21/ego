@@ -1,0 +1,176 @@
+/* ============================================================
+   ShadowSelf — Carbonized Design Tokens
+   Auto-generated from DESIGN.md frontmatter.
+   Source of truth: DESIGN.md YAML frontmatter.
+   ============================================================ */
+
+:root {
+    /* ── Colors ── */
+
+    /* Primary — Abyssal Teal */
+    --color-primary: #0d7377;
+    --color-primary-hover: #095b5e;
+    --color-primary-light: #e8f3f4;
+    --color-primary-border: #c5e0e2;
+
+    /* Neutral */
+    --color-ink: #0c0c0c;
+    --color-ink-muted: #555555;
+    --color-ink-subtle: #999999;
+    --color-bord: #e5e5e5;
+    --color-bord-light: #f0f0f0;
+    --color-surface: #ffffff;
+    --color-bg: #f8f8f8;
+    --color-bg-alt: #f2f2f2;
+
+    /* Data — Dark Triad (score displays only) */
+    --color-narcissus: #7c3aed;
+    --color-machiavellian: #d97706;
+    --color-psychopath: #059669;
+
+    /* Semantic */
+    --color-success: #059669;
+    --color-warning: #d97706;
+    --color-error: #dc2626;
+
+    /* ── Typography ── */
+
+    /* Font families */
+    --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-label: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Font sizes — fluid scale (1.25 ratio) */
+    --text-display: clamp(2.25rem, 5vw, 4rem);
+    --text-headline: clamp(1.75rem, 3vw, 2.5rem);
+    --text-title: clamp(1.5rem, 2.5vw, 2rem);
+    --text-body: 1rem;
+    --text-label: 0.875rem;
+    --text-mono: 0.875rem;
+
+    /* Font weights */
+    --weight-display: 800;
+    --weight-headline: 700;
+    --weight-title: 700;
+    --weight-body: 400;
+    --weight-label: 500;
+    --weight-mono: 600;
+
+    /* Line heights */
+    --leading-display: 1.1;
+    --leading-headline: 1.1;
+    --leading-title: 1.1;
+    --leading-body: 1.65;
+    --leading-label: 1.5;
+    --leading-mono: 1.5;
+
+    /* Letter spacing */
+    --tracking-display: -0.03em;
+    --tracking-headline: -0.03em;
+    --tracking-title: -0.03em;
+    --tracking-body: 0em;
+    --tracking-label: 0em;
+    --tracking-mono: 0em;
+
+    /* ── Border Radius ── */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-full: 9999px;
+
+    /* ── Spacing (4pt base) ── */
+    --space-2xs: 4px;
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 80px;
+    --space-5xl: 96px;
+    --space-6xl: 128px;
+
+    /* ── Elevation ── */
+    /* Flat by default. No shadows. Depth via tonal layering + borders. */
+    --shadow-none: none;
+
+    /* ── Motion ── */
+    --ease-standard: ease;
+    --duration-instant: 0s;
+    --duration-fast: 0.15s;
+    --duration-normal: 0.2s;
+    --duration-slow: 0.4s;
+    --duration-progress: 0.8s;
+
+    /* ── Backward Compatibility Aliases ── */
+    /* These map old variable names to the new canonical tokens. */
+    /* Remove once all templates use the new names. */
+    --ink: var(--color-ink);
+    --inkMuted: var(--color-ink-muted);
+    --inkSubtle: var(--color-ink-subtle);
+    --bord: var(--color-bord);
+    --bordLight: var(--color-bord-light);
+    --surface: var(--color-surface);
+    --bg: var(--color-bg);
+    --bgAlt: var(--color-bg-alt);
+    --accent: var(--color-primary);
+    --accentHover: var(--color-primary-hover);
+    --accentLight: var(--color-primary-light);
+    --accentBorder: var(--color-primary-border);
+    --narcissus: var(--color-narcissus);
+    --machiavellian: var(--color-machiavellian);
+    --psychopath: var(--color-psychopath);
+    --success: var(--color-success);
+    --warning: var(--color-warning);
+    --error: var(--color-error);
+}
+
+/* ── Component Tokens (documentation only) ── */
+
+/* Button: Primary */
+/*   bg: var(--color-ink) */
+/*   text: #ffffff */
+/*   radius: var(--radius-sm) */
+/*   padding: 12px 28px */
+/*   hover bg: #2a2a2a */
+
+/* Button: Secondary */
+/*   bg: transparent */
+/*   text: var(--color-ink-muted) */
+/*   border: 1px solid var(--color-bord) */
+/*   radius: var(--radius-sm) */
+/*   padding: 12px 28px */
+/*   hover: border var(--color-ink), text var(--color-ink) */
+
+/* Button: Ghost */
+/*   bg: transparent */
+/*   text: var(--color-ink-muted) */
+/*   radius: var(--radius-sm) */
+/*   padding: 8px 16px */
+/*   hover: bg var(--color-bg), text var(--color-ink) */
+
+/* Card */
+/*   bg: var(--color-surface) */
+/*   radius: var(--radius-md) */
+/*   border: 1px solid var(--color-bord-light) */
+/*   hover border: var(--color-bord) */
+
+/* Card: Flat */
+/*   bg: var(--color-bg) */
+/*   radius: var(--radius-md) */
+/*   border: none */
+
+/* Input Field */
+/*   bg: var(--color-surface) */
+/*   text: var(--color-ink) */
+/*   border: 1px solid var(--color-bord) */
+/*   radius: var(--radius-sm) */
+/*   padding: 12px 16px */
+/*   focus border: var(--color-primary) */
+
+/* Progress Bar */
+/*   track bg: var(--color-bord-light) */
+/*   height: 4px */
+/*   radius: var(--radius-full) */
+/*   fill transition: width var(--duration-progress) var(--ease-standard) */

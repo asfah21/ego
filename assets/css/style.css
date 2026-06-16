@@ -55,7 +55,6 @@
     --textMain: var(--ink);
     --textMuted: var(--inkMuted);
     --textSubtle: var(--inkSubtle);
-    --bgAlt: #f2f2f2;
     --accent-50: #e8f3f4;
     --accent-100: #d0e7e9;
     --accent-200: #c5e0e2;
@@ -148,10 +147,19 @@ h4 { font-size: var(--text-lg); }
 p { margin: 0; }
 
 .text-ink { color: var(--ink); }
+.text-muted { color: var(--inkMuted); }
+.text-subtle { color: var(--inkSubtle); }
 .text-accent { color: var(--accent); }
 .text-narcissus { color: var(--narcissus); }
 .text-machiavellian { color: var(--machiavellian); }
 .text-psychopath { color: var(--psychopath); }
+.text-white { color: white; }
+.bg-accent { background: var(--accent); }
+.bg-accent-light { background: var(--accentLight); }
+.bg-surface { background: var(--surface); }
+.bg-bg { background: var(--bg); }
+.border-light { border-color: var(--bordLight); }
+.border-default { border-color: var(--bord); }
 
 /* --- Measure utilities --- */
 .measure-narrow { max-width: var(--measure-narrow); }
@@ -184,6 +192,140 @@ p { margin: 0; }
 /* Generous sections for hero / emphasis */
 .section-hero {
     padding: var(--space-6xl) 0 var(--space-5xl);
+}
+
+/* Dark hero — visual tension for ShadowSelf brand */
+.section-hero-dark {
+    padding: var(--space-6xl) 0 var(--space-5xl);
+    background: var(--ink);
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Deep teal glow from top — like light penetrating darkness */
+.section-hero-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse 90% 50% at 50% -10%, rgba(13, 115, 119, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 30% 20%, rgba(13, 115, 119, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    animation: heroGlow 6s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+/* Subtle bottom fade — hero bleeds into next section */
+.section-hero-dark::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--surface));
+    pointer-events: none;
+}
+
+.section-hero-dark h1 {
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.section-hero-dark .text-accent {
+    color: #4fa8ad;
+    position: relative;
+    display: inline-block;
+}
+
+/* Hero heading line reveal — staggered entrance */
+.section-hero-dark h1 .line-reveal {
+    display: block;
+    overflow: hidden;
+}
+
+.section-hero-dark h1 .line-reveal span {
+    display: block;
+    animation: lineReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.section-hero-dark h1 .line-reveal:nth-child(2) span {
+    animation-delay: 0.15s;
+}
+
+@keyframes lineReveal {
+    from { 
+        opacity: 0;
+        transform: translateY(24px);
+        clip-path: inset(0 0 100% 0);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.section-hero-dark p {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.section-hero-dark .btn-primary {
+    background: #ffffff;
+    color: var(--ink);
+}
+
+.section-hero-dark .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.section-hero-dark .btn-secondary {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.section-hero-dark .btn-secondary:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #ffffff;
+}
+
+.section-hero-dark .hero-meta {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.section-hero-dark .hero-meta .material-symbols-outlined {
+    color: #4fa8ad !important;
+}
+
+/* Dark hero card — inverted card on dark background */
+.card-dark {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+}
+
+.card-dark:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-dark .text-muted {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.card-dark .text-subtle {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.card-dark [style*="border-top"] {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* --- Section heading system --- */
@@ -253,7 +395,7 @@ p { margin: 0; }
     justify-content: center;
     gap: 8px;
     padding: 12px 28px;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: 600;
     font-size: 14px;
     font-family: 'Inter', system-ui, sans-serif;
@@ -275,7 +417,7 @@ p { margin: 0; }
     justify-content: center;
     gap: 8px;
     padding: 12px 28px;
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: 500;
     font-size: 14px;
     font-family: 'Inter', system-ui, sans-serif;
@@ -334,7 +476,7 @@ p { margin: 0; }
     width: 100%;
     padding: 12px 16px;
     border: 1px solid var(--bord);
-    border-radius: 10px;
+    border-radius: 8px;
     font-size: 14px;
     font-family: 'Inter', system-ui, sans-serif;
     color: var(--ink);
@@ -362,11 +504,11 @@ p { margin: 0; }
 /* --- Animations (minimal) --- */
 .fade-in-up {
     opacity: 0;
-    will-change: transform, opacity;
 }
 
 .fade-in-up.is-visible {
     animation: fadeInUp 0.5s ease both;
+    will-change: transform, opacity;
 }
 
 @keyframes fadeInUp {
@@ -429,6 +571,8 @@ html { scroll-behavior: smooth; }
 .h-7 { height: 28px; }
 .w-9 { width: 36px; }
 .h-9 { height: 36px; }
+.w-11 { width: 44px; }
+.h-11 { height: 44px; }
 .w-10 { width: 40px; }
 .h-10 { height: 40px; }
 .w-16 { width: 64px; }
@@ -562,6 +706,7 @@ p, li, .text-body { text-wrap: pretty; }
     .section { padding: var(--space-3xl) 0; }
     .section-alt { padding: var(--space-3xl) 0; }
     .section-hero { padding: var(--space-4xl) 0 var(--space-3xl); }
+    .section-hero-dark { padding: var(--space-4xl) 0 var(--space-3xl); }
     .section-heading { margin-bottom: var(--space-xl); }
     .section-heading-left { margin-bottom: var(--space-xl); }
     .container { padding: 0 var(--space-md); }

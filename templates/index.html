@@ -1,15 +1,15 @@
 {{define "content"}}
-<!-- Hero — centered, generous spacing -->
-<section class="section-hero">
+<!-- Hero — dark, creates visual tension for ShadowSelf brand -->
+<section class="section-hero-dark">
     <div class="container">
         <div class="text-center measure-body mx-auto fade-in-up">
             <h1>
-                Kenali Sisi Gelap<br>
-                <span class="text-accent">Dirimu</span>
+                <span class="line-reveal"><span>Kenali Sisi Gelap</span></span>
+                <span class="line-reveal"><span class="text-accent">Dirimu</span></span>
             </h1>
-            <p class="mt-5 text-lg leading-normal" style="color: var(--inkMuted);">
+            <p class="mt-5 text-lg leading-normal">
                 Temukan potensi tersembunyi dalam kepribadianmu melalui asesmen psikologi berbasis 
-                <strong class="text-ink">Dark Triad</strong> — Narsisme, Machiavellian, dan Psikopati.
+                <strong style="color: #ffffff;">Dark Triad</strong> — Narsisme, Machiavellian, dan Psikopati.
             </p>
             <div class="flex flex-wrap justify-center gap-3 mt-8">
                 <a href="/quiz" class="btn-primary">
@@ -19,60 +19,60 @@
                     Pelajari Lebih Lanjut
                 </a>
             </div>
-            <div class="flex items-center justify-center gap-6 mt-8 text-sm" style="color: var(--inkSubtle);">
+            <div class="flex items-center justify-center gap-6 mt-8 text-sm hero-meta">
                 <span class="flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-base text-accent">schedule</span>
+                    <span class="material-symbols-outlined text-base">schedule</span>
                     ±5 Menit
                 </span>
                 <span class="flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-base text-accent">verified</span>
+                    <span class="material-symbols-outlined text-base">verified</span>
                     Terpercaya
                 </span>
                 <span class="flex items-center gap-1.5">
-                    <span class="material-symbols-outlined text-base text-accent">lock</span>
+                    <span class="material-symbols-outlined text-base">lock</span>
                     Data Aman
                 </span>
             </div>
         </div>
 
-        <!-- Sample Report Card — flat, minimal -->
+        <!-- Sample Report Card — dark variant -->
         <div class="mt-16 max-w-md mx-auto fade-in-up" style="animation-delay: 0.15s;">
-            <div class="card p-6">
+            <div class="card-dark p-6">
                 <div class="flex items-center justify-between mb-5">
-                    <h3 class="text-sm font-semibold">Contoh Hasil Asesmen</h3>
-                    <span class="text-xs font-medium px-2.5 py-0.5 rounded-full" style="background: var(--bg); color: var(--inkMuted);">Preview</span>
+                    <h3 class="text-sm font-semibold" style="color: #ffffff;">Contoh Hasil Asesmen</h3>
+                    <span class="text-xs font-medium px-2.5 py-0.5 rounded-full" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5);">Preview</span>
                 </div>
                 <div class="space-y-4">
                     <div>
                         <div class="flex justify-between items-center mb-1.5">
-                            <span class="text-sm font-medium">Narsisme</span>
+                            <span class="text-sm font-medium" style="color: rgba(255,255,255,0.8);">Narsisme</span>
                             <span class="text-sm font-mono font-semibold text-narcissus">75%</span>
                         </div>
-                        <div class="progress-bar">
+                        <div class="progress-bar" style="background: rgba(255,255,255,0.1);">
                             <div class="progress-fill" style="width:75%; background: var(--narcissus);"></div>
                         </div>
                     </div>
                     <div>
                         <div class="flex justify-between items-center mb-1.5">
-                            <span class="text-sm font-medium">Machiavellian</span>
+                            <span class="text-sm font-medium" style="color: rgba(255,255,255,0.8);">Machiavellian</span>
                             <span class="text-sm font-mono font-semibold text-machiavellian">60%</span>
                         </div>
-                        <div class="progress-bar">
+                        <div class="progress-bar" style="background: rgba(255,255,255,0.1);">
                             <div class="progress-fill" style="width:60%; background: var(--machiavellian);"></div>
                         </div>
                     </div>
                     <div>
                         <div class="flex justify-between items-center mb-1.5">
-                            <span class="text-sm font-medium">Psikopati</span>
+                            <span class="text-sm font-medium" style="color: rgba(255,255,255,0.8);">Psikopati</span>
                             <span class="text-sm font-mono font-semibold text-psychopath">35%</span>
                         </div>
-                        <div class="progress-bar">
+                        <div class="progress-bar" style="background: rgba(255,255,255,0.1);">
                             <div class="progress-fill" style="width:35%; background: var(--psychopath);"></div>
                         </div>
                     </div>
                 </div>
-                <div class="pt-4 mt-4" style="border-top: 1px solid var(--bordLight);">
-                    <p class="text-xs leading-relaxed" style="color: var(--inkSubtle);">
+                <div class="pt-4 mt-4" style="border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p class="text-xs leading-relaxed" style="color: rgba(255,255,255,0.4);">
                         Hasil lengkap dengan analisis mendalam tersedia setelah menyelesaikan tes.
                     </p>
                 </div>

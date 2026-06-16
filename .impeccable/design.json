@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-16T15:12:00+08:00",
+  "title": "Design System: ShadowSelf",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Abyssal Teal",
+        "canonical": "oklch(45% 0.08 195)",
+        "tonalRamp": [
+          "oklch(15% 0.02 195)",
+          "oklch(25% 0.04 195)",
+          "oklch(35% 0.06 195)",
+          "oklch(45% 0.08 195)",
+          "oklch(55% 0.07 195)",
+          "oklch(65% 0.05 195)",
+          "oklch(78% 0.03 195)",
+          "oklch(92% 0.015 195)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(10% 0.005 0)",
+        "tonalRamp": [
+          "oklch(10% 0.005 0)",
+          "oklch(20% 0.005 0)",
+          "oklch(35% 0.005 0)",
+          "oklch(50% 0.005 0)",
+          "oklch(65% 0.005 0)",
+          "oklch(78% 0.005 0)",
+          "oklch(90% 0.005 0)",
+          "oklch(97% 0.005 0)"
+        ]
+      },
+      "narcissus": {
+        "role": "data",
+        "displayName": "Narcissus",
+        "canonical": "oklch(45% 0.18 290)",
+        "tonalRamp": [
+          "oklch(15% 0.06 290)",
+          "oklch(25% 0.10 290)",
+          "oklch(35% 0.14 290)",
+          "oklch(45% 0.18 290)",
+          "oklch(55% 0.15 290)",
+          "oklch(65% 0.10 290)",
+          "oklch(78% 0.06 290)",
+          "oklch(92% 0.03 290)"
+        ]
+      },
+      "machiavellian": {
+        "role": "data",
+        "displayName": "Machiavellian",
+        "canonical": "oklch(60% 0.14 70)",
+        "tonalRamp": [
+          "oklch(20% 0.04 70)",
+          "oklch(30% 0.07 70)",
+          "oklch(40% 0.10 70)",
+          "oklch(50% 0.12 70)",
+          "oklch(60% 0.14 70)",
+          "oklch(70% 0.10 70)",
+          "oklch(82% 0.06 70)",
+          "oklch(94% 0.03 70)"
+        ]
+      },
+      "psychopath": {
+        "role": "data",
+        "displayName": "Psychopath",
+        "canonical": "oklch(55% 0.14 160)",
+        "tonalRamp": [
+          "oklch(18% 0.04 160)",
+          "oklch(28% 0.07 160)",
+          "oklch(38% 0.10 160)",
+          "oklch(48% 0.12 160)",
+          "oklch(55% 0.14 160)",
+          "oklch(65% 0.10 160)",
+          "oklch(78% 0.06 160)",
+          "oklch(92% 0.03 160)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headlines only. Max 6rem. Letter-spacing floor -0.03em."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, subheadings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs, descriptions. Max line length 65-75ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, nav links, form labels, metadata."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Score percentages, data values, progress labels."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Default easing for state transitions (0.2s)."
+      },
+      {
+        "name": "ease-progress",
+        "value": "ease",
+        "purpose": "Progress bar fill animation (0.8s)."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA. Near-black background, white text. Used for main actions like 'Mulai Tes'.",
+      "html": "<button class=\"ds-btn-primary\">Mulai Tes Gratis</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; font-family: 'Inter', system-ui, sans-serif; border: none; cursor: pointer; background: #0c0c0c; color: #fff; text-decoration: none; transition: background 0.2s ease; } .ds-btn-primary:hover { background: #2a2a2a; } .ds-btn-primary:focus-visible { outline: 2px solid #0d7377; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action. Transparent with border. Used for 'Pelajari Lebih Lanjut'.",
+      "html": "<button class=\"ds-btn-secondary\">Pelajari Lebih Lanjut</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; border-radius: 8px; font-weight: 500; font-size: 14px; font-family: 'Inter', system-ui, sans-serif; border: 1px solid #e5e5e5; cursor: pointer; background: transparent; color: #555; text-decoration: none; transition: border-color 0.2s ease, color 0.2s ease; } .ds-btn-secondary:hover { border-color: #0c0c0c; color: #0c0c0c; } .ds-btn-secondary:focus-visible { outline: 2px solid #0d7377; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Subtle inline action. No border, minimal padding.",
+      "html": "<button class=\"ds-btn-ghost\">Kembali</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-weight: 500; font-size: 14px; font-family: 'Inter', system-ui, sans-serif; border: none; cursor: pointer; background: transparent; color: #555; text-decoration: none; transition: background 0.2s ease; } .ds-btn-ghost:hover { background: #f8f8f8; color: #0c0c0c; } .ds-btn-ghost:focus-visible { outline: 2px solid #0d7377; outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Standard content container. White background, 1px light border, 12px radius.",
+      "html": "<div class=\"ds-card\"><div style=\"padding: 24px;\"><h3 style=\"margin: 0 0 8px; font-size: 1.25rem; font-weight: 700;\">Card Title</h3><p style=\"margin: 0; font-size: 0.875rem; color: #555; line-height: 1.65;\">Card content goes here. Quiet, contained, purposeful.</p></div></div>",
+      "css": ".ds-card { background: #fff; border-radius: 12px; border: 1px solid #f0f0f0; transition: border-color 0.2s ease; } .ds-card:hover { border-color: #e5e5e5; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Text input with 1px border, 8px radius. Focus shifts border to Abyssal Teal.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Masukkan nama kamu\">",
+      "css": ".ds-input { width: 100%; padding: 12px 16px; border: 1px solid #e5e5e5; border-radius: 8px; font-size: 14px; font-family: 'Inter', system-ui, sans-serif; color: #0c0c0c; background: #fff; transition: border-color 0.2s ease; outline: none; box-sizing: border-box; } .ds-input:focus { border-color: #0d7377; } .ds-input::placeholder { color: #999; } .ds-input:focus-visible { outline: 2px solid #0d7377; outline-offset: 2px; }"
+    },
+    {
+      "name": "Progress Bar",
+      "kind": "custom",
+      "refersTo": "progress-bar",
+      "description": "Minimal 4px progress bar with rounded caps. Fill color varies by Dark Triad dimension.",
+      "html": "<div class=\"ds-progress-track\"><div class=\"ds-progress-fill\" style=\"width: 65%; background: #7c3aed;\"></div></div>",
+      "css": ".ds-progress-track { width: 100%; height: 4px; background: #f0f0f0; border-radius: 999px; overflow: hidden; } .ds-progress-fill { height: 100%; border-radius: 999px; transition: width 0.8s ease; }"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Fixed top navigation with glass effect. Logo + desktop links + mobile hamburger.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-inner\"><a class=\"ds-nav-logo\" href=\"/\"><span class=\"ds-nav-icon\">🧠</span><span>ShadowSelf</span></a><nav class=\"ds-nav-links\"><a href=\"/\">Beranda</a><a href=\"/quiz\" class=\"ds-nav-cta\">Mulai Tes</a></nav></div></header>",
+      "css": ".ds-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid #f0f0f0; } .ds-nav-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 24px; } .ds-nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #0c0c0c; font-weight: 700; font-size: 14px; } .ds-nav-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; background: #0d7377; color: #fff; font-size: 12px; } .ds-nav-links { display: flex; align-items: center; gap: 4px; } .ds-nav-links a { padding: 8px 16px; border-radius: 8px; font-weight: 500; font-size: 14px; text-decoration: none; color: #555; transition: background 0.2s ease; } .ds-nav-links a:hover { background: #f8f8f8; color: #0c0c0c; } .ds-nav-cta { display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px !important; border-radius: 8px; font-weight: 600 !important; background: #0c0c0c !important; color: #fff !important; } .ds-nav-cta:hover { background: #2a2a2a !important; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Still Mirror",
+    "overview": "ShadowSelf's visual system is a mirror that doesn't flatter and doesn't distort — it simply reflects what's there. The interface exists to create space for a difficult conversation with oneself, not to distract or entertain. Every pixel is in service of that stillness.\n\nThe system is refined and restrained: buttons don't shout, cards don't float, colors don't compete. The deep teal accent (\"Abyssal Teal\") appears sparingly — not as decoration, but as a quiet signal: this is where to look, this is what matters. The palette is intentionally narrow: near-black ink, cool gray neutrals, and one accent that carries the emotional weight of the brand.\n\nThis system explicitly rejects: gamified personality tests (16Personalities), corporate wellness warmth (BetterHelp), generic SaaS gradients, and decorative aesthetics that substitute substance for style.",
+    "keyCharacteristics": [
+      "Flat by default, no shadows — depth is conveyed through tonal layering and borders, not elevation",
+      "Narrow, intentional palette — one accent, cool neutrals, no decorative colors",
+      "Typography-forward — Inter at multiple weights carries the hierarchy, not color or decoration",
+      "Generous whitespace — rhythm over density, room to breathe over information packing",
+      "Still, not empty — every element has purpose; nothing exists 'just because'"
+    ],
+    "rules": [
+      {
+        "name": "The One Voice Rule",
+        "body": "Abyssal Teal is the only accent. It appears on ≤10% of any given screen. If a second accent color appears outside the Dark Triad data colors, the design has drifted.",
+        "section": "colors"
+      },
+      {
+        "name": "The Data-Only Rule",
+        "body": "Narcissus, Machiavellian, and Psychopath colors are reserved exclusively for score displays and progress bars. They never appear in navigation, buttons, or decorative elements.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Only Hierarchy Rule",
+        "body": "Hierarchy is expressed through weight and size, not through color, tracking, or case changes. No uppercase eyebrows, no wide tracking on labels, no colored headings.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "No surface casts a shadow. If an element needs to feel distinct, use tonal layering (surface → bg) or a border shift. box-shadow is prohibited.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use Abyssal Teal sparingly — ≤10% of any screen. Its rarity is its power.",
+      "Do use tonal layering (surface → bg → bgAlt) to create depth instead of shadows.",
+      "Do keep body text at inkMuted (#555555) or darker — meets WCAG AA 4.5:1.",
+      "Do use text-wrap: balance on headings and text-wrap: pretty on body text.",
+      "Do cap body line length at 65–75ch.",
+      "Do use the Dark Triad colors (purple, amber, emerald) exclusively for score data.",
+      "Do use Inter at different weights for hierarchy — weight shifts do the work.",
+      "Do keep cards flat with a 1px bordLight border — no shadows, no lift."
+    ],
+    "donts": [
+      "Don't gamify the interface — no badges, no achievements, no progress celebrations. This is not 16Personalities.",
+      "Don't use corporate wellness warmth — no fake-warm tones, no stock photos of smiling people, no 'you're great!' messaging. This is not BetterHelp.",
+      "Don't use gradient backgrounds, gradient text, or purple-blue SaaS gradients anywhere.",
+      "Don't use glassmorphism, blur overlays, or decorative backdrop filters outside the nav bar.",
+      "Don't use illustrations — no Lottie, no SVG sketches, no hand-drawn elements. If you can't render it with type and layout, don't render it.",
+      "Don't use uppercase tracked eyebrows ('ABOUT', 'PROCESS') above section headings.",
+      "Don't use numbered section markers (01, 02, 03) as default scaffolding.",
+      "Don't use box-shadow on any surface — cards, buttons, or containers.",
+      "Don't use border-radius larger than 12px on cards or containers. Pill shapes are for progress bars only.",
+      "Don't pair border + shadow on the same element. Pick one.",
+      "Don't use decorative patterns, repeating backgrounds, or diagonal stripes.",
+      "Don't use the Dark Triad data colors outside of score displays."
+    ]
+  }
+}
