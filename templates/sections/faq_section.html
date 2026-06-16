@@ -2,10 +2,10 @@
 <section class="py-24 md:py-32 bg-[var(--bgAlt)]">
     <div class="mx-auto max-w-[768px] px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--accent-200)] bg-[var(--accent-50)] text-xs font-medium text-[var(--accent-600)] mb-4 transition-all duration-300 hover:shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-500)]"></span>
-                FAQ
-            </div>
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-200)] bg-[var(--brand-100)] text-xs font-medium text-[var(--brand-600)] mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--brand-500)]"></span>
+                Tanya Jawab
+            </span>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--textMain)] m-0">
                 Pertanyaan Umum
             </h2>
@@ -16,8 +16,8 @@
 
         <div class="space-y-3" x-data="{ active: null }">
             <!-- FAQ 1 -->
-            <div class="card overflow-hidden transition-all duration-300" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 1 }">
-                <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group transition-all duration-200">
+            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 1 }">
+                <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
                     <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Apa itu Dark Triad?</span>
                     <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 1 }">add</span>
                 </button>
@@ -33,8 +33,8 @@
             </div>
 
             <!-- FAQ 2 -->
-            <div class="card overflow-hidden transition-all duration-300" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 2 }">
-                <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group transition-all duration-200">
+            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 2 }">
+                <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
                     <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Apakah tes ini akurat?</span>
                     <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 2 }">add</span>
                 </button>
@@ -50,8 +50,8 @@
             </div>
 
             <!-- FAQ 3 -->
-            <div class="card overflow-hidden transition-all duration-300" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 3 }">
-                <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group transition-all duration-200">
+            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 3 }">
+                <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
                     <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Berapa lama tesnya?</span>
                     <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 3 }">add</span>
                 </button>
@@ -66,8 +66,8 @@
             </div>
 
             <!-- FAQ 4 -->
-            <div class="card overflow-hidden transition-all duration-300" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 4 }">
-                <button @click="active = active === 4 ? null : 4" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group transition-all duration-200">
+            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 4 }">
+                <button @click="active = active === 4 ? null : 4" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
                     <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Apakah data saya aman?</span>
                     <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 4 }">add</span>
                 </button>

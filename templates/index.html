@@ -6,19 +6,19 @@
             <!-- Left: Text -->
             <div class="space-y-8 fade-in-up">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--accent-200)] bg-[var(--accent-50)] text-xs font-medium text-[var(--accent-600)] transition-all duration-300 hover:shadow-sm">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-500)] animate-pulse"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent-500)]"></span>
                     Asesmen Kepribadian Ilmiah
                 </div>
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight text-[var(--textMain)] m-0">
                     Kenali Sisi Gelap<br>
-                    <span class="text-gradient">Dirimu</span>
+                    <span class="text-accent">Dirimu</span>
                 </h1>
                 <p class="text-lg md:text-xl text-[var(--textMuted)] leading-relaxed max-w-lg m-0">
                     Temukan potensi tersembunyi dalam kepribadianmu melalui asesmen psikologi berbasis 
                     <strong class="text-[var(--textMain)] font-semibold">Dark Triad</strong> — Narsisme, Machiavellian, dan Psikopati.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="/quiz" class="btn-primary shadow-glow animate-pulse-glow transition-all duration-300 px-6 py-3 text-base">
+                    <a href="/quiz" class="btn-primary shadow-glow transition-all duration-300 px-6 py-3 text-base">
                         <span class="material-symbols-outlined text-lg">play_arrow</span>
                         Mulai Tes Gratis
                     </a>
@@ -44,7 +44,7 @@
 
             <!-- Right: Sample Report Card — Premium Card -->
             <div class="fade-in-up" style="animation-delay: 0.15s;">
-                <div class="card card-elevated p-6 md:p-8 space-y-6 transition-all duration-300 hover:shadow-xl">
+                <div class="card card-elevated p-6 md:p-8 space-y-6">
                     <div class="flex items-center justify-between">
                         <h3 class="text-sm font-semibold text-[var(--textMain)] m-0 tracking-tight">Contoh Hasil Asesmen</h3>
                         <span class="badge badge-warning">Preview</span>
@@ -53,28 +53,28 @@
                         <div>
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-sm font-medium text-[var(--textMain)]">Narsisme</span>
-                                <span class="text-sm font-mono font-semibold text-[var(--narcissus)]">75%</span>
+                                <span class="text-sm font-mono font-semibold text-narcissus">75%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width:75%;background:linear-gradient(90deg,#8b5cf6,#7c3aed);"></div>
+                                <div class="progress-fill" style="width:75%;background:var(--narcissus);"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-sm font-medium text-[var(--textMain)]">Machiavellian</span>
-                                <span class="text-sm font-mono font-semibold text-[var(--machiavellian)]">60%</span>
+                                <span class="text-sm font-mono font-semibold text-machiavellian">60%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width:60%;background:linear-gradient(90deg,#f59e0b,#d97706);"></div>
+                                <div class="progress-fill" style="width:60%;background:var(--machiavellian);"></div>
                             </div>
                         </div>
                         <div>
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-sm font-medium text-[var(--textMain)]">Psikopati</span>
-                                <span class="text-sm font-mono font-semibold text-[var(--psychopath)]">35%</span>
+                                <span class="text-sm font-mono font-semibold text-psychopath">35%</span>
                             </div>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width:35%;background:linear-gradient(90deg,#10b981,#059669);"></div>
+                                <div class="progress-fill" style="width:35%;background:var(--psychopath);"></div>
                             </div>
                         </div>
                     </div>

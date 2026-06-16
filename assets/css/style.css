@@ -125,58 +125,52 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     letter-spacing: -0.03em;
     line-height: 1.2;
+    text-wrap: balance;
 }
 
-.text-gradient {
-    background: linear-gradient(135deg, var(--accent-500), var(--accent-600));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* Solid accent color replaces gradient text (gradient text is banned) */
+.text-accent {
+    color: var(--accent-500);
 }
 
-.text-gradient-narcissus {
-    background: linear-gradient(135deg, var(--narcissus), #7c3aed);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.text-accent-dark {
+    color: var(--accent-600);
 }
 
-.text-gradient-machiavellian {
-    background: linear-gradient(135deg, var(--machiavellian), var(--warm-600));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.text-narcissus {
+    color: var(--narcissus);
 }
 
-.text-gradient-psychopath {
-    background: linear-gradient(135deg, var(--psychopath), var(--accent-600));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.text-machiavellian {
+    color: var(--machiavellian);
+}
+
+.text-psychopath {
+    color: var(--psychopath);
 }
 
 /* --- Cards (Premium: subtle shadow, no heavy borders) --- */
 .card {
     background: var(--surface);
-    border-radius: 20px;
+    border-radius: 16px;
     border: 1px solid var(--bordLight);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.02), 0 1px 1px rgba(0,0,0,0.01);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
     transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-hover:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
-    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    transform: translateY(-2px);
     border-color: var(--bord);
 }
 
 .card-elevated {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.04), 0 1px 4px rgba(0,0,0,0.02);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
 .card-elevated:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.06), 0 3px 12px rgba(0,0,0,0.03);
-    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.05);
+    transform: translateY(-3px);
 }
 
 /* --- Progress Bars (sleek, minimal) --- */
@@ -359,15 +353,6 @@ h1, h2, h3, h4, h5, h6 {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 4px 14px rgba(16, 185, 129, 0.2); }
-    50% { box-shadow: 0 4px 28px rgba(16, 185, 129, 0.4); }
-}
-
-.animate-pulse-glow {
-    animation: pulse-glow 2.5s ease-in-out infinite;
-}
-
 /* Pulse dots for loading */
 .pulse-dot {
     animation: pulseDot 1.4s ease-in-out infinite;
@@ -444,11 +429,26 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-/* --- Focus ring --- */
+/* --- Focus ring (global) --- */
+:focus-visible {
+    outline: 2px solid var(--accent-400);
+    outline-offset: 2px;
+}
+
 .focus-ring:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
     border-color: var(--accent-400);
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 /* --- Smooth scroll for the whole page --- */
