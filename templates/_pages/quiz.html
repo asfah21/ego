@@ -10,9 +10,9 @@
                     <span class="text-xs font-mono font-bold text-[var(--accent-500)]" x-text="currentStep + 1"></span>
                     <span class="text-xs text-[var(--textSubtle)]">/ 6</span>
                 </div>
-                <div class="progress-bar max-w-xs mx-auto">
-                    <div class="progress-fill" :style="'width:' + ((currentStep + 1) / 6 * 100) + '%'" style="background:linear-gradient(90deg,#10b981,#059669);"></div>
-                </div>
+                    <div class="progress-bar max-w-xs mx-auto">
+                        <div class="progress-fill" :style="'width:' + ((currentStep + 1) / 6 * 100) + '%'" style="background: var(--accent);"></div>
+                    </div>
             </div>
 
             <!-- Questions Step 1-5 -->
@@ -106,7 +106,7 @@
                     </div>
                     <p class="text-sm font-medium text-[var(--textMuted)] m-0">Memproses jawaban...</p>
                     <div class="progress-bar mt-4">
-                        <div class="progress-fill" style="width:100%;background:linear-gradient(90deg,#10b981,#059669);animation:progressIndeterminate 1.5s ease-in-out infinite;"></div>
+                        <div class="progress-fill" style="width:100%;background:var(--accent);animation:progressIndeterminate 1.5s ease-in-out infinite;"></div>
                     </div>
                 </div>
             </div>

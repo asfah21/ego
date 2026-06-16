@@ -8,7 +8,7 @@
                 Hasil Asesmen
             </div>
             <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--textMain)] m-0">
-                Halo, <span class="text-gradient">{{.Nama}}</span>
+                Halo, <span class="text-accent">{{.Nama}}</span>
             </h1>
             <p class="mt-3 text-[var(--textMuted)] m-0 max-w-md mx-auto">
                 Berikut adalah hasil analisis kepribadian Dark Triad kamu.
@@ -16,7 +16,7 @@
         </div>
 
         <!-- Score Cards -->
-        <div class="space-y-4" x-data="{ visible: false }" x-init="setTimeout(() => visible = true, 200)">
+        <div class="space-y-4" x-data="{ visible: false }" x-init="setTimeout(() => visible = true, 200); $nextTick(() => { $el.querySelectorAll('.progress-fill').forEach(el => { el.style.width = el.dataset.width + '%' }) })">
             <!-- Narsisme -->
             <div class="card card-elevated p-6 md:p-8 fade-in-up transition-all duration-300 hover:shadow-xl" x-show="visible" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4">
                 <div class="flex items-center justify-between mb-4">
@@ -32,7 +32,7 @@
                     <span class="text-2xl font-bold font-mono text-[var(--narcissus)]">{{.Narsisme}}%</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width:{{.Narsisme}}%;background:linear-gradient(90deg,#8b5cf6,#7c3aed);"></div>
+                    <div class="progress-fill" style="width:0%;background:var(--narcissus)" data-width="{{.Narsisme}}"></div>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
                     <span class="text-2xl font-bold font-mono text-[var(--machiavellian)]">{{.Machiavellian}}%</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width:{{.Machiavellian}}%;background:linear-gradient(90deg,#f59e0b,#d97706);"></div>
+                    <div class="progress-fill" style="width:0%;background:var(--machiavellian)" data-width="{{.Machiavellian}}"></div>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
                     <span class="text-2xl font-bold font-mono text-[var(--psychopath)]">{{.Psikopati}}%</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill" style="width:{{.Psikopati}}%;background:linear-gradient(90deg,#10b981,#059669);"></div>
+                    <div class="progress-fill" style="width:0%;background:var(--psychopath)" data-width="{{.Psikopati}}"></div>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
 
         <!-- Upsell Cards -->
         <div class="mt-12 space-y-4 no-print">
-            <div class="card card-elevated p-6 md:p-8 bg-gradient-to-r from-[var(--accent-50)] to-white border-[var(--accent-200)] transition-all duration-300 hover:shadow-xl">
+            <div class="card card-elevated p-6 md:p-8" style="background:var(--accentLight);border-color:var(--accentBorder);">
                 <div class="flex items-start gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-[var(--accent-100)] flex items-center justify-center flex-shrink-0">
                         <span class="material-symbols-outlined text-2xl text-[var(--accent-500)]">support_agent</span>
@@ -121,8 +121,8 @@
         </div>
 
         <!-- Emergency -->
-        <div class="mt-8 p-4 rounded-2xl bg-[var(--warm-50)] border border-[var(--warm-200)] text-center no-print transition-all duration-300 hover:shadow-sm">
-            <p class="text-xs text-[var(--warm-600)] m-0 leading-relaxed">
+        <div class="mt-8 p-4 rounded-2xl bg-[var(--machiavellian-light)] border border-[var(--accentBorder)] text-center no-print transition-all duration-300 hover:shadow-sm">
+            <p class="text-xs text-[var(--machiavellian)] m-0 leading-relaxed">
                 <strong>Butuh bantuan?</strong> Jika kamu merasa kewalahan, hubungi 
                 hotline kesehatan mental di <strong>119</strong> (ekstensi 8) atau 
                 <strong>021-500-454</strong>.

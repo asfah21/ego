@@ -23,27 +23,25 @@
    Stripped to essence. No decorative noise.
    ============================================================ */
 
-/* --- CSS Variables (Minimal Palette) --- */
+/* --- CSS Variables (Carbonized Palette) --- */
 :root {
-    /* Core — warm neutrals */
-    --ink: #0c0c0c;
-    --inkMuted: #555555;
-    --inkSubtle: #999999;
-    --bord: #e5e5e5;
-    --bordLight: #f0f0f0;
-    --surface: #ffffff;
-    --bg: #f8f8f8;
-    --bgAlt: #f2f2f2;
-    --warmBg: #FCF9F6;
-    --warmBord: #e8e4df;
+    /* Core — warm neutrals (carbon undertone, never pure gray) */
+    --ink: #1a1917;
+    --inkMuted: #555550;
+    --inkSubtle: #999990;
+    --bord: #e0dcd6;
+    --bordLight: #ede9e3;
+    --surface: #FCF9F6;
+    --bg: #f0ede8;
+    --bgAlt: #e8e4de;
 
-    /* Single accent — deep teal (calm, precise) */
+    /* Single accent — Abyssal Teal (calm, precise, ≤10% per screen) */
     --accent: #0d7377;
     --accentHover: #095b5e;
     --accentLight: #e8f3f4;
     --accentBorder: #c5e0e2;
 
-    /* Dark Triad — kept minimal, only for data */
+    /* Dark Triad — data only, never decorative */
     --narcissus: #7c3aed;
     --machiavellian: #d97706;
     --psychopath: #059669;
@@ -53,7 +51,7 @@
     --warning: #d97706;
     --error: #dc2626;
 
-    /* ── Backward-compatible aliases (for other pages) ── */
+    /* ── Backward-compatible aliases ── */
     --textMain: var(--ink);
     --textMuted: var(--inkMuted);
     --textSubtle: var(--inkSubtle);
@@ -134,15 +132,11 @@ body {
 
 /* --- Typography --- */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    letter-spacing: var(--tracking-tight);
     line-height: var(--leading-tight);
     text-wrap: balance;
     margin: 0;
 }
 
-h1 { font-size: var(--text-4xl); }
-h2 { font-size: var(--text-2xl); }
 h3 { font-size: var(--text-xl); }
 h4 { font-size: var(--text-lg); }
 
@@ -387,13 +381,13 @@ p { margin: 0; }
     border: none;
     cursor: pointer;
     transition: background 0.2s ease;
-    background: var(--ink);
+    background: var(--accent);
     color: white;
     text-decoration: none;
 }
 
 .btn-primary:hover {
-    background: #2a2a2a;
+    background: var(--accentHover);
 }
 
 .btn-secondary {
@@ -571,14 +565,14 @@ p { margin: 0; }
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
-    background: var(--ink);
+    background: var(--accent);
     color: white;
     text-decoration: none;
     transition: background 0.2s ease;
 }
 
 .navbar-cta:hover {
-    background: #2a2a2a;
+    background: var(--accentHover);
 }
 
 .navbar-cta:focus-visible {
@@ -1038,6 +1032,19 @@ p, li, .text-body { text-wrap: pretty; }
 .bg-gradient-paywall { background: var(--surface); }
 .bg-gradient-result { background: var(--surface); }
 .bg-gradient-admin { background: var(--surface); }
+
+/* ── DM Serif Display — editorial gravity for headings ── */
+h1, h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+}
+
+h1 { font-size: var(--text-4xl); letter-spacing: -0.02em; }
+h2 { font-size: var(--text-2xl); letter-spacing: -0.01em; }
+h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+}
 .bg-dots { background: none; }
 .pulse-dot { animation: pulseDot 1.4s ease-in-out infinite; }
 .pulse-dot:nth-child(2) { animation-delay: 0.2s; }

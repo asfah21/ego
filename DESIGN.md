@@ -6,14 +6,14 @@ colors:
   primary-hover: "#095b5e"
   primary-light: "#e8f3f4"
   primary-border: "#c5e0e2"
-  ink: "#0c0c0c"
-  ink-muted: "#555555"
-  ink-subtle: "#999999"
-  bord: "#e5e5e5"
-  bord-light: "#f0f0f0"
-  surface: "#ffffff"
-  bg: "#f8f8f8"
-  bg-alt: "#f2f2f2"
+  ink: "#1a1917"
+  ink-muted: "#555550"
+  ink-subtle: "#999990"
+  bord: "#e0dcd6"
+  bord-light: "#ede9e3"
+  surface: "#FCF9F6"
+  bg: "#f0ede8"
+  bg-alt: "#e8e4de"
   narcissus: "#7c3aed"
   machiavellian: "#d97706"
   psychopath: "#059669"
@@ -22,31 +22,31 @@ colors:
   error: "#dc2626"
 typography:
   display:
-    fontFamily: "Inter, system-ui, -apple-system, sans-serif"
+    fontFamily: "DM Serif Display, Georgia, serif"
     fontSize: "clamp(2.25rem, 5vw, 4rem)"
-    fontWeight: 800
+    fontWeight: 400
     lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Inter, system-ui, -apple-system, sans-serif"
+    fontFamily: "DM Serif Display, Georgia, serif"
     fontSize: "clamp(1.75rem, 3vw, 2.5rem)"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    fontWeight: 400
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
   title:
-    fontFamily: "Inter, system-ui, -apple-system, sans-serif"
-    fontSize: "clamp(1.5rem, 2.5vw, 2rem)"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "clamp(1.25rem, 2vw, 1.5rem)"
+    fontWeight: 600
+    lineHeight: 1.3
+    letterSpacing: "-0.01em"
   body:
-    fontFamily: "Inter, system-ui, -apple-system, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "0em"
   label:
-    fontFamily: "Inter, system-ui, -apple-system, sans-serif"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 500
     lineHeight: 1.5
@@ -60,6 +60,7 @@ typography:
 rounded:
   sm: "8px"
   md: "12px"
+  lg: "16px"
   full: "9999px"
 spacing:
   "2xs": "4px"
@@ -73,15 +74,25 @@ spacing:
   "4xl": "80px"
   "5xl": "96px"
   "6xl": "128px"
+elevation:
+  level-1:
+    boxShadow: "0 1px 3px rgba(26,25,23,0.06), 0 4px 12px rgba(26,25,23,0.04)"
+    border: "1px solid #ede9e3"
+  level-2:
+    boxShadow: "0 4px 16px rgba(26,25,23,0.08), 0 12px 40px rgba(26,25,23,0.06)"
+  navbar-scroll:
+    boxShadow: "0 1px 12px rgba(26,25,23,0.06)"
+    background: "rgba(252,249,246,0.85)"
+    backdropFilter: "blur(16px)"
 components:
   button-primary:
-    backgroundColor: "{colors.ink}"
+    backgroundColor: "{colors.primary}"
     textColor: "#ffffff"
     rounded: "{rounded.sm}"
     padding: "12px 28px"
     typography: "{typography.label}"
   button-primary-hover:
-    backgroundColor: "#2a2a2a"
+    backgroundColor: "{colors.primary-hover}"
     textColor: "#ffffff"
     rounded: "{rounded.sm}"
     padding: "12px 28px"
@@ -111,10 +122,15 @@ components:
     backgroundColor: "{colors.surface}"
     rounded: "{rounded.md}"
     border: "1px solid {colors.bord-light}"
+    boxShadow: "{elevation.level-1.boxShadow}"
   card-flat:
     backgroundColor: "{colors.bg}"
     rounded: "{rounded.md}"
     border: "none"
+  card-hover:
+    border: "1px solid {colors.bord}"
+    boxShadow: "0 4px 16px rgba(26,25,23,0.08)"
+    transition: "all 0.2s ease"
   input-field:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
@@ -134,6 +150,7 @@ components:
   progress-fill:
     rounded: "{rounded.full}"
     height: "100%"
+    transition: "width 0.8s ease"
 ---
 
 # Design System: ShadowSelf
@@ -142,148 +159,253 @@ components:
 
 **Creative North Star: "The Still Mirror"**
 
-ShadowSelf's visual system is a mirror that doesn't flatter and doesn't distort — it simply reflects what's there. The interface exists to create space for a difficult conversation with oneself, not to distract or entertain. Every pixel is in service of that stillness.
+ShadowSelf's visual system is a mirror that doesn't flatter
+and doesn't distort — it simply reflects what's there. The
+interface creates space for a difficult conversation, not
+distraction or entertainment. Every pixel serves stillness.
 
-The system is **refined and restrained**: buttons don't shout, cards don't float, colors don't compete. The deep teal accent ("Abyssal Teal") appears sparingly — not as decoration, but as a quiet signal: *this is where to look, this is what matters.* The palette is intentionally narrow: near-black ink, cool gray neutrals, and one accent that carries the emotional weight of the brand.
-
-This system explicitly rejects: gamified personality tests (16Personalities), corporate wellness warmth (BetterHelp), generic SaaS gradients, and decorative aesthetics that substitute substance for style.
+The system is **refined and confident**: modern enough to
+feel premium, restrained enough to feel serious. Subtle
+elevation and glass effects signal quality without
+overwhelming the psychological weight of the content.
 
 **Key Characteristics:**
-- Flat by default, no shadows — depth is conveyed through tonal layering and borders, not elevation
-- Narrow, intentional palette — one accent, cool neutrals, no decorative colors
-- Typography-forward — Inter at multiple weights carries the hierarchy, not color or decoration
-- Generous whitespace — rhythm over density, room to breathe over information packing
-- Still, not empty — every element has purpose; nothing exists "just because"
+- Warm off-white base — never pure white or pure black
+- Intentional elevation — three levels, warm-toned shadows
+- Editorial serif for display, clean sans for body
+- One accent (Abyssal Teal), ≤10% per screen
+- Modern but grounded — not a SaaS dashboard, not a quiz app
 
 ## 2. Colors
 
-The palette is intentionally narrow. One accent carries the emotional weight; neutrals provide structure. Color is never decorative — it signals, it separates, it guides.
+The palette is intentionally narrow. One accent carries the
+emotional weight; warm neutrals provide structure. Color
+signals, separates, and guides — never decorates.
 
 ### Primary
-- **Abyssal Teal** (#0d7377): The single accent. Used for interactive elements (focus rings, active states), data highlights, and the brand mark. Appears on ≤10% of any given screen. Its rarity is the point.
-- **Abyssal Teal Hover** (#095b5e): Darkened for hover states on interactive elements.
-- **Abyssal Teal Light** (#e8f3f4): Tinted for subtle backgrounds, badge fills, and icon containers.
-- **Abyssal Teal Border** (#c5e0e2): The lightest reach of the accent, used for bordered containers that need a hint of brand.
+- **Abyssal Teal** (#0d7377): The single accent. Interactive
+  elements, focus rings, active states, data highlights,
+  brand mark. ≤10% of any screen. Rarity is the point.
+- **Abyssal Teal Hover** (#095b5e): Darkened for hover states.
+- **Abyssal Teal Light** (#e8f3f4): Subtle backgrounds,
+  badge fills, icon containers.
+- **Abyssal Teal Border** (#c5e0e2): Bordered containers
+  needing a hint of brand.
 
-### Neutral
-- **Ink** (#0c0c0c): Primary text. Near-black, not pure black — softer on the eyes.
-- **Ink Muted** (#555555): Secondary text, body copy. Meets WCAG AA 4.5:1 against white.
-- **Ink Subtle** (#999999): Placeholder text, metadata, captions. Meets WCAG AA 4.5:1 against white.
-- **Bord** (#e5e5e5): Standard borders, dividers.
-- **Bord Light** (#f0f0f0): Subtle borders, card outlines, hairline dividers.
-- **Surface** (#ffffff): Card backgrounds, page background.
-- **Bg** (#f8f8f8): Section alternation, hover states, flat card backgrounds.
-- **Bg Alt** (#f2f2f2): Deeper background alternation, subtle container fills.
+### Neutral (Warm)
+- **Ink** (#1a1917): Primary text. Warm near-black, not
+  pure black — grounded, not harsh.
+- **Ink Muted** (#555550): Secondary text, body copy.
+  WCAG AA 4.5:1 against surface.
+- **Ink Subtle** (#999990): Placeholders, metadata, captions.
+  WCAG AA 4.5:1 against surface.
+- **Bord** (#e0dcd6): Standard borders, dividers. Warm gray.
+- **Bord Light** (#ede9e3): Subtle borders, card outlines.
+- **Surface** (#FCF9F6): Primary background. Warm off-white.
+- **Bg** (#f0ede8): Section alternation, flat card backgrounds.
+- **Bg Alt** (#e8e4de): Deeper alternation, subtle fills.
 
 ### Data (Dark Triad)
-- **Narcissus** (#7c3aed): Purple. The narcissism dimension. Used only in score displays and progress bars.
-- **Machiavellian** (#d97706): Amber. The machiavellian dimension. Used only in score displays and progress bars.
-- **Psychopath** (#059669): Emerald. The psychopathy dimension. Used only in score displays and progress bars.
+- **Narcissus** (#7c3aed): Purple. Narcissism dimension.
+  Score displays and progress bars only.
+- **Machiavellian** (#d97706): Amber. Machiavellianism.
+  Score displays and progress bars only.
+- **Psychopath** (#059669): Emerald. Psychopathy dimension.
+  Score displays and progress bars only.
 
 ### Semantic
-- **Success** (#059669): Confirmation states, paid badges.
-- **Warning** (#d97706): Paywall badges, cautionary indicators.
+- **Success** (#059669): Confirmation, positive states.
+- **Warning** (#d97706): Cautionary indicators.
 - **Error** (#dc2626): Error states, destructive actions.
 
 ### Named Rules
 
-**The One Voice Rule.** Abyssal Teal is the only accent. It appears on ≤10% of any given screen. If a second accent color appears outside the Dark Triad data colors, the design has drifted.
+**The One Voice Rule.** Abyssal Teal is the only accent.
+≤10% of any screen. Second accent = design drift.
 
-**The Data-Only Rule.** Narcissus, Machiavellian, and Psychopath colors are reserved exclusively for score displays and progress bars. They never appear in navigation, buttons, or decorative elements.
+**The Data-Only Rule.** Narcissus, Machiavellian, Psychopath
+colors appear only in score displays and progress bars.
+Never in navigation, buttons, or decorative elements.
+
+**The Warm Base Rule.** Surface is always #FCF9F6.
+Never pure white (#ffffff) or pure black (#000000).
+All neutrals carry a warm undertone.
+
+**The Warm Shadow Rule.** Shadows use warm ink tone
+(#1a1917), never pure black. Opacity stays below 0.10
+— shadows suggest, they don't announce.
 
 ## 3. Typography
 
-**Display Font:** Inter (with system-ui, -apple-system, sans-serif fallback)
-**Body Font:** Inter (same stack)
-**Label/Mono Font:** JetBrains Mono (for scores, data points, code)
+**Display/Headline:** DM Serif Display — editorial gravity,
+psychological weight. Carries the emotional tone of the brand.
 
-**Character:** A single-family system. Inter at 800 weight provides the gravity for display headings; at 400 it recedes into quiet readability for body text. The pairing is not a pairing — it's one voice at different registers. No serif, no contrast for contrast's sake. The weight shifts do the work.
+**Body/UI:** Inter — recedes into quiet readability.
+Does not compete with the serif.
+
+**Mono:** JetBrains Mono — for scores, data, percentages.
 
 ### Hierarchy
-- **Display** (800, clamp(2.25rem, 5vw, 4rem), 1.1): Hero headlines only. Max 6rem. Letter-spacing: -0.03em floor. `text-wrap: balance`.
-- **Headline** (700, clamp(1.75rem, 3vw, 2.5rem), 1.1): Section headings. `text-wrap: balance`.
-- **Title** (700, clamp(1.5rem, 2.5vw, 2rem), 1.1): Card titles, subheadings. `text-wrap: balance`.
-- **Body** (400, 1rem, 1.65): Paragraphs, descriptions. Max line length 65–75ch. `text-wrap: pretty`.
-- **Label** (500, 0.875rem, 1.5): Buttons, nav links, form labels, metadata.
-- **Mono** (600, 0.875rem, 1.5): Score percentages, data values, progress labels.
+- **Display** (DM Serif Display, 400, clamp(2.25rem, 5vw,
+  4rem), 1.1, -0.02em): Hero headlines only. text-wrap: balance.
+- **Headline** (DM Serif Display, 400, clamp(1.75rem, 3vw,
+  2.5rem), 1.2, -0.01em): Section headings. text-wrap: balance.
+- **Title** (Inter, 600, clamp(1.25rem, 2vw, 1.5rem), 1.3,
+  -0.01em): Card titles, subheadings. text-wrap: balance.
+- **Body** (Inter, 400, 1rem, 1.65): Paragraphs, descriptions.
+  Max 65–75ch. text-wrap: pretty.
+- **Label** (Inter, 500, 0.875rem, 1.5): Buttons, nav, labels.
+- **Mono** (JetBrains Mono, 600, 0.875rem, 1.5): Score values,
+  percentages, data points.
 
 ### Named Rules
 
-**The Weight-Only Hierarchy Rule.** Hierarchy is expressed through weight and size, not through color, tracking, or case changes. No uppercase eyebrows, no wide tracking on labels, no colored headings.
+**The Serif-for-Gravity Rule.** DM Serif Display for display
+and headline only. Inter for everything else. Never mix
+within the same hierarchy level.
+
+**The Weight-Only Hierarchy Rule.** Hierarchy through weight,
+size, and font family — not color, tracking, or case changes.
+No uppercase eyebrows. No wide-tracked labels.
 
 ## 4. Elevation
 
-The system is flat by default. No shadows, no drop shadows, no box-shadow on any surface. Depth is conveyed exclusively through:
+Three levels of intentional depth. Used to indicate
+interactivity and layering — never decoration.
 
-- **Tonal layering**: Surface → Bg → Bg Alt creates a natural stacking order without elevation.
-- **Borders**: 1px solid borders at `bordLight` or `bord` define container boundaries.
-- **Hover state**: Border darkens from `bordLight` to `bord` on interactive cards. No lift, no shadow.
+**Level 0 — Flat:** Page background, section containers.
+No shadow, no border. Base surface (#FCF9F6).
 
-This is intentional. Shadows imply float; ShadowSelf is grounded. The interface sits flat on the page, like a printed psychological assessment — not a floating dashboard.
+**Level 1 — Raised:** Cards, input fields.
+box-shadow: 0 1px 3px rgba(26,25,23,0.06),
+0 4px 12px rgba(26,25,23,0.04);
+border: 1px solid #ede9e3;
+
+**Level 2 — Floating:** Dropdowns, tooltips, modals.
+box-shadow: 0 4px 16px rgba(26,25,23,0.08),
+0 12px 40px rgba(26,25,23,0.06);
+
+**Navbar on scroll:**
+background: rgba(252,249,246,0.85);
+backdrop-filter: blur(16px);
+box-shadow: 0 1px 12px rgba(26,25,23,0.06);
 
 ### Named Rules
 
-**The Flat-By-Default Rule.** No surface casts a shadow. If an element needs to feel distinct, use tonal layering (surface → bg) or a border shift. `box-shadow` is prohibited.
+**The Intentional Elevation Rule.** Three levels only.
+Warm-toned, low opacity, purposeful. No colored shadows,
+no neon glows, no material-design-style hard shadows.
+
+**The No-Pure-Flat Rule.** Cards and interactive surfaces
+use Level 1 elevation — not fully flat. Flatness is for
+backgrounds and non-interactive containers only.
 
 ## 5. Components
 
 ### Buttons
+- **Primary:** Abyssal Teal (#0d7377) background, white text,
+  8px radius, 12px 28px padding.
+  Hover: #095b5e. Transition: background 0.2s ease.
+  Focus: 2px teal outline, 2px offset. No shadow, no glow.
+- **Secondary:** Transparent, inkMuted text, 1px bord border.
+  Hover: border → ink, text → ink.
+- **Ghost:** Transparent, inkMuted text, 8px 16px padding.
+  Hover: bg background, ink text.
 
-- **Shape:** Gently rounded (8px / `rounded.sm`). Not pill-shaped.
-- **Primary:** Near-black (`ink`) background, white text, 12px 28px padding. Hover: darkens to #2a2a2a. No shadow, no glow.
-- **Secondary:** Transparent background, `inkMuted` text, 1px `bord` border. Hover: border shifts to `ink`, text shifts to `ink`.
-- **Ghost:** Transparent background, `inkMuted` text, 8px 16px padding. Hover: `bg` background, `ink` text.
-- **States:** All buttons transition background/border-color at 0.2s ease. Focus-visible: 2px `accent` outline with 2px offset.
+### Navbar
+- **Default:** background #FCF9F6, 1px bord-light bottom border.
+  No blur, no shadow.
+- **On scroll:** background rgba(252,249,246,0.85),
+  backdrop-filter blur(16px),
+  box-shadow 0 1px 12px rgba(26,25,23,0.06).
+- Transition: all 0.3s ease on scroll trigger.
+- Height: 56–64px max. Slim, invisible when possible.
+- Layout: logo left, nav links center, CTA button right.
+- Links: ghost style. No active indicator beyond URL.
+- Respects prefers-reduced-motion: no blur/transition
+  if reduced motion enabled.
 
-### Cards / Containers
+### Hero
+- Background: #FCF9F6 — always light, never dark.
+- Headline: DM Serif Display, large, warm ink (#1a1917).
+- One word or phrase in Abyssal Teal (#0d7377).
+- Typographic decoration: oversized symbol or word at
+  3–5% opacity (e.g. "∅", "≈", "bayangan") — NOT illustration.
+- Subtle animated gradient shimmer on headline
+  (CSS only, respects prefers-reduced-motion).
+- Two CTAs: primary teal + secondary ghost, side by side.
+- Trust pills below CTAs: "Anonim" · "Gratis" · "Hasil Instan"
+- NO photos, NO Lottie, NO SVG illustrations, NO dark hero.
 
-- **Corner Style:** Moderately rounded (12px / `rounded.md`). Not pill-like.
-- **Background:** `surface` (white) for elevated cards; `bg` (#f8f8f8) for flat cards.
-- **Shadow Strategy:** None. Cards are defined by a 1px `bordLight` border.
-- **Hover:** Border shifts to `bord`. No lift, no shadow.
-- **Internal Padding:** 24px–32px (`space-lg` to `space-xl`), depending on content density.
+### Cards
+- Background: surface (#FCF9F6).
+- Border: 1px solid bord-light (#ede9e3).
+- Shadow: Level 1 elevation.
+- Radius: 12px (rounded.md).
+- Padding: 24–32px.
+- Hover: border → bord (#e0dcd6),
+  shadow → 0 4px 16px rgba(26,25,23,0.08).
+  Transition: all 0.2s ease.
 
-### Inputs / Fields
-
-- **Style:** 1px `bord` stroke, `surface` background, 8px radius.
-- **Focus:** Border shifts to `accent` (#0d7377). No glow, no ring beyond the focus-visible outline.
-- **Placeholder:** `inkSubtle` (#999999) — meets WCAG AA 4.5:1.
-- **Error / Disabled:** Error: `error` border (#dc2626). Disabled: reduced opacity.
-
-### Navigation
-
-- **Style:** Fixed top bar, `glass` effect (rgba white 0.85 + 16px blur), 1px `bordLight` bottom border.
-- **Links:** Ghost button style. Active page: no special indicator (no underline, no colored dot). The URL is the affordance.
-- **Mobile:** Slide-down menu with fade + translate transition. Same visual language, stacked vertically.
+### Inputs
+- Border: 1px solid bord (#e0dcd6).
+- Background: surface (#FCF9F6).
+- Radius: 8px. Padding: 12px 16px.
+- Focus: border → primary (#0d7377). No glow.
+- Placeholder: inkSubtle (#999990) — WCAG AA.
+- Error: border → error (#dc2626).
 
 ### Progress Bars
+- Height: 4px. Track: bord-light. Full-radius caps.
+- Fill: dimension color — no gradients.
+- Transition: width 0.8s ease.
 
-- **Style:** 4px tall, `bordLight` track, `rounded.full` caps.
-- **Fill:** Solid color matching the dimension (Narcissus purple, Machiavellian amber, Psychopath emerald). No gradients.
-- **Transition:** Width animates at 0.8s ease.
+### Footer
+- Background: bg (#f0ede8) — slightly deeper than surface.
+- Top border: 1px solid bord-light only.
+- No dark inversion, no color change.
+- Layout: logo + tagline left, 2–3 link columns right.
+- Copyright: inkSubtle, small, bottom.
 
-## 6. Do's and Don'ts
+## 6. Accessibility
+
+- WCAG AA minimum on all elements.
+- AAA contrast target for body text and CTAs where palette allows.
+- prefers-reduced-motion: all animations and transitions
+  must be disabled or reduced when enabled.
+- Color blindness: never use color as sole differentiator.
+  Always pair with shape, label, or position.
+- ARIA labels on all interactive elements.
+- Focus-visible: 2px teal outline, 2px offset on all
+  interactive elements.
+
+## 7. Do's and Don'ts
 
 ### Do:
-- **Do** use Abyssal Teal sparingly — ≤10% of any screen. Its rarity is its power.
-- **Do** use tonal layering (surface → bg → bgAlt) to create depth instead of shadows.
-- **Do** keep body text at `inkMuted` (#555555) or darker — meets WCAG AA 4.5:1.
-- **Do** use `text-wrap: balance` on headings and `text-wrap: pretty` on body text.
-- **Do** cap body line length at 65–75ch.
-- **Do** use the Dark Triad colors (purple, amber, emerald) exclusively for score data.
-- **Do** use Inter at different weights for hierarchy — weight shifts do the work.
-- **Do** keep cards flat with a 1px `bordLight` border — no shadows, no lift.
+- Use Abyssal Teal sparingly — ≤10% per screen
+- Use warm off-white (#FCF9F6) as base — never pure white
+- Use DM Serif Display for hero and section headlines
+- Use Level 1 elevation on cards — not fully flat
+- Use glass navbar effect on scroll
+- Use tonal layering for section depth
+- Keep body text at inkMuted (#555550) — WCAG AA
+- Cap body line length at 65–75ch
+- Use Dark Triad colors exclusively for score data
+- Respect prefers-reduced-motion on all animations
+- Pair color with shape/label for color blindness support
 
 ### Don't:
-- **Don't** gamify the interface — no badges, no achievements, no progress celebrations. This is not 16Personalities.
-- **Don't** use corporate wellness warmth — no fake-warm tones, no stock photos of smiling people, no "you're great!" messaging. This is not BetterHelp.
-- **Don't** use gradient backgrounds, gradient text, or purple-blue SaaS gradients anywhere.
-- **Don't** use glassmorphism, blur overlays, or decorative backdrop filters outside the nav bar.
-- **Don't** use illustrations — no Lottie, no SVG sketches, no hand-drawn elements. If you can't render it with type and layout, don't render it.
-- **Don't** use uppercase tracked eyebrows ("ABOUT", "PROCESS") above section headings.
-- **Don't** use numbered section markers (01, 02, 03) as default scaffolding.
-- **Don't** use `box-shadow` on any surface — cards, buttons, or containers.
-- **Don't** use border-radius larger than 12px on cards or containers. Pill shapes are for progress bars only.
-- **Don't** pair border + shadow on the same element. Pick one.
-- **Don't** use decorative patterns, repeating backgrounds, or diagonal stripes.
-- **Don't** use the Dark Triad data colors outside of score displays.
+- Don't use pure white (#ffffff) or pure black (#000000)
+- Don't use Inter for display or headline — use DM Serif Display
+- Don't use black/ink for primary button — use teal
+- Don't use gradients — backgrounds, text, or buttons
+- Don't use glassmorphism outside navbar scroll state
+- Don't use illustrations, Lottie, or SVG sketches
+- Don't use uppercase tracked eyebrows above headings
+- Don't use numbered section markers (01, 02, 03)
+- Don't use colored shadows or neon glows
+- Don't use Dark Triad colors outside score displays
+- Don't gamify — no badges, achievements, celebrations
+- Don't use corporate wellness warmth or stock photos
+- Don't use border-radius larger than 16px on cards
+- Don't pair border + heavy shadow on the same element
