@@ -147,6 +147,7 @@ h4 { font-size: var(--text-lg); }
 
 p { margin: 0; }
 
+.text-ink { color: var(--ink); }
 .text-accent { color: var(--accent); }
 .text-narcissus { color: var(--narcissus); }
 .text-machiavellian { color: var(--machiavellian); }
@@ -233,6 +234,10 @@ p { margin: 0; }
     border-radius: 12px;
     border: 1px solid var(--bordLight);
     transition: border-color 0.2s ease;
+}
+
+.card:hover {
+    border-color: var(--bord);
 }
 
 .card-flat {
@@ -356,6 +361,11 @@ p { margin: 0; }
 
 /* --- Animations (minimal) --- */
 .fade-in-up {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.fade-in-up.is-visible {
     animation: fadeInUp 0.5s ease both;
 }
 
@@ -440,6 +450,7 @@ html { scroll-behavior: smooth; }
 .font-semibold { font-weight: 600; }
 .font-bold { font-weight: 700; }
 .font-mono { font-family: 'JetBrains Mono', monospace; }
+.leading-normal { line-height: var(--leading-normal); }
 .leading-relaxed { line-height: var(--leading-relaxed); }
 .text-white { color: white; }
 .no-underline { text-decoration: none; }
@@ -460,6 +471,30 @@ html { scroll-behavior: smooth; }
 .duration-200 { }
 .rotate-45 { transform: rotate(45deg); }
 .gap-1\.5 { gap: 6px; }
+.tracking-tight { letter-spacing: var(--tracking-tight); }
+.z-50 { z-index: 50; }
+.fixed { position: fixed; }
+.top-0 { top: 0; }
+.inline-flex { display: inline-flex; }
+
+/* --- Accessibility --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Alpine.js cloak — prevent flash of unstyled content */
+[x-cloak] { display: none !important; }
+
+/* Body text orphans prevention */
+p, li, .text-body { text-wrap: pretty; }
 
 /* --- Spacing utility classes --- */
 .gap-1 { gap: var(--space-2xs); }
@@ -487,13 +522,17 @@ html { scroll-behavior: smooth; }
 .mb-4 { margin-bottom: var(--space-md); }
 .mb-5 { margin-bottom: var(--space-lg); }
 
+.pt-14 { padding-top: 56px; }
 .pt-4 { padding-top: var(--space-md); }
 .p-5 { padding: var(--space-lg); }
 .p-6 { padding: var(--space-xl); }
 .p-7 { padding: var(--space-2xl); }
 .p-8 { padding: var(--space-3xl); }
+.px-2 { padding-left: var(--space-xs); padding-right: var(--space-xs); }
+.px-2\.5 { padding-left: 10px; padding-right: 10px; }
 .px-4 { padding-left: var(--space-md); padding-right: var(--space-md); }
 .px-5 { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+.py-0\.5 { padding-top: 2px; padding-bottom: 2px; }
 .py-3 { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
 .py-10 { padding-top: var(--space-3xl); padding-bottom: var(--space-3xl); }
 

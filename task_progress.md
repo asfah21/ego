@@ -1,43 +1,12 @@
-# Layout Improvement — ShadowSelf
+# ShadowSelf — Impeccable Polish
 
-## Completed Changes
+## Completed
 
-### CSS (`assets/css/style.css`)
-- ✅ **Spacing system**: Added 4pt-based scale (`--space-2xs` through `--space-6xl`)
-- ✅ **Section rhythm**: Added `section-hero` (generous), `section-compact` (tight), kept `section`/`section-alt` (standard)
-- ✅ **Section heading variants**: Added `section-heading-left` for left-aligned headings
-- ✅ **Utility classes**: Added flex, grid, spacing, typography, border, and responsive utility classes
-- ✅ **Responsive `md:` breakpoint**: Added `@media (min-width: 768px)` with all needed responsive utilities
-- ✅ **Responsive mobile**: Updated `@media (max-width: 640px)` to use spacing variables
-
-### Templates
-
-#### `templates/index.html`
-- ✅ Hero section uses `section-hero` class instead of inline padding
-- ✅ Properly closed `</section>` tag
-
-#### `templates/sections/produk_section.html`
-- ✅ **Broke card grid monotony**: Narsisme card spans 2 columns (`md:col-span-2`) — bento-style layout
-- ✅ **Added visual data**: Progress bars with average scores in each dimension card
-- ✅ **Added icons**: Each dimension has a unique Material Symbol icon
-- ✅ **Left-aligned heading**: Uses `section-heading-left` instead of centered
-- ✅ **Tighter spacing**: `mt-12` instead of `mt-16`, `gap-8` instead of `gap-10`
-
-#### `templates/sections/testimoni_section.html`
-- ✅ **Broke card grid monotony**: Changed from 3-column grid to stacked horizontal layout
-- ✅ **Alternating rows**: Each testimonial is a horizontal flex row (avatar + name on left, quote on right)
-- ✅ **Quotes in quotation marks**: Added visual cue for testimonial text
-- ✅ **Accent-colored avatars**: Changed from gray to accent-light background
-
-#### `templates/sections/faq_section.html`
-- ✅ **Tighter spacing**: `space-y-3` instead of `space-y-2`
-
-#### `templates/sections/footer.html`
-- ✅ **Minor spacing fix**: `mt-1` instead of `mt-0.5`
-
-### Key Improvements
-1. **Consistent spacing scale** — no more arbitrary values
-2. **Visual rhythm** — hero is generous, sections alternate standard/tight
-3. **Broken card grid monotony** — produk uses bento layout, testimoni uses horizontal rows
-4. **Stronger hierarchy** — left-aligned headings for content sections, centered for hero/testimonials
-5. **Responsive** — all `md:` classes properly defined in media query
+- [x] **CSS Architecture** — Consolidated and reorganized `style.css` with clear sections (variables, reset, typography, containers, sections, cards, buttons, progress bars, inputs, glass, animations, utilities, responsive, backward-compat stubs)
+- [x] **Animation System** — Replaced inline `opacity`/`transform` with `.fade-in-up` + `.is-visible` pattern; JS updated to use `.is-visible` class; `prefers-reduced-motion` respected
+- [x] **Inline Style Migration** — Replaced `style="color: var(--ink)"` with `.text-ink`, `style="color: var(--accent)"` with `.text-accent`, etc. across all templates
+- [x] **Accessibility (ARIA)** — Added `role="banner"`, `role="contentinfo"`, `role="list"`, `role="listitem"`, `aria-expanded`, `aria-controls`, `aria-label`, `aria-labelledby`, `aria-hidden="true"` on icons, `aria-current="page"` on nav
+- [x] **Semantic HTML** — Added `aria-labelledby` to FAQ section, `id` attributes to headings, `role="region"` to FAQ panels
+- [x] **Utility Classes** — Added missing utilities: `.text-ink`, `.leading-normal`, `.tracking-tight`, `.z-50`, `.fixed`, `.top-0`, `.inline-flex`, `.pt-14`, `.px-2`, `.px-2.5`, `.py-0.5`
+- [x] **Code Cleanup** — Removed inline `[x-cloak]` style from layout.html (now in CSS), removed unused `m-0` classes from elements that already have `p { margin: 0 }` reset
+- [x] **Build Verification** — Go project compiles successfully

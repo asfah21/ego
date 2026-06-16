@@ -26,7 +26,7 @@
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'none';
                     } else {
-                        entry.target.classList.add('fade-in-up');
+                        entry.target.classList.add('is-visible');
                     }
                     observer.unobserve(entry.target);
                 }
