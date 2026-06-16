@@ -1,29 +1,21 @@
 {{define "faq_section"}}
-<section class="py-24 md:py-32 bg-[var(--bgAlt)]">
-    <div class="mx-auto max-w-[768px] px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--brand-200)] bg-[var(--brand-100)] text-xs font-medium text-[var(--brand-600)] mb-4">
-                <span class="w-1.5 h-1.5 rounded-full bg-[var(--brand-500)]"></span>
-                Tanya Jawab
-            </span>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--textMain)] m-0">
-                Pertanyaan Umum
-            </h2>
-            <p class="mt-4 text-[var(--textMuted)] text-lg leading-relaxed m-0">
-                Semua yang perlu kamu tahu sebelum memulai asesmen.
-            </p>
+<section class="section-alt">
+    <div class="container" style="max-width: 640px;">
+        <div class="section-heading fade-in-up">
+            <h2>Pertanyaan Umum</h2>
+            <p>Semua yang perlu kamu tahu sebelum memulai asesmen.</p>
         </div>
 
         <div class="space-y-3" x-data="{ active: null }">
             <!-- FAQ 1 -->
-            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 1 }">
-                <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
-                    <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Apa itu Dark Triad?</span>
-                    <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 1 }">add</span>
+            <div class="card overflow-hidden">
+                <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between p-5 text-left cursor-pointer bg-transparent border-none font-inherit">
+                    <span class="text-sm font-medium" style="color: var(--ink);">Apa itu Dark Triad?</span>
+                    <span class="material-symbols-outlined text-base transition-all duration-200" style="color: var(--inkSubtle);" :class="{ 'rotate-45': active === 1 }">add</span>
                 </button>
                 <div x-show="active === 1" x-collapse>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6">
-                        <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                    <div class="px-5 pb-5">
+                        <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
                             Dark Triad adalah tiga sifat kepribadian yang saling terkait: Narsisme, 
                             Machiavellian, dan Psikopati. Konsep ini pertama kali diperkenalkan oleh 
                             psikolog Delroy Paulhus dan Kevin Williams pada tahun 2002.
@@ -33,14 +25,14 @@
             </div>
 
             <!-- FAQ 2 -->
-            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 2 }">
-                <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
-                    <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Apakah tes ini akurat?</span>
-                    <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 2 }">add</span>
+            <div class="card overflow-hidden">
+                <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between p-5 text-left cursor-pointer bg-transparent border-none font-inherit">
+                    <span class="text-sm font-medium" style="color: var(--ink);">Apakah tes ini akurat?</span>
+                    <span class="material-symbols-outlined text-base transition-all duration-200" style="color: var(--inkSubtle);" :class="{ 'rotate-45': active === 2 }">add</span>
                 </button>
                 <div x-show="active === 2" x-collapse>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6">
-                        <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                    <div class="px-5 pb-5">
+                        <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
                             Tes ini dirancang berdasarkan instrumen psikologi yang telah divalidasi. 
                             Namun, hasilnya bersifat indikatif dan tidak menggantikan diagnosis 
                             profesional dari psikolog atau psikiater.
@@ -50,14 +42,14 @@
             </div>
 
             <!-- FAQ 3 -->
-            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 3 }">
-                <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
-                    <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Berapa lama tesnya?</span>
-                    <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 3 }">add</span>
+            <div class="card overflow-hidden">
+                <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between p-5 text-left cursor-pointer bg-transparent border-none font-inherit">
+                    <span class="text-sm font-medium" style="color: var(--ink);">Berapa lama tesnya?</span>
+                    <span class="material-symbols-outlined text-base transition-all duration-200" style="color: var(--inkSubtle);" :class="{ 'rotate-45': active === 3 }">add</span>
                 </button>
                 <div x-show="active === 3" x-collapse>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6">
-                        <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                    <div class="px-5 pb-5">
+                        <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
                             Tes hanya membutuhkan waktu sekitar 5 menit. Kamu akan menjawab 
                             5 pertanyaan sederhana dan langsung mendapatkan hasilnya.
                         </p>
@@ -66,14 +58,14 @@
             </div>
 
             <!-- FAQ 4 -->
-            <div class="card overflow-hidden" :class="{ 'ring-1 ring-[var(--accent-200)] shadow-md': active === 4 }">
-                <button @click="active = active === 4 ? null : 4" class="w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer bg-transparent border-none font-inherit group">
-                    <span class="text-sm font-semibold text-[var(--textMain)] group-hover:text-[var(--accent-600)] transition-colors duration-200">Apakah data saya aman?</span>
-                    <span class="material-symbols-outlined text-[var(--textSubtle)] transition-all duration-300 group-hover:text-[var(--accent-500)]" :class="{ 'rotate-45 text-[var(--accent-500)]': active === 4 }">add</span>
+            <div class="card overflow-hidden">
+                <button @click="active = active === 4 ? null : 4" class="w-full flex items-center justify-between p-5 text-left cursor-pointer bg-transparent border-none font-inherit">
+                    <span class="text-sm font-medium" style="color: var(--ink);">Apakah data saya aman?</span>
+                    <span class="material-symbols-outlined text-base transition-all duration-200" style="color: var(--inkSubtle);" :class="{ 'rotate-45': active === 4 }">add</span>
                 </button>
                 <div x-show="active === 4" x-collapse>
-                    <div class="px-5 md:px-6 pb-5 md:pb-6">
-                        <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                    <div class="px-5 pb-5">
+                        <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
                             Ya, data kamu sepenuhnya aman. Kami menggunakan enkripsi dan tidak 
                             akan membagikan data pribadi kamu ke pihak ketiga. Hasil tes hanya 
                             bisa diakses oleh kamu.

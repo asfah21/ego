@@ -1,76 +1,66 @@
 {{define "testimoni_section"}}
-<section class="py-24 md:py-32 bg-white">
-    <div class="mx-auto max-w-[1280px] px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--warm-200)] bg-[var(--warm-50)] text-xs font-medium text-[var(--warm-600)] mb-4">
-                <span class="w-1.5 h-1.5 rounded-full bg-[var(--warm-500)]"></span>
-                Testimonial
-            </span>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--textMain)] m-0">
-                Kata Mereka
-            </h2>
-            <p class="mt-4 text-[var(--textMuted)] text-lg leading-relaxed m-0">
-                Ribuan pengguna telah mencoba asesmen ini. Ini cerita mereka.
-            </p>
+<section class="section" style="background: var(--surface);">
+    <div class="container">
+        <div class="section-heading fade-in-up">
+            <h2>Kata Mereka</h2>
+            <p>Ribuan pengguna telah mencoba asesmen ini. Ini cerita mereka.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.1s;">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-[var(--narcissus-light)] flex items-center justify-center text-sm font-bold text-[var(--narcissus)]">
+        <!-- Alternating testimonial rows — not a card grid -->
+        <div class="max-w-3xl mx-auto space-y-5">
+            <div class="card p-6 fade-in-up flex flex-col md:flex-row md:items-start gap-5" style="animation-delay:0.1s;">
+                <div class="flex md:flex-col items-center md:items-start gap-3 md:gap-2 md:min-w-[120px]">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0" style="background: var(--accentLight); color: var(--accent);">
                         RA
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-[var(--textMain)] m-0">Rizky A.</p>
-                        <p class="text-xs text-[var(--textSubtle)] m-0">Mahasiswa, Jakarta</p>
+                        <p class="text-sm font-semibold m-0" style="color: var(--ink);">Rizky A.</p>
+                        <p class="text-xs m-0" style="color: var(--inkSubtle);">Mahasiswa, Jakarta</p>
                     </div>
                 </div>
-                <div class="relative">
-                    <span class="absolute -top-1 -left-1 text-3xl leading-none text-[var(--bord)] select-none" aria-hidden="true">&ldquo;</span>
-                    <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0 pl-4">
-                        Hasilnya sangat akurat! Saya jadi lebih paham kenapa saya sering 
+                <div class="flex-1">
+                    <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
+                        "Hasilnya sangat akurat! Saya jadi lebih paham kenapa saya sering 
                         mengambil keputusan impulsif. Sangat recommended buat yang ingin 
-                        mengenal diri sendiri lebih dalam.
+                        mengenal diri sendiri lebih dalam."
                     </p>
                 </div>
             </div>
 
-            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.2s;">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-[var(--machiavellian-light)] flex items-center justify-center text-sm font-bold text-[var(--machiavellian)]">
+            <div class="card p-6 fade-in-up flex flex-col md:flex-row md:items-start gap-5" style="animation-delay:0.2s;">
+                <div class="flex md:flex-col items-center md:items-start gap-3 md:gap-2 md:min-w-[120px]">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0" style="background: var(--accentLight); color: var(--accent);">
                         SN
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-[var(--textMain)] m-0">Sari N.</p>
-                        <p class="text-xs text-[var(--textSubtle)] m-0">HR Manager, Bandung</p>
+                        <p class="text-sm font-semibold m-0" style="color: var(--ink);">Sari N.</p>
+                        <p class="text-xs m-0" style="color: var(--inkSubtle);">HR Manager, Bandung</p>
                     </div>
                 </div>
-                <div class="relative">
-                    <span class="absolute -top-1 -left-1 text-3xl leading-none text-[var(--bord)] select-none" aria-hidden="true">&ldquo;</span>
-                    <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0 pl-4">
-                        Sebagai HR, saya menggunakan ini untuk memahami dinamika tim. 
+                <div class="flex-1">
+                    <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
+                        "Sebagai HR, saya menggunakan ini untuk memahami dinamika tim. 
                         Hasilnya membantu saya menempatkan orang di posisi yang tepat 
-                        sesuai karakter mereka.
+                        sesuai karakter mereka."
                     </p>
                 </div>
             </div>
 
-            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.3s;">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-[var(--psychopath-light)] flex items-center justify-center text-sm font-bold text-[var(--psychopath)]">
+            <div class="card p-6 fade-in-up flex flex-col md:flex-row md:items-start gap-5" style="animation-delay:0.3s;">
+                <div class="flex md:flex-col items-center md:items-start gap-3 md:gap-2 md:min-w-[120px]">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0" style="background: var(--accentLight); color: var(--accent);">
                         DP
                     </div>
                     <div>
-                        <p class="text-sm font-semibold text-[var(--textMain)] m-0">Dimas P.</p>
-                        <p class="text-xs text-[var(--textSubtle)] m-0">Entrepreneur, Surabaya</p>
+                        <p class="text-sm font-semibold m-0" style="color: var(--ink);">Dimas P.</p>
+                        <p class="text-xs m-0" style="color: var(--inkSubtle);">Entrepreneur, Surabaya</p>
                     </div>
                 </div>
-                <div class="relative">
-                    <span class="absolute -top-1 -left-1 text-3xl leading-none text-[var(--bord)] select-none" aria-hidden="true">&ldquo;</span>
-                    <p class="text-sm text-[var(--textMuted)] leading-relaxed m-0 pl-4">
-                        Tes ini membuka mata saya tentang sisi Machiavellian yang ternyata 
+                <div class="flex-1">
+                    <p class="text-sm leading-relaxed m-0" style="color: var(--inkMuted);">
+                        "Tes ini membuka mata saya tentang sisi Machiavellian yang ternyata 
                         cukup tinggi. Saya jadi lebih aware dan bisa mengontrolnya dalam 
-                        negosiasi bisnis.
+                        negosiasi bisnis."
                     </p>
                 </div>
             </div>

@@ -1,98 +1,99 @@
 {{define "produk_section"}}
-<section id="tentang" class="py-24 md:py-32 bg-[var(--bgAlt)]">
-    <div class="mx-auto max-w-[1280px] px-6 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16 fade-in-up">
-            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--narcissus-light)] bg-[var(--narcissus-light)] text-xs font-medium text-[var(--narcissus)] mb-4">
-                <span class="w-1.5 h-1.5 rounded-full bg-[var(--narcissus)]"></span>
-                Tiga Dimensi
-            </span>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--textMain)] m-0">
-                Pilar Kepribadian <span class="text-accent">Dark Triad</span>
-            </h2>
-            <p class="mt-4 text-[var(--textMuted)] text-lg leading-relaxed m-0">
-                Tiga sifat yang sering dikaitkan dengan kesuksesan di dunia modern. 
-                Kenali masing-masing dimensinya.
-            </p>
+<section id="tentang" class="section-alt">
+    <div class="container">
+        <div class="section-heading-left fade-in-up">
+            <h2>Tiga Dimensi <span class="text-accent">Dark Triad</span></h2>
+            <p>Tiga sifat yang sering dikaitkan dengan kesuksesan di dunia modern. Kenali masing-masing dimensinya.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-            <!-- Narsisme -->
-            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.1s;">
-                <div class="w-12 h-12 rounded-2xl bg-[var(--narcissus-light)] flex items-center justify-center mb-5">
-                    <span class="material-symbols-outlined text-2xl text-[var(--narcissus)]">star</span>
+        <!-- Three dimensions — bento-style layout, not identical cards -->
+        <div class="grid md:grid-cols-3 gap-5">
+            <!-- Narsisme — featured card -->
+            <div class="card p-7 fade-in-up md:col-span-2" style="animation-delay:0.1s;">
+                <div class="flex items-start gap-2 mb-3">
+                    <span class="material-symbols-outlined text-lg" style="color: var(--narcissus);">auto_awesome</span>
+                    <h3 style="color: var(--ink);">Narsisme</h3>
                 </div>
-                <h3 class="text-lg font-bold text-[var(--textMain)] m-0">Narsisme</h3>
-                <p class="mt-2 text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                <p class="text-sm leading-relaxed" style="color: var(--inkMuted); max-width: 55ch;">
                     Kecenderungan untuk merasa superior, butuh dikagumi, dan kurang empati. 
                     Dalam dosis tepat, ini bisa menjadi pendorong karir yang kuat.
                 </p>
-                <div class="mt-4 pt-4 border-t border-[var(--bordLight)]">
-                    <span class="text-xs font-medium text-[var(--textSubtle)]">Skor rata-rata: 45–55%</span>
+                <div class="mt-4 pt-4 flex items-center gap-3" style="border-top: 1px solid var(--bordLight);">
+                    <div class="progress-bar flex-1" style="max-width: 160px;">
+                        <div class="progress-fill" style="width:50%; background: var(--narcissus);"></div>
+                    </div>
+                    <span class="text-xs font-mono font-semibold" style="color: var(--narcissus);">45–55%</span>
                 </div>
             </div>
 
             <!-- Machiavellian -->
-            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.2s;">
-                <div class="w-12 h-12 rounded-2xl bg-[var(--machiavellian-light)] flex items-center justify-center mb-5">
-                    <span class="material-symbols-outlined text-2xl text-[var(--machiavellian)]">psychology</span>
+            <div class="card p-7 fade-in-up" style="animation-delay:0.2s;">
+                <div class="flex items-start gap-2 mb-3">
+                    <span class="material-symbols-outlined text-lg" style="color: var(--machiavellian);">psychology</span>
+                    <h3 style="color: var(--ink);">Machiavellian</h3>
                 </div>
-                <h3 class="text-lg font-bold text-[var(--textMain)] m-0">Machiavellian</h3>
-                <p class="mt-2 text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                <p class="text-sm leading-relaxed" style="color: var(--inkMuted);">
                     Pandangan bahwa tujuan menghalalkan cara. Manipulatif, strategis, 
                     dan fokus pada hasil. Sifat ini umum ditemukan pada pemimpin visioner.
                 </p>
-                <div class="mt-4 pt-4 border-t border-[var(--bordLight)]">
-                    <span class="text-xs font-medium text-[var(--textSubtle)]">Skor rata-rata: 40–50%</span>
+                <div class="mt-4 pt-4 flex items-center gap-3" style="border-top: 1px solid var(--bordLight);">
+                    <div class="progress-bar flex-1" style="max-width: 160px;">
+                        <div class="progress-fill" style="width:45%; background: var(--machiavellian);"></div>
+                    </div>
+                    <span class="text-xs font-mono font-semibold" style="color: var(--machiavellian);">40–50%</span>
                 </div>
             </div>
 
             <!-- Psikopati -->
-            <div class="card card-hover p-8 fade-in-up" style="animation-delay:0.3s;">
-                <div class="w-12 h-12 rounded-2xl bg-[var(--psychopath-light)] flex items-center justify-center mb-5">
-                    <span class="material-symbols-outlined text-2xl text-[var(--psychopath)]">bolt</span>
+            <div class="card p-7 fade-in-up" style="animation-delay:0.3s;">
+                <div class="flex items-start gap-2 mb-3">
+                    <span class="material-symbols-outlined text-lg" style="color: var(--psychopath);">bolt</span>
+                    <h3 style="color: var(--ink);">Psikopati</h3>
                 </div>
-                <h3 class="text-lg font-bold text-[var(--textMain)] m-0">Psikopati</h3>
-                <p class="mt-2 text-sm text-[var(--textMuted)] leading-relaxed m-0">
+                <p class="text-sm leading-relaxed" style="color: var(--inkMuted);">
                     Kurangnya rasa bersalah, impulsif, dan pencarian sensasi. 
                     Dalam konteks positif, ini bisa berarti keberanian mengambil risiko.
                 </p>
-                <div class="mt-4 pt-4 border-t border-[var(--bordLight)]">
-                    <span class="text-xs font-medium text-[var(--textSubtle)]">Skor rata-rata: 30–40%</span>
+                <div class="mt-4 pt-4 flex items-center gap-3" style="border-top: 1px solid var(--bordLight);">
+                    <div class="progress-bar flex-1" style="max-width: 160px;">
+                        <div class="progress-fill" style="width:35%; background: var(--psychopath);"></div>
+                    </div>
+                    <span class="text-xs font-mono font-semibold" style="color: var(--psychopath);">30–40%</span>
                 </div>
             </div>
         </div>
 
-        <!-- What You Get -->
-        <div class="mt-16 lg:mt-20 card card-elevated p-8 md:p-10 fade-in-up" style="animation-delay:0.3s;">
-            <div class="grid md:grid-cols-2 gap-10 items-center">
+        <!-- What You Get — flat, minimal, tighter spacing -->
+        <div class="mt-12 card-flat p-8 md:p-10 fade-in-up" style="animation-delay:0.3s;">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 class="text-2xl font-bold tracking-tight text-[var(--textMain)] m-0">
+                    <h3 style="color: var(--ink);">
                         Apa yang Akan Kamu Dapatkan?
                     </h3>
-                    <ul class="mt-6 space-y-4 m-0 p-0 list-none">
+                    <ul class="mt-5 space-y-3 m-0 p-0 list-none">
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
-                            <span class="text-sm text-[var(--textMuted)]">Analisis skor untuk setiap dimensi Dark Triad</span>
+                            <span class="material-symbols-outlined text-base mt-0.5" style="color: var(--accent);">check_circle</span>
+                            <span class="text-sm" style="color: var(--inkMuted);">Analisis skor untuk setiap dimensi Dark Triad</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
-                            <span class="text-sm text-[var(--textMuted)]">Interpretasi personal berdasarkan hasil tes</span>
+                            <span class="material-symbols-outlined text-base mt-0.5" style="color: var(--accent);">check_circle</span>
+                            <span class="text-sm" style="color: var(--inkMuted);">Interpretasi personal berdasarkan hasil tes</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
-                            <span class="text-sm text-[var(--textMuted)]">Rekomendasi pengembangan diri yang spesifik</span>
+                            <span class="material-symbols-outlined text-base mt-0.5" style="color: var(--accent);">check_circle</span>
+                            <span class="text-sm" style="color: var(--inkMuted);">Rekomendasi pengembangan diri yang spesifik</span>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-[var(--accent-500)] text-lg mt-0.5">check_circle</span>
-                            <span class="text-sm text-[var(--textMuted)]">Laporan PDF yang bisa diunduh dan dicetak</span>
+                            <span class="material-symbols-outlined text-base mt-0.5" style="color: var(--accent);">check_circle</span>
+                            <span class="text-sm" style="color: var(--inkMuted);">Laporan PDF yang bisa diunduh dan dicetak</span>
                         </li>
                     </ul>
                 </div>
                 <div class="text-center">
-                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-[var(--accent-50)] mb-4">
-                        <span class="material-symbols-outlined text-4xl text-[var(--accent-500)]">assignment</span>
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-3" style="background: var(--accentLight);">
+                        <span class="material-symbols-outlined text-2xl" style="color: var(--accent);">assignment</span>
                     </div>
-                    <p class="text-sm text-[var(--textMuted)] max-w-xs mx-auto m-0 leading-relaxed">
+                    <p class="text-sm leading-relaxed max-w-xs mx-auto" style="color: var(--inkMuted);">
                         Hasil asesmen dirancang oleh psikolog profesional dan 
                         divalidasi secara ilmiah.
                     </p>
