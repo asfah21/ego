@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/assets/js/app.js" defer></script>
 </head>
-<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">
-    {{template "navbar" .}}
-    <main class="pt-14">
-        {{template "content" .}}
-    </main>
-    {{template "footer" .}}
+    <body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">
+        {{template "navbar" .}}
+        <main>
+            {{template "content" .}}
+        </main>
+        {{template "footer" .}}
 <!-- impeccable-live-start -->
 <script src="http://localhost:8400/live.js"></script>
 <!-- impeccable-live-end -->

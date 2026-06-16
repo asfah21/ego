@@ -1,33 +1,45 @@
 {{define "footer"}}
-<footer style="border-top: 1px solid var(--bordLight); background: var(--surface);" role="contentinfo">
-    <div class="container py-10">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="flex h-7 w-7 items-center justify-center rounded-lg" style="background: var(--accent);">
-                    <span class="material-symbols-outlined text-white text-sm" aria-hidden="true">psychology</span>
+<footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+        <!-- Main footer content -->
+        <div class="flex flex-col md:flex-row justify-between gap-8">
+            <!-- Logo + tagline -->
+            <div class="footer-brand">
+                <a href="/" class="footer-logo">
+                    <span class="footer-logo-icon" aria-hidden="true">
+                        <span class="material-symbols-outlined">psychology</span>
+                    </span>
+                    ShadowSelf
+                </a>
+                <p class="footer-tagline">
+                    Kenali sisi gelap dirimu melalui asesmen psikologi berbasis Dark Triad yang reflektif dan jujur.
+                </p>
+            </div>
+
+            <!-- Link columns -->
+            <div class="flex flex-wrap gap-8">
+                <div>
+                    <p class="footer-heading">Navigasi</p>
+                    <ul class="footer-links">
+                        <li><a href="/" class="footer-link">Beranda</a></li>
+                        <li><a href="#tentang" class="footer-link">Tentang</a></li>
+                        <li><a href="/quiz" class="footer-link">Mulai Tes</a></li>
+                    </ul>
                 </div>
                 <div>
-                    <span class="text-sm font-bold">ShadowSelf</span>
-                    <p class="text-xs mt-1" style="color: var(--inkSubtle);">Kenali sisi gelap dirimu</p>
+                    <p class="footer-heading">Informasi</p>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Privasi</a></li>
+                        <li><a href="#" class="footer-link">Syarat & Ketentuan</a></li>
+                        <li><a href="#" class="footer-link">Kontak</a></li>
+                    </ul>
                 </div>
             </div>
-            <p class="text-xs order-last md:order-none" style="color: var(--inkSubtle);">
-                &copy; 2026 ShadowSelf. All rights reserved.
-            </p>
-            <div class="flex items-center gap-4">
-                <span class="text-xs flex items-center gap-1.5" style="color: var(--inkSubtle);">
-                    <span class="material-symbols-outlined text-sm text-accent" aria-hidden="true">verified</span>
-                    Berbasis Ilmiah
-                </span>
-                <span class="text-xs flex items-center gap-1.5" style="color: var(--inkSubtle);">
-                    <span class="material-symbols-outlined text-sm text-accent" aria-hidden="true">lock</span>
-                    Data Terenkripsi
-                </span>
-                <span class="text-xs flex items-center gap-1.5" style="color: var(--inkSubtle);">
-                    <span class="material-symbols-outlined text-sm text-accent" aria-hidden="true">bolt</span>
-                    Hasil Instan
-                </span>
-            </div>
+        </div>
+
+        <!-- Copyright line -->
+        <div class="footer-copyright">
+            <p>&copy; 2026 ShadowSelf. All rights reserved.</p>
         </div>
     </div>
 </footer>
