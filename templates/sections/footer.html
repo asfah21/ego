@@ -1,8 +1,7 @@
 {{define "footer"}}
 <footer class="footer" role="contentinfo">
     <div class="container footer-inner">
-        <!-- Main footer content -->
-        <div class="flex flex-col md:flex-row justify-between gap-8">
+        <div class="footer-grid">
             <!-- Logo + tagline -->
             <div class="footer-brand">
                 <a href="/" class="footer-logo">
@@ -16,24 +15,34 @@
                 </p>
             </div>
 
-            <!-- Link columns -->
-            <div class="flex flex-wrap gap-8">
-                <div>
-                    <p class="footer-heading">Navigasi</p>
-                    <ul class="footer-links">
-                        <li><a href="/" class="footer-link">Beranda</a></li>
-                        <li><a href="#tentang" class="footer-link">Tentang</a></li>
-                        <li><a href="/quiz" class="footer-link">Mulai Tes</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <p class="footer-heading">Informasi</p>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Privasi</a></li>
-                        <li><a href="#" class="footer-link">Syarat & Ketentuan</a></li>
-                        <li><a href="#" class="footer-link">Kontak</a></li>
-                    </ul>
-                </div>
+            <!-- Navigasi -->
+            <div>
+                <p class="footer-heading">Navigasi</p>
+                <ul class="footer-links">
+                    <li><a href="/" class="footer-link">Beranda</a></li>
+                    <li><a href="/#features" class="footer-link">Fitur</a></li>
+                    <li><a href="/quiz" class="footer-link">Mulai Tes</a></li>
+                </ul>
+            </div>
+
+            <!-- Informasi -->
+            <div>
+                <p class="footer-heading">Informasi</p>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Privasi</a></li>
+                    <li><a href="#" class="footer-link">Syarat & Ketentuan</a></li>
+                    <li><a href="#" class="footer-link">Kontak</a></li>
+                </ul>
+            </div>
+
+            <!-- Sumber Daya -->
+            <div>
+                <p class="footer-heading">Sumber Daya</p>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Dokumentasi</a></li>
+                    <li><a href="#" class="footer-link">API</a></li>
+                    <li><a href="#" class="footer-link">Blog</a></li>
+                </ul>
             </div>
         </div>
 

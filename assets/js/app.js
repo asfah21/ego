@@ -1,8 +1,37 @@
-// ShadowSelf — Premium App JavaScript
+// ShadowSelf — Polished App JavaScript
 (function() {
     'use strict';
 
-    // Smooth scroll for anchor links
+    // --- Navbar glass effect on scroll ---
+    const navbar = document.querySelector('.navbar');
+    let lastScrollY = 0;
+
+    function handleNavbarScroll() {
+        const scrollY = window.scrollY;
+        if (scrollY > 20) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        lastScrollY = scrollY;
+    }
+
+    // Throttled scroll listener
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(function() {
+                handleNavbarScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    // Initial check
+    handleNavbarScroll();
+
+    // --- Smooth scroll for anchor links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -15,12 +44,11 @@
         });
     });
 
-    // IntersectionObserver for staggered fade-in animations
+    // --- IntersectionObserver for staggered fade-in animations ---
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Respect reduced motion preference
                     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                     if (prefersReduced) {
                         entry.target.style.opacity = '1';
@@ -37,14 +65,13 @@
             observer.observe(el);
         });
     } else {
-        // Fallback: show all elements immediately
         document.querySelectorAll('.fade-in-up').forEach(el => {
             el.style.opacity = '1';
             el.style.transform = 'none';
         });
     }
 
-    // Auto-dismiss alerts with smooth animation
+    // --- Auto-dismiss alerts ---
     document.querySelectorAll('.alert').forEach(alert => {
         setTimeout(() => {
             alert.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
