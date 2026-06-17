@@ -35,13 +35,15 @@ func Setup(r *gin.Engine) {
 	//    layout.html has NO {{define}}, so it becomes template "layout.html"
 	all = template.Must(template.Must(all.Clone()).ParseGlob("templates/layout.html"))
 
-	// 3. Parse all page files — each defines {{define "content"}}
+	// 3. Parse index.html first — it defines {{define "content"}}
+	all = template.Must(template.Must(all.Clone()).ParseGlob("templates/index.html"))
+
+	// 4. Parse all page files — each defines {{define "content"}}
 	//    They all define the SAME template name "content", so the LAST one parsed wins.
 	//    This is fine because we only use one page at a time.
 	all = template.Must(template.Must(all.Clone()).ParseGlob("templates/_pages/*.html"))
-	all = template.Must(template.Must(all.Clone()).ParseGlob("templates/index.html"))
 
-	// 4. Create wrapper templates named after each page file so Gin's c.HTML() can find them.
+	// 5. Create wrapper templates named after each page file so Gin's c.HTML() can find them.
 	//    Each wrapper simply calls {{template "layout.html" .}} which renders the full page.
 	//    layout.html calls {{template "content" .}} which uses the "content" template from the page.
 	pageFiles := []string{
