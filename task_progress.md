@@ -1,52 +1,29 @@
-# Polish Progress
+# Task Progress: Fix Template Rendering (DOCTYPE, Layout, Assets)
 
-## Phase 1: CSS Design System Fixes
-- [ ] Remove lingering `--warmBord`/`--warmBg` references in CSS
-- [ ] Fix `rounded-2xl` → `rounded-xl` (12px) on icon containers, option labels, cards
-- [ ] Remove shadow overrides (`shadow-xl`, `hover:shadow-xl`, `hover:shadow-sm`, `shadow-glow`)
-- [ ] Fix h1/h2 font-weight (DM Serif Display should be 400, not 700)
-- [ ] Fix `font-bold` on h3/h4 → `font-semibold` (600)
-- [ ] Remove `transition-all` → use specific properties
-- [ ] Fix hard-coded color values → use CSS variables
-- [ ] Fix `card-elevated` and `card-hover` stubs → proper card classes
+## Root Cause Analysis
 
-## Phase 2: Template Fixes — hasil.html
-- [ ] Fix h1 to use DM Serif Display 400 weight
-- [ ] Fix `font-bold` → `font-semibold` on h3/h4
-- [ ] Fix `font-bold` → `font-medium` on labels and badges
-- [ ] Fix `rounded-2xl` → `rounded-xl`
-- [ ] Remove shadow overrides
-- [ ] Fix `card-elevated` → `card`
-- [ ] Fix `card-hover` → `card`
-- [ ] Fix `transition-all` → specific transitions
+**The layout files (`layout-public.html`, `layout-auth.html`, `layout-dashboard.html`, `layout-quiz.html`) are NEVER used.**
 
-## Phase 3: Template Fixes — quiz.html
-- [ ] Fix `font-bold` → `font-semibold` on h3
-- [ ] Fix `font-bold` → `font-medium` on labels
-- [ ] Fix `rounded-2xl` → `rounded-xl`
-- [ ] Remove shadow overrides
-- [ ] Fix `card-elevated` → `card`
-- [ ] Fix `shadow-glow` removal
-- [ ] Fix `transition-all` → specific transitions
+In `templates/setup.go`, the wrapper templates directly render sections (navbar, footer, sidebar, topbar) and content blocks inline, completely bypassing the layout files. The layout files contain the critical `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>` structure, CSS/JS/font links, etc.
 
-## Phase 4: Template Fixes — tentang.html
-- [ ] Fix h1 to use DM Serif Display 400 weight
-- [ ] Fix `font-bold` → `font-semibold` on h3
-- [ ] Fix `font-bold` → `font-medium` on badges
-- [ ] Fix `rounded-2xl` → `rounded-xl`
-- [ ] Fix `card-hover` → `card`
-- [ ] Fix `transition-all` → specific transitions
+The wrapper templates in `setup.go` only render:
+- `{{template "navbar" .}}<main>{{template "content-*" .}}</main>{{template "footer" .}}`
 
-## Phase 5: Template Fixes — index.html & sections
-- [ ] Fix `font-bold` → `font-semibold` on h3 in produk_section
-- [ ] Fix `font-bold` → `font-medium` on labels in hero
-- [ ] Fix `font-bold` → `font-semibold` on testimoni names
-- [ ] Fix `font-bold` → `font-medium` on faq questions
-- [ ] Fix `font-bold` → `font-semibold` on "Apa yang Akan Kamu Dapatkan?" h3
-- [ ] Fix `rounded-2xl` → `rounded-xl` on icon containers
-- [ ] Fix `transition-all` → specific transitions
+This means the rendered HTML is just a fragment like:
+```html
+<header class="navbar">...<main>...content...</main><footer>...</footer>
+```
 
-## Phase 6: Final Verification
-- [ ] Verify all changes are consistent
-- [ ] Check for any remaining hard-coded values
-- [ ] Verify design system compliance
+**No DOCTYPE, no `<html>`, no `<head>`, no `<body>`, no CSS/JS/font links.**
+
+## Fix Strategy
+
+Modify the wrapper templates in `templates/setup.go` to include the full HTML structure from the layout files. Each wrapper template must include:
+1. `<!DOCTYPE html>`
+2. `<html>`
+3. `<head>` with all CSS, JS, fonts, meta tags
+4. `<body>` with the appropriate class
+5. The page-specific sections (navbar, footer, sidebar, topbar)
+6. The content block
+
+I'll create a shared "head" section that contains all the common `<head>` content, then reference it from each wrapper template.

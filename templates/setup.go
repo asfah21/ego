@@ -72,21 +72,21 @@ func Setup(r *gin.Engine) {
 	//      Dashboard     → sidebar + topbar (dashboard, user_detail)
 	wrapperTemplates := map[string]string{
 		// Public pages — navbar + footer
-		"index.html":   `{{template "navbar" .}}<main>{{template "content-index" .}}</main>{{template "footer" .}}`,
-		"tentang.html": `{{template "navbar" .}}<main>{{template "content-tentang" .}}</main>{{template "footer" .}}`,
-		"paywall.html": `{{template "navbar" .}}<main>{{template "content-paywall" .}}</main>{{template "footer" .}}`,
-		"hasil.html":   `{{template "navbar" .}}<main>{{template "content-hasil" .}}</main>{{template "footer" .}}`,
-		"error.html":   `{{template "navbar" .}}<main>{{template "content-error" .}}</main>{{template "footer" .}}`,
+		"index.html":   `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "navbar" .}}<main>{{template "content-index" .}}</main>{{template "footer" .}}</body></html>`,
+		"tentang.html": `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "navbar" .}}<main>{{template "content-tentang" .}}</main>{{template "footer" .}}</body></html>`,
+		"paywall.html": `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "navbar" .}}<main>{{template "content-paywall" .}}</main>{{template "footer" .}}</body></html>`,
+		"hasil.html":   `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "navbar" .}}<main>{{template "content-hasil" .}}</main>{{template "footer" .}}</body></html>`,
+		"error.html":   `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "navbar" .}}<main>{{template "content-error" .}}</main>{{template "footer" .}}</body></html>`,
 
 		// Quiz page — focused, no public navbar/footer
-		"quiz.html": `<main>{{template "content-quiz" .}}</main>`,
+		"quiz.html": `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}"><main>{{template "content-quiz" .}}</main></body></html>`,
 
 		// Auth page — no navbar/footer, centered
-		"login.html": `<main>{{template "content-login" .}}</main>`,
+		"login.html": `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}"><main>{{template "content-login" .}}</main></body></html>`,
 
 		// Dashboard pages — sidebar + topbar
-		"dashboard.html":   `{{template "sidebar" .}}<div class="dashboard-main">{{template "topbar" .}}<main>{{template "content-dashboard" .}}</main></div>`,
-		"user_detail.html": `{{template "sidebar" .}}<div class="dashboard-main">{{template "topbar" .}}<main>{{template "content-user_detail" .}}</main></div>`,
+		"dashboard.html":   `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "sidebar" .}}<div class="dashboard-main">{{template "topbar" .}}<main>{{template "content-dashboard" .}}</main></div></body></html>`,
+		"user_detail.html": `<!DOCTYPE html><html lang="id">{{template "head" .}}<body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">{{template "sidebar" .}}<div class="dashboard-main">{{template "topbar" .}}<main>{{template "content-user_detail" .}}</main></div></body></html>`,
 	}
 
 	for name, content := range wrapperTemplates {
