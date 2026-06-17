@@ -3,6 +3,7 @@ package templates
 import (
 	"html/template"
 	"math"
+	"strings"
 	"unicode"
 	"unicode/utf8"
 
@@ -38,6 +39,9 @@ func Setup(r *gin.Engine) {
 
 	// 4. Parse each page file individually — each uses a unique define name
 	//    e.g. {{define "content-quiz"}}, {{define "content-login"}}, etc.
+	//    IMPORTANT: Only add templates whose names start with "content-" to avoid
+	//    overwriting existing templates (like "quiz.html", "paywall.html", etc.)
+	//    that were already parsed from sections, layout, and index.html.
 	pageFiles := []string{
 		"templates/_pages/quiz.html",
 		"templates/_pages/paywall.html",
@@ -51,27 +55,29 @@ func Setup(r *gin.Engine) {
 	for _, f := range pageFiles {
 		parsed := template.Must(template.Must(all.Clone()).ParseFiles(f))
 		for _, t := range parsed.Templates() {
-			if t.Name() != "" {
+			if t.Name() != "" && strings.HasPrefix(t.Name(), "content-") {
 				all = template.Must(all.AddParseTree(t.Name(), t.Tree))
 			}
 		}
 	}
 
 	// 5. Create wrapper templates named after each page file so Gin's c.HTML() can find them.
-	//    Each wrapper calls {{template "layout.html" .}} which renders the full page.
-	//    layout.html calls {{template "content" .}} — so we must ensure "content" is defined.
-	//    For index.html, "content" is defined directly in index.html.
-	//    For other pages, we define "content" here in the wrapper to point to the unique content-* template.
+	//    Each wrapper renders the full page.
+	//    IMPORTANT: We must NOT use {{define "content"}} in wrapper templates because that would
+	//    overwrite the global "content" template (defined in index.html) for ALL pages.
+	//    Instead, each wrapper is a self-contained page that includes navbar, the specific
+	//    content template, and footer directly.
+	//    For index.html, we use layout.html which calls {{template "content" .}} (defined in index.html).
 	wrapperTemplates := map[string]string{
 		"index.html":       `{{template "layout.html" .}}`,
-		"quiz.html":        `{{define "content"}}{{template "content-quiz" .}}{{end}}{{template "layout.html" .}}`,
-		"paywall.html":     `{{define "content"}}{{template "content-paywall" .}}{{end}}{{template "layout.html" .}}`,
-		"hasil.html":       `{{define "content"}}{{template "content-hasil" .}}{{end}}{{template "layout.html" .}}`,
-		"tentang.html":     `{{define "content"}}{{template "content-tentang" .}}{{end}}{{template "layout.html" .}}`,
-		"login.html":       `{{define "content"}}{{template "content-login" .}}{{end}}{{template "layout.html" .}}`,
-		"dashboard.html":   `{{define "content"}}{{template "content-dashboard" .}}{{end}}{{template "layout.html" .}}`,
-		"user_detail.html": `{{define "content"}}{{template "content-user_detail" .}}{{end}}{{template "layout.html" .}}`,
-		"error.html":       `{{define "content"}}{{template "content-error" .}}{{end}}{{template "layout.html" .}}`,
+		"quiz.html":        `{{template "navbar" .}}<main>{{template "content-quiz" .}}</main>{{template "footer" .}}`,
+		"paywall.html":     `{{template "navbar" .}}<main>{{template "content-paywall" .}}</main>{{template "footer" .}}`,
+		"hasil.html":       `{{template "navbar" .}}<main>{{template "content-hasil" .}}</main>{{template "footer" .}}`,
+		"tentang.html":     `{{template "navbar" .}}<main>{{template "content-tentang" .}}</main>{{template "footer" .}}`,
+		"login.html":       `{{template "navbar" .}}<main>{{template "content-login" .}}</main>{{template "footer" .}}`,
+		"dashboard.html":   `{{template "navbar" .}}<main>{{template "content-dashboard" .}}</main>{{template "footer" .}}`,
+		"user_detail.html": `{{template "navbar" .}}<main>{{template "content-user_detail" .}}</main>{{template "footer" .}}`,
+		"error.html":       `{{template "navbar" .}}<main>{{template "content-error" .}}</main>{{template "footer" .}}`,
 	}
 
 	for name, content := range wrapperTemplates {
