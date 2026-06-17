@@ -58,32 +58,35 @@ func Setup(r *gin.Engine) {
 	}
 
 	// 5. Create wrapper templates named after each page file so Gin's c.HTML() can find them.
-	//    Each wrapper:
-	//      - defines {{define "content"}} that calls the specific content-* template
-	//      - then calls the appropriate layout template which renders the full HTML structure
+	//    Each wrapper directly renders the full HTML by calling the layout's components inline.
 	//
-	//    Layout mapping:
-	//      layout-public.html    → navbar + footer (index, tentang, paywall, hasil, error)
-	//      layout-quiz.html      → focused, no navbar/footer (quiz)
-	//      layout-auth.html      → no navbar/footer, centered (login)
-	//      layout-dashboard.html → sidebar + topbar (dashboard, user_detail)
+	//    CRITICAL: Wrapper templates must NOT use {{define}} blocks! Go's template system stores
+	//    {{define}} blocks globally in the template set. If multiple wrappers define the same name
+	//    (e.g. {{define "content"}}), the last one processed overwrites all previous ones, causing
+	//    every page to render the same (wrong) content.
+	//
+	//    Layout component mapping:
+	//      Public pages  → navbar + footer (index, tentang, paywall, hasil, error)
+	//      Quiz page     → focused, no navbar/footer
+	//      Auth page     → no navbar/footer, centered (login)
+	//      Dashboard     → sidebar + topbar (dashboard, user_detail)
 	wrapperTemplates := map[string]string{
 		// Public pages — navbar + footer
-		"index.html":   `{{define "content"}}{{template "content-index" .}}{{end}}{{template "layout-public.html" .}}`,
-		"tentang.html": `{{define "content"}}{{template "content-tentang" .}}{{end}}{{template "layout-public.html" .}}`,
-		"paywall.html": `{{define "content"}}{{template "content-paywall" .}}{{end}}{{template "layout-public.html" .}}`,
-		"hasil.html":   `{{define "content"}}{{template "content-hasil" .}}{{end}}{{template "layout-public.html" .}}`,
-		"error.html":   `{{define "content"}}{{template "content-error" .}}{{end}}{{template "layout-public.html" .}}`,
+		"index.html":   `{{template "navbar" .}}<main>{{template "content-index" .}}</main>{{template "footer" .}}`,
+		"tentang.html": `{{template "navbar" .}}<main>{{template "content-tentang" .}}</main>{{template "footer" .}}`,
+		"paywall.html": `{{template "navbar" .}}<main>{{template "content-paywall" .}}</main>{{template "footer" .}}`,
+		"hasil.html":   `{{template "navbar" .}}<main>{{template "content-hasil" .}}</main>{{template "footer" .}}`,
+		"error.html":   `{{template "navbar" .}}<main>{{template "content-error" .}}</main>{{template "footer" .}}`,
 
 		// Quiz page — focused, no public navbar/footer
-		"quiz.html": `{{define "content"}}{{template "content-quiz" .}}{{end}}{{template "layout-quiz.html" .}}`,
+		"quiz.html": `<main>{{template "content-quiz" .}}</main>`,
 
 		// Auth page — no navbar/footer, centered
-		"login.html": `{{define "content"}}{{template "content-login" .}}{{end}}{{template "layout-auth.html" .}}`,
+		"login.html": `<main>{{template "content-login" .}}</main>`,
 
 		// Dashboard pages — sidebar + topbar
-		"dashboard.html":   `{{define "content"}}{{template "content-dashboard" .}}{{end}}{{template "layout-dashboard.html" .}}`,
-		"user_detail.html": `{{define "content"}}{{template "content-user_detail" .}}{{end}}{{template "layout-dashboard.html" .}}`,
+		"dashboard.html":   `{{template "sidebar" .}}<div class="dashboard-main">{{template "topbar" .}}<main>{{template "content-dashboard" .}}</main></div>`,
+		"user_detail.html": `{{template "sidebar" .}}<div class="dashboard-main">{{template "topbar" .}}<main>{{template "content-user_detail" .}}</main></div>`,
 	}
 
 	for name, content := range wrapperTemplates {

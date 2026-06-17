@@ -16,7 +16,7 @@
     <body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">
         {{template "navbar" .}}
         <main>
-            {{block "content" .}}{{end}}
+            {{block "content-body" .}}{{end}}
         </main>
         {{template "footer" .}}
     </body>
