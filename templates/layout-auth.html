@@ -14,10 +14,8 @@
     <script src="/assets/js/app.js" defer></script>
 </head>
     <body class="{{if .BodyClass}}{{.BodyClass}}{{end}}">
-        {{template "navbar" .}}
         <main>
-            {{template "content" .}}
+            {{block "content" .}}{{end}}
         </main>
-        {{template "footer" .}}
     </body>
 </html>
