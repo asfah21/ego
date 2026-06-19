@@ -67,10 +67,17 @@ func ShowResult(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "hasil.html", gin.H{
-		"Nama":          result.Nama,
-		"Narsisme":      result.Narsisme,
-		"Machiavellian": result.Machiavellian,
-		"Psikopati":     result.Psikopati,
+		"Nama":                result.Nama,
+		"Narsisme":            result.Narsisme,
+		"Machiavellian":       result.Machiavellian,
+		"Psikopati":           result.Psikopati,
+		"ExecutiveSummary":    result.ExecutiveSummary,
+		"RelationshipProfile": result.RelationshipProfile,
+		"Kekuatan":            result.Kekuatan,
+		"AreaPerhatian":       result.AreaPerhatian,
+		"RelationshipInsight": result.RelationshipInsight,
+		"CompatibilityNotes":  result.CompatibilityNotes,
+		"ReflectionQuestions": result.ReflectionQuestions,
 	})
 }
 

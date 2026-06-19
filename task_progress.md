@@ -1,13 +1,10 @@
-# Task Progress — Quiz Revamp
+# Task Progress: Redesign Hasil Assessment
 
-## Todo
-
-- [x] Analyze current codebase structure
-- [x] Create 15 new Dark Triad questions with metadata (id, trait, reverse, text)
-- [x] Update quiz.html: replace questions, change to 5-point scale, add scoring logic
-- [x] Update services/quiz.go: new scoring system with per-trait calculation + normalization
-- [x] Update handlers/quiz.go: handle 15 answers instead of 5
-- [x] Update models/user.go: keep existing fields (scoring stays per-trait)
-- [x] Update repositories/user.go: no changes needed (already stores 3 scores)
-- [x] Update hasil.html: professional interpretations instead of negative labels
-- [x] Verify all changes compile and work together
+- [x] Analyze codebase structure (models, handlers, services, templates, CSS)
+- [ ] Update QuizResult model to include narrative fields
+- [ ] Create narrative generation service (services/narasi.go)
+- [ ] Update GetQuizResult to generate narratives
+- [ ] Update handler to pass narrative data to template
+- [ ] Redesign hasil.html template with 7 sections
+- [ ] Add premium CSS styles for the new result page
+- [ ] Test and verify

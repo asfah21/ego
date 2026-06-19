@@ -107,6 +107,7 @@ func GetPaywallData(id string) (*models.PaywallData, error) {
 }
 
 // GetQuizResult mengambil data hasil kuis (dengan proteksi paywall)
+// dan menghasilkan narasi yang dipersonalisasi.
 func GetQuizResult(id string) (*models.QuizResult, error) {
 	user, err := repositories.GetUserResult(id)
 	if err != nil {
@@ -118,11 +119,26 @@ func GetQuizResult(id string) (*models.QuizResult, error) {
 		return nil, nil // nil menandakan belum bayar
 	}
 
+	// Generate all narrative sections
+	execSummary, relProfile, kekuatan, areaPerhatian, relInsight, compatNotes, refQuestions := GenerateAllNarratives(
+		user.Nama,
+		user.SkorNarsisme,
+		user.SkorMachiavellian,
+		user.SkorPsikopati,
+	)
+
 	return &models.QuizResult{
-		Nama:          user.Nama,
-		Narsisme:      user.SkorNarsisme,
-		Machiavellian: user.SkorMachiavellian,
-		Psikopati:     user.SkorPsikopati,
+		Nama:                user.Nama,
+		Narsisme:            user.SkorNarsisme,
+		Machiavellian:       user.SkorMachiavellian,
+		Psikopati:           user.SkorPsikopati,
+		ExecutiveSummary:    execSummary,
+		RelationshipProfile: relProfile,
+		Kekuatan:            kekuatan,
+		AreaPerhatian:       areaPerhatian,
+		RelationshipInsight: relInsight,
+		CompatibilityNotes:  compatNotes,
+		ReflectionQuestions: refQuestions,
 	}, nil
 }
 

@@ -26,6 +26,9 @@ func Setup(r *gin.Engine) {
 			firstRune, _ := utf8.DecodeRuneInString(s)
 			return string(unicode.ToUpper(firstRune))
 		},
+		"split": func(s, sep string) []string {
+			return strings.Split(s, sep)
+		},
 	}
 
 	// 1. Parse sections (navbar, footer, sidebar, topbar, produk_section, faq_section, testimoni_section, etc.)
