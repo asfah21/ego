@@ -14,13 +14,17 @@ func SubmitTest(c *gin.Context) {
 	email := c.PostForm("email")
 	nama := c.PostForm("nama")
 
-	q1, _ := strconv.Atoi(c.PostForm("q1"))
-	q2, _ := strconv.Atoi(c.PostForm("q2"))
-	q3, _ := strconv.Atoi(c.PostForm("q3"))
-	q4, _ := strconv.Atoi(c.PostForm("q4"))
-	q5, _ := strconv.Atoi(c.PostForm("q5"))
+	// Baca 15 jawaban dari form
+	answers := make([]int, 15)
+	for i := 1; i <= 15; i++ {
+		val, err := strconv.Atoi(c.PostForm("q" + strconv.Itoa(i)))
+		if err != nil {
+			val = 0 // default jika tidak terisi
+		}
+		answers[i-1] = val
+	}
 
-	userID, err := services.ProcessQuizAnswers(email, nama, q1, q2, q3, q4, q5)
+	userID, err := services.ProcessQuizAnswers(email, nama, answers)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Gagal menyimpan data tes: " + err.Error(),

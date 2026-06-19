@@ -11,13 +11,13 @@
                 Halo, <span class="text-accent">{{.Nama}}</span>
             </h1>
             <p class="mt-3 text-[var(--textMuted)] m-0 max-w-md mx-auto">
-                Berikut adalah hasil analisis kepribadian Dark Triad kamu.
+                Berikut adalah gambaran dinamika kepribadianmu dalam konteks hubungan.
             </p>
         </div>
 
         <!-- Score Cards -->
         <div class="space-y-4" x-data="{ visible: false }" x-init="setTimeout(() => visible = true, 200); $nextTick(() => { $el.querySelectorAll('.progress-fill').forEach(el => { el.style.width = el.dataset.width + '%' }) })">
-            <!-- Narsisme -->
+            <!-- Kebutuhan Validasi Emosional (Narcissism) -->
             <div class="card card-elevated p-6 md:p-8 fade-in-up transition-all duration-300 hover:shadow-xl" x-show="visible" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
@@ -25,8 +25,8 @@
                             <span class="material-symbols-outlined text-[var(--narcissus)]">star</span>
                         </div>
                         <div>
-                            <h3 class="text-base font-bold text-[var(--textMain)] m-0">Narsisme</h3>
-                            <p class="text-xs text-[var(--textSubtle)] m-0">Kecenderungan superioritas</p>
+                            <h3 class="text-base font-bold text-[var(--textMain)] m-0">Kebutuhan Validasi Emosional</h3>
+                            <p class="text-xs text-[var(--textSubtle)] m-0">Seberapa besar kamu membutuhkan pengakuan dan perhatian dalam hubungan</p>
                         </div>
                     </div>
                     <span class="text-2xl font-bold font-mono text-[var(--narcissus)]">{{.Narsisme}}%</span>
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <!-- Machiavellian -->
+            <!-- Kecenderungan Mengarahkan Situasi (Machiavellian) -->
             <div class="card card-elevated p-6 md:p-8 fade-in-up transition-all duration-300 hover:shadow-xl" x-show="visible" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" style="animation-delay:0.1s;">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
@@ -44,8 +44,8 @@
                             <span class="material-symbols-outlined text-[var(--machiavellian)]">psychology</span>
                         </div>
                         <div>
-                            <h3 class="text-base font-bold text-[var(--textMain)] m-0">Machiavellian</h3>
-                            <p class="text-xs text-[var(--textSubtle)] m-0">Strategi dan manipulasi</p>
+                            <h3 class="text-base font-bold text-[var(--textMain)] m-0">Kecenderungan Mengarahkan Situasi</h3>
+                            <p class="text-xs text-[var(--textSubtle)] m-0">Sejauh mana kamu menggunakan strategi untuk memengaruhi dinamika hubungan</p>
                         </div>
                     </div>
                     <span class="text-2xl font-bold font-mono text-[var(--machiavellian)]">{{.Machiavellian}}%</span>
@@ -55,7 +55,7 @@
                 </div>
             </div>
 
-            <!-- Psikopati -->
+            <!-- Pengambilan Keputusan Impulsif (Psychopathy) -->
             <div class="card card-elevated p-6 md:p-8 fade-in-up transition-all duration-300 hover:shadow-xl" x-show="visible" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 translate-y-4" style="animation-delay:0.2s;">
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
@@ -63,8 +63,8 @@
                             <span class="material-symbols-outlined text-[var(--psychopath)]">bolt</span>
                         </div>
                         <div>
-                            <h3 class="text-base font-bold text-[var(--textMain)] m-0">Psikopati</h3>
-                            <p class="text-xs text-[var(--textSubtle)] m-0">Keberanian mengambil risiko</p>
+                            <h3 class="text-base font-bold text-[var(--textMain)] m-0">Pengambilan Keputusan Impulsif</h3>
+                            <p class="text-xs text-[var(--textSubtle)] m-0">Kecenderungan bertindak berdasarkan dorongan sesaat dalam hubungan</p>
                         </div>
                     </div>
                     <span class="text-2xl font-bold font-mono text-[var(--psychopath)]">{{.Psikopati}}%</span>

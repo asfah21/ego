@@ -5,16 +5,90 @@ import (
 	"ego/repositories"
 )
 
-// ProcessQuizAnswers memproses jawaban kuesioner dan menyimpan ke database
-func ProcessQuizAnswers(email, nama string, q1, q2, q3, q4, q5 int) (string, error) {
-	// Konversi skor 1-3 ke persentase 0-100
-	// 1 -> 0%, 2 -> 50%, 3 -> 100%
-	// Q1, Q4 -> Narsisme
-	// Q2, Q5 -> Machiavellian
-	// Q3 -> Psikopati
-	skorNarsisme := (q1 + q4 - 2) * 25
-	skorMachiavellian := (q2 + q5 - 2) * 25
-	skorPsikopati := (q3 - 1) * 50
+// Question metadata — mapping index ke trait dan reverse status
+// 15 questions distributed: 5 Narcissism, 5 Machiavellian, 5 Psychopathy
+// Indices: 0-based, matching form fields q1..q15
+var questionMeta = []struct {
+	trait   string
+	reverse bool
+}{
+	// Narcissism (direct)
+	{trait: "narcissism", reverse: false},
+	// Machiavellian (direct)
+	{trait: "machiavellian", reverse: false},
+	// Psychopathy (direct)
+	{trait: "psychopathy", reverse: false},
+	// Narcissism (reverse)
+	{trait: "narcissism", reverse: true},
+	// Machiavellian (reverse)
+	{trait: "machiavellian", reverse: true},
+	// Psychopathy (reverse)
+	{trait: "psychopathy", reverse: true},
+	// Narcissism (direct)
+	{trait: "narcissism", reverse: false},
+	// Machiavellian (direct)
+	{trait: "machiavellian", reverse: false},
+	// Psychopathy (direct)
+	{trait: "psychopathy", reverse: false},
+	// Narcissism (direct)
+	{trait: "narcissism", reverse: false},
+	// Machiavellian (direct)
+	{trait: "machiavellian", reverse: false},
+	// Psychopathy (direct)
+	{trait: "psychopathy", reverse: false},
+	// Narcissism (reverse)
+	{trait: "narcissism", reverse: true},
+	// Machiavellian (reverse)
+	{trait: "machiavellian", reverse: true},
+	// Psychopathy (reverse)
+	{trait: "psychopathy", reverse: true},
+}
+
+// ProcessQuizAnswers memproses 15 jawaban kuesioner dengan reverse scoring
+// dan normalisasi ke persentase 0-100 per trait.
+func ProcessQuizAnswers(email, nama string, answers []int) (string, error) {
+	// Skala 4 poin (tanpa netral): 1=Sangat Tidak Sesuai, 4=Sangat Sesuai
+	// Untuk direct items: skor mentah = nilai jawaban (1-4)
+	// Untuk reverse items: skor mentah = 5 - nilai jawaban (1->4, 2->3, 3->2, 4->1)
+	// Setiap trait punya 5 items, max raw score = 5*4 = 20, min = 5*1 = 5
+
+	rawScores := map[string]int{
+		"narcissism":    0,
+		"machiavellian": 0,
+		"psychopathy":   0,
+	}
+
+	for i, answer := range answers {
+		if i >= len(questionMeta) {
+			break
+		}
+		meta := questionMeta[i]
+		score := answer
+		if meta.reverse {
+			score = 5 - answer // reverse: 1->4, 2->3, 3->2, 4->1
+		}
+		rawScores[meta.trait] += score
+	}
+
+	// Normalisasi ke persentase 0-100
+	// Min raw = 5 (all 1s), Max raw = 20 (all 4s)
+	// Rumus: ((raw - min) / (max - min)) * 100
+	normalize := func(raw int) int {
+		min := 5
+		max := 20
+		percent := ((raw - min) * 100) / (max - min)
+		if percent < 0 {
+			percent = 0
+		}
+		if percent > 100 {
+			percent = 100
+		}
+		return percent
+	}
+
+	skorNarsisme := normalize(rawScores["narcissism"])
+	skorMachiavellian := normalize(rawScores["machiavellian"])
+	skorPsikopati := normalize(rawScores["psychopathy"])
 
 	userID, err := repositories.InsertUser(email, nama, skorNarsisme, skorMachiavellian, skorPsikopati)
 	if err != nil {
